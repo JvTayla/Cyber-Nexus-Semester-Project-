@@ -273,6 +273,7 @@ MonoBehaviour:
   moveSpeed: 2
   lookSpeed: 1
   gravity: -9.81
+  jumpHeight: 1
   playerCamera: {fileID: 403333183}
 --- !u!1 &403333180
 GameObject:
@@ -472,7 +473,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2cf5ee9d287f8854bbb243f4e12bcdbb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
