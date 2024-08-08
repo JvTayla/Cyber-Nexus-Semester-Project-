@@ -8,9 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Action Maps/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Action Maps/Controls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Action Maps/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Action Maps/Controls.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/New Material.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/New Material.mat.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Class.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Class.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FirstPersonControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FirstPersonControls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/URP/Settings/URP-HighFidelity-Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/URP/Settings/URP-HighFidelity-Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +21,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Downloads/First Person Shooting And Picking Up.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Copy/New Text Document.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -100,6 +106,10 @@
       <workItem from="1722521897371" duration="638000" />
       <workItem from="1722878041428" duration="6000" />
       <workItem from="1722878142215" duration="6597000" />
+      <workItem from="1722925878318" duration="3189000" />
+      <workItem from="1723023046017" duration="3419000" />
+      <workItem from="1723103741992" duration="2558000" />
+      <workItem from="1723119906064" duration="6694000" />
     </task>
     <servers />
   </component>
