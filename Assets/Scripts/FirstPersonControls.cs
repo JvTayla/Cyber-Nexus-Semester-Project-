@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class FirstPersonControls : MonoBehaviour
 {
+
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
     // Public variables to set movement and look speed, and the player camera
@@ -26,13 +26,20 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject projectilePrefab; // Projectile prefab for shooting
     public Transform firePoint; // Point from which the projectile is fired
     public float projectileSpeed = 20f; // Speed at which the projectile is fired
-    public float pickUpRange = 3f; // Range within which objects can be picked up
-    private bool holdingGun = false;
 
     [Header("PICKING UP SETTINGS")]
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
+    public float pickUpRange = 3f; // Range within which objects can be picked up
+    private bool holdingGun = false;
+
+    [Header("CROUCH SETTINGS")]
+    [Space(5)]
+    public float crouchHeight = 1f; //make short
+    public float standingHeight = 2f; //make normal
+    public float crouchSpeed = 1.5f; //make slow
+    public bool isCrouching = false; //check if crouch
 
     private void Awake()
     {
@@ -40,7 +47,7 @@ public class FirstPersonControls : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
-    private void OnEnable()//enables input actions , when the script is enables, it starts listening for player inputs , and updates the variables within
+    private void OnEnable()
     {
         // Create a new instance of the input actions
         var playerInput = new Controls();
@@ -62,8 +69,11 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the shoot input event
         playerInput.Player.Shoot.performed += ctx => Shoot(); // Call the Shoot method when shoot input is performed
 
+        // Subscribe to the pick-up input event
+        playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
 
-
+        // Subscribe to the crouch input event
+        playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
     }
 
     private void Update()
@@ -82,8 +92,19 @@ public class FirstPersonControls : MonoBehaviour
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
+        //Adjust speed if crouching
+        float currentSpeed;
+        if (isCrouching)
+        {
+            currentSpeed = crouchSpeed;
+        }
+        else
+        {
+            currentSpeed = moveSpeed;
+        }
+
         // Move the character controller based on the movement vector and speed
-        characterController.Move(move * moveSpeed * Time.deltaTime);
+        characterController.Move(move * currentSpeed * Time.deltaTime);
     }
 
     public void LookAround()
@@ -125,16 +146,84 @@ public class FirstPersonControls : MonoBehaviour
 
     public void Shoot()
     {
-        // Instantiate the projectile at the fire point
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        if (holdingGun == true)
+        {
+            // Instantiate the projectile at the fire point
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-        // Get the Rigidbody component of the projectile and set its velocity
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.velocity = firePoint.forward * projectileSpeed;
+            // Get the Rigidbody component of the projectile and set its velocity
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            rb.velocity = firePoint.forward * projectileSpeed;
 
-        // Destroy the projectile after 3 seconds
-        Destroy(projectile, 3f);
+            // Destroy the projectile after 3 seconds
+            Destroy(projectile, 3f);
+        }
+    }
+
+    public void PickUpObject()
+    {
+        // Check if we are already holding an object
+        if (heldObject != null)
+        {
+            heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
+            heldObject.transform.parent = null;
+            holdingGun = false;
+        }
+
+        // Perform a raycast from the camera's position forward
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        // Debugging: Draw the ray in the Scene view
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
+
+
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the hit object has the tag "PickUp"
+            if (hit.collider.CompareTag("PickUp"))
+            {
+                // Pick up the object
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+                // Attach the object to the hold position
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+            }
+            else if (hit.collider.CompareTag("Gun"))
+            {
+                // Pick up the object
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+                // Attach the object to the hold position
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+
+                holdingGun = true;
+            }
+        }
+    }
+
+    public void ToggleCrouch()
+    {
+        if (isCrouching)
+        {
+            //Stand up
+            characterController.height = standingHeight;
+            isCrouching = false;
+        }
+        else
+        {
+            //Crouch down
+            characterController.height = crouchHeight;
+            isCrouching = true;
+        }
     }
 
 
 }
+
