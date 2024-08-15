@@ -57,16 +57,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
-                    ""id"": ""caf33418-e2b6-4cfc-9c66-400c0fdf20ff"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Sprint"",
-                    ""type"": ""Button"",
-                    ""id"": ""53f989e7-a47a-4221-9c9a-55e18e23ee1f"",
+                    ""id"": ""dfec7b5e-a23c-40d5-a0fd-8c26b2e65458"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -75,16 +66,34 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""PickUp"",
                     ""type"": ""Button"",
-                    ""id"": ""c90bc06b-1aca-4907-9209-d084f896f01e"",
+                    ""id"": ""e087f901-0d3a-405e-83bf-a5ea7e929bf7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""WalkOnWall"",
+                    ""name"": ""Crouch"",
                     ""type"": ""Button"",
-                    ""id"": ""d7f58d3c-f70d-40b6-8ba4-022307a4e1df"",
+                    ""id"": ""609f642f-e164-45a5-a4e7-eb8bcfdf253c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PushObject"",
+                    ""type"": ""Button"",
+                    ""id"": ""b25b5083-029a-4d7a-84b5-a550978c7917"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch Robot"",
+                    ""type"": ""Button"",
+                    ""id"": ""d4e0a624-9229-4c46-9bc2-f69600f1922b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -259,18 +268,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1993230e-7f69-4e7c-ab47-179a1d90fa40"",
+                    ""id"": ""49338fb9-9ead-4bc7-be4a-05dcc04b6832"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": """",
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c0010335-1410-4d1a-b584-6f8982f6c6e0"",
+                    ""id"": ""f9961462-6134-4247-8d44-90f6cfa11137"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -281,29 +290,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""43838eec-0cbc-429c-bd30-0f13b16da2ae"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1d7b39da-9a65-4782-9a80-5964dbd80064"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""PickUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a86126f4-5d49-435f-b627-ff13913ab8a9"",
+                    ""id"": ""c160c7fe-58d0-44a1-be68-df8adb7150dd"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -314,23 +301,78 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ca9bd276-058c-4d49-87ca-f55e33104d3c"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""id"": ""92e24fa5-6650-4229-8dc1-ed1a6dee1eff"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""WalkOnWall"",
+                    ""groups"": """",
+                    ""action"": ""PickUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6f32adae-6c0e-4730-b34d-1af4361a1cdd"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""id"": ""d08bf1c7-4684-4d0d-9f26-2e2587e30681"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae4b6d9f-4258-4958-b6c9-3b042dc1052f"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""WalkOnWall"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36ceebee-15d9-4258-9263-0142a4c51aa9"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PushObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4a9691c-5547-4ff0-bbb6-efef8b672e4b"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PushObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f212345b-1068-4aa7-80ad-eb239baf5992"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Switch Robot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2585cd5-5894-42b7-a466-08694a1a902c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Switch Robot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -368,9 +410,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_LookAround = m_Player.FindAction("Look Around", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_PickUp = m_Player.FindAction("PickUp", throwIfNotFound: true);
-        m_Player_WalkOnWall = m_Player.FindAction("WalkOnWall", throwIfNotFound: true);
+        m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
+        m_Player_PushObject = m_Player.FindAction("PushObject", throwIfNotFound: true);
+        m_Player_SwitchRobot = m_Player.FindAction("Switch Robot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -436,9 +479,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LookAround;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Shoot;
-    private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_PickUp;
-    private readonly InputAction m_Player_WalkOnWall;
+    private readonly InputAction m_Player_Crouch;
+    private readonly InputAction m_Player_PushObject;
+    private readonly InputAction m_Player_SwitchRobot;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -447,9 +491,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @LookAround => m_Wrapper.m_Player_LookAround;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @PickUp => m_Wrapper.m_Player_PickUp;
-        public InputAction @WalkOnWall => m_Wrapper.m_Player_WalkOnWall;
+        public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
+        public InputAction @PushObject => m_Wrapper.m_Player_PushObject;
+        public InputAction @SwitchRobot => m_Wrapper.m_Player_SwitchRobot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -471,15 +516,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
-            @Sprint.started += instance.OnSprint;
-            @Sprint.performed += instance.OnSprint;
-            @Sprint.canceled += instance.OnSprint;
             @PickUp.started += instance.OnPickUp;
             @PickUp.performed += instance.OnPickUp;
             @PickUp.canceled += instance.OnPickUp;
-            @WalkOnWall.started += instance.OnWalkOnWall;
-            @WalkOnWall.performed += instance.OnWalkOnWall;
-            @WalkOnWall.canceled += instance.OnWalkOnWall;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
+            @PushObject.started += instance.OnPushObject;
+            @PushObject.performed += instance.OnPushObject;
+            @PushObject.canceled += instance.OnPushObject;
+            @SwitchRobot.started += instance.OnSwitchRobot;
+            @SwitchRobot.performed += instance.OnSwitchRobot;
+            @SwitchRobot.canceled += instance.OnSwitchRobot;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -496,15 +544,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
-            @Sprint.started -= instance.OnSprint;
-            @Sprint.performed -= instance.OnSprint;
-            @Sprint.canceled -= instance.OnSprint;
             @PickUp.started -= instance.OnPickUp;
             @PickUp.performed -= instance.OnPickUp;
             @PickUp.canceled -= instance.OnPickUp;
-            @WalkOnWall.started -= instance.OnWalkOnWall;
-            @WalkOnWall.performed -= instance.OnWalkOnWall;
-            @WalkOnWall.canceled -= instance.OnWalkOnWall;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
+            @PushObject.started -= instance.OnPushObject;
+            @PushObject.performed -= instance.OnPushObject;
+            @PushObject.canceled -= instance.OnPushObject;
+            @SwitchRobot.started -= instance.OnSwitchRobot;
+            @SwitchRobot.performed -= instance.OnSwitchRobot;
+            @SwitchRobot.canceled -= instance.OnSwitchRobot;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -546,8 +597,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnLookAround(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
-        void OnWalkOnWall(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
+        void OnPushObject(InputAction.CallbackContext context);
+        void OnSwitchRobot(InputAction.CallbackContext context);
     }
 }

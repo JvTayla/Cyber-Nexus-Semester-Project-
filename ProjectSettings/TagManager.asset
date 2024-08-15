@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Laser
-  - Clue
   - Gun
-  - Wall
+  - PickUp
+  - BigRobot Camera
+  - SmallRobot Camera
+  - Electric Circuit
   layers:
   - Default
   - TransparentFX
