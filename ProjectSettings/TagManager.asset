@@ -8,6 +8,7 @@ TagManager:
   - PickUp
   - BigRobot Camera
   - SmallRobot Camera
+  - Electric Circuit
   layers:
   - Default
   - TransparentFX
