@@ -80,6 +80,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WalkOnWall"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7f58d3c-f70d-40b6-8ba4-022307a4e1df"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -302,6 +311,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""PickUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca9bd276-058c-4d49-87ca-f55e33104d3c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""WalkOnWall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f32adae-6c0e-4730-b34d-1af4361a1cdd"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""WalkOnWall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -339,6 +370,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_PickUp = m_Player.FindAction("PickUp", throwIfNotFound: true);
+        m_Player_WalkOnWall = m_Player.FindAction("WalkOnWall", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -406,6 +438,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_PickUp;
+    private readonly InputAction m_Player_WalkOnWall;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -416,6 +449,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @PickUp => m_Wrapper.m_Player_PickUp;
+        public InputAction @WalkOnWall => m_Wrapper.m_Player_WalkOnWall;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -443,6 +477,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @PickUp.started += instance.OnPickUp;
             @PickUp.performed += instance.OnPickUp;
             @PickUp.canceled += instance.OnPickUp;
+            @WalkOnWall.started += instance.OnWalkOnWall;
+            @WalkOnWall.performed += instance.OnWalkOnWall;
+            @WalkOnWall.canceled += instance.OnWalkOnWall;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -465,6 +502,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @PickUp.started -= instance.OnPickUp;
             @PickUp.performed -= instance.OnPickUp;
             @PickUp.canceled -= instance.OnPickUp;
+            @WalkOnWall.started -= instance.OnWalkOnWall;
+            @WalkOnWall.performed -= instance.OnWalkOnWall;
+            @WalkOnWall.canceled -= instance.OnWalkOnWall;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -508,5 +548,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
+        void OnWalkOnWall(InputAction.CallbackContext context);
     }
 }

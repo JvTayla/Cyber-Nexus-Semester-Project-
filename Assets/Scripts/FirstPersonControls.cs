@@ -18,6 +18,7 @@ public class FirstPersonControls : MonoBehaviour
     private Vector2 lookInput; // Stores the look input from the player
     private float verticalLookRotation = 0f; // Keeps track of vertical camera rotation for clamping
     private Vector3 velocity; // Velocity of the player
+    
     private CharacterController characterController; // Reference to the CharacterController component
 
     [Header("SHOOTING SETTINGS")]
@@ -26,14 +27,21 @@ public class FirstPersonControls : MonoBehaviour
     public Transform firePoint; // Point from which the projectile is fired
     public float projectileSpeed = 20f; // Speed at which the projectile is fired
     public float pickUpRange = 3f; // Range within which objects can be picked up
-    private bool holdingGun = true;
+    private bool holdingGun = false;
 
     [Header("PICKING UP SETTINGS")]
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
 
-
+    
+    [Header("Wall Walking SETTINGS")]
+    [Space(5)]
+    public Transform walkingRaycast;
+    public GameObject Player;
+    private bool isWalkingOnWall;
+    public float walkOnWallRange = 0.05f;
+    private GameObject gbWall;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -50,23 +58,24 @@ public class FirstPersonControls : MonoBehaviour
 
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
-        playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
+        playerInput.Player.Movement.canceled += _ => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
 
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
-        playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
+        playerInput.Player.LookAround.canceled += _ => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
 
         // Subscribe to the jump input event
-        playerInput.Player.Jump.performed += ctx => Jump(); // Call the Jump method when jump input is performed
+        playerInput.Player.Jump.performed += _ => Jump(); // Call the Jump method when jump input is performed
 
         // Subscribe to the shoot input event
-        playerInput.Player.Shoot.performed += ctx => Shoot(); // Call the Shoot method when shoot input is performed
+        playerInput.Player.Shoot.performed += _ => Shoot(); // Call the Shoot method when shoot input is performed
 
         // Subscribe to the pick-up input event
-        playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
-    
+        playerInput.Player.PickUp.performed += _ => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
 
-}
+        // Subscribe to the walk on wall input event
+        playerInput.Player.WalkOnWall.performed += _ => WalkOnWall(); // Call the WalkOnWall methode when WalkonWall input is performed
+    }
 
     private void Update()
     {
@@ -188,6 +197,55 @@ public class FirstPersonControls : MonoBehaviour
 
                 holdingGun = true;
             }
+        }
+    }
+
+    private void IntertactWithObject()
+    {
+        
+    }
+    private void InteractWithPuzzle()
+    {
+        if (Camera.main != null)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+        //Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
+       // Debug.DrawRay(, playerCamera.forward * pickUpRange, Color.red, 2f);
+        
+    }
+
+    private void WalkOnWall()
+    {
+        //Checks if the current is not walking on a wall currently
+        /*if ( != null)
+        {
+            
+        }*/
+        // Perform a raycast from the players leg's position forward
+        Ray ray = new Ray(walkingRaycast.position, walkingRaycast.forward);
+        RaycastHit hit;
+        
+        // Debugging: Draw the ray in the Scene view
+        Debug.DrawRay(walkingRaycast.position, walkingRaycast.forward * walkOnWallRange  , Color.blue, 2f);
+        
+        if (Physics.Raycast(ray, out hit, walkOnWallRange))
+        {
+            // Check if the hit object has the tag "Wall"
+            if (hit.collider.CompareTag("Wall"))
+            {
+                // Pick up the object
+                gbWall = hit.collider.gameObject;
+                //gbWall.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+                // Attach the object to the hold position
+
+                Player.transform.position = gbWall.transform.position;
+                Player.transform.rotation = gbWall.transform.rotation;
+                
+                
+            }
+           
         }
     }
 

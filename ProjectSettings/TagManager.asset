@@ -7,6 +7,7 @@ TagManager:
   - Laser
   - Clue
   - Gun
+  - Wall
   layers:
   - Default
   - TransparentFX
