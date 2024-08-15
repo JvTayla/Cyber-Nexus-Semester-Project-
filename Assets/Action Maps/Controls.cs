@@ -80,6 +80,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PushObject"",
+                    ""type"": ""Button"",
+                    ""id"": ""b25b5083-029a-4d7a-84b5-a550978c7917"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch Robot"",
+                    ""type"": ""Button"",
+                    ""id"": ""d4e0a624-9229-4c46-9bc2-f69600f1922b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -313,6 +331,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36ceebee-15d9-4258-9263-0142a4c51aa9"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PushObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4a9691c-5547-4ff0-bbb6-efef8b672e4b"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PushObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f212345b-1068-4aa7-80ad-eb239baf5992"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Switch Robot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2585cd5-5894-42b7-a466-08694a1a902c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Switch Robot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -350,6 +412,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_PickUp = m_Player.FindAction("PickUp", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
+        m_Player_PushObject = m_Player.FindAction("PushObject", throwIfNotFound: true);
+        m_Player_SwitchRobot = m_Player.FindAction("Switch Robot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -417,6 +481,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_PickUp;
     private readonly InputAction m_Player_Crouch;
+    private readonly InputAction m_Player_PushObject;
+    private readonly InputAction m_Player_SwitchRobot;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -427,6 +493,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @PickUp => m_Wrapper.m_Player_PickUp;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
+        public InputAction @PushObject => m_Wrapper.m_Player_PushObject;
+        public InputAction @SwitchRobot => m_Wrapper.m_Player_SwitchRobot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -454,6 +522,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
+            @PushObject.started += instance.OnPushObject;
+            @PushObject.performed += instance.OnPushObject;
+            @PushObject.canceled += instance.OnPushObject;
+            @SwitchRobot.started += instance.OnSwitchRobot;
+            @SwitchRobot.performed += instance.OnSwitchRobot;
+            @SwitchRobot.canceled += instance.OnSwitchRobot;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -476,6 +550,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
+            @PushObject.started -= instance.OnPushObject;
+            @PushObject.performed -= instance.OnPushObject;
+            @PushObject.canceled -= instance.OnPushObject;
+            @SwitchRobot.started -= instance.OnSwitchRobot;
+            @SwitchRobot.performed -= instance.OnSwitchRobot;
+            @SwitchRobot.canceled -= instance.OnSwitchRobot;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -519,5 +599,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnPushObject(InputAction.CallbackContext context);
+        void OnSwitchRobot(InputAction.CallbackContext context);
     }
 }
