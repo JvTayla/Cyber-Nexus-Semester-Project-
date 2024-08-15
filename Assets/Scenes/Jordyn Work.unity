@@ -3991,7 +3991,7 @@ PrefabInstance:
     - target: {fileID: 8445801162439476608, guid: 838b30e43ff500443b0c2f4c4a7bed70,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8445801162439476608, guid: 838b30e43ff500443b0c2f4c4a7bed70,
         type: 3}
@@ -26593,7 +26593,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458374521}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &1458374525
 Camera:
   m_ObjectHideFlags: 0
