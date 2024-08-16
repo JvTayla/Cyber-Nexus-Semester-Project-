@@ -9,9 +9,9 @@ public class PuzzleScript : MonoBehaviour
 {
     public GameObject puzzleScreen; // reference to the puzzle screen
     private GameObject[] arrAllTiles; //array that will store all the tiles gameobjects
-    private Transform[] arrAllTilesPos;//array that will store all the tiles transform positions
     private GameObject[] arrAllCorrectTiles; // array that will store all the correct pipe tiles gameobjects
-    private Transform[] arrAllCorrectTilesPos; //array that will store all the corrects pipes tile gameobjects
+    public GameObject NumberPad;
+    public GameObject[] openDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,24 +24,28 @@ public class PuzzleScript : MonoBehaviour
         arrAllTiles = new GameObject[numPuzzles-1];
         
         //initialize with the number of correct puzzles on the screen
-        arrAllCorrectTiles = new GameObject[numPuzzles-9];
+        arrAllCorrectTiles = new GameObject[numPuzzles-8];
         
         for (int i = 0; i < numPuzzles -1 ; i++)
         {
             // stores all the puzzles in the 
             arrAllTiles[i] = puzzleScreen.transform.GetChild(i).gameObject;
-            Debug.Log(arrAllTiles[i].name);
         }
+        
+        //counter used as an index for the array arrAllCorrectTiles
+        int counter = 0;
         
         //Transverse through all the gameobjects in the arrAllTiles
         foreach (GameObject tile in arrAllTiles )
         {
-            int i = 0; 
             //if the pipes name is Cpipes it is a correct Tiles
-            if (tile.name == "CPipes")
+            if (tile.name == "CTiles")
             {
                 //we know store all correct tile in allCorrectTiles
-                arrAllCorrectTiles[i] = tile;
+                arrAllCorrectTiles[counter] = tile;
+               // arrAllCorrectTilesPos[counter] = tile.transform;
+                counter++;
+                Debug.Log(tile.name);
             }
         }
         
@@ -51,35 +55,59 @@ public class PuzzleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ///if (IsPuzzleComplete())
-        //{
-        //    Debug.Log("Yes");
-       // }
+        
     }
-
+    
+    //function that checks if the player completed the puzzle
     public bool IsPuzzleComplete()
     {
         //Transverses through the arrALlCorrectTiles array 
         foreach (GameObject tile in arrAllCorrectTiles)
         {
-            //checks if the rotation of the tile is in its original position which is the correct format of the tile
-            if (tile.transform.rotation.z != 0f)
-            {
-                return false;
+            if (tile.gameObject.CompareTag("StraightTiles"))
+            {   
+                //stores the rotation of the tile in a Vector 3 variable 
+                var transformRotation = tile.transform.eulerAngles;
+           
+                //checks if the rotation of the tile is in its original position which is the correct format of the tile
+                if (transformRotation.z != 0f && transformRotation.z != 180f && transformRotation.z != -180f)
+                {
+                    //puzzle continues since not all the correct tiles are in the correct positions
+                    return false;
+                }
             }
+            else if (tile.gameObject.CompareTag("OtherTiles"))
+            {
+                //stores the rotation of the tile in a Vector 3 variable 
+                var transformRotation = tile.transform.eulerAngles;
+           
+                //checks if the rotation of the tile is in its original position which is the correct format of the tile
+                if (transformRotation.z != 0f)
+                {
+                    //puzzle continues since not all the correct tiles are in the correct positions
+                    return false;
+                }
+            }
+           
         }
+        //puzzle ends since all the correct tiles are in the correct positions
         return true;
     }
 
+    //function that randomizes the tiles rotation position
     private void PuzzleRandomizer()
     {
-        
+     
+        //Transverses through the arrAllTiles array which contains the all the tile GameObjects
         foreach (GameObject tile in arrAllTiles)
         {
+            //random number to randomize the rotation position of the tiles 
             int randomNumber = UnityEngine.Random.Range(0, 5);
-
+            
+            //storing the tiles rotation position in a Vector 3 variable
             var transformRotation = tile.transform.eulerAngles;
 
+            //switch case statement that takes a random number then uses that number to choose what angle it will be rotated by
             switch (randomNumber)
             {
                 case 0 : transformRotation.z -= 0f;
@@ -92,11 +120,19 @@ public class PuzzleScript : MonoBehaviour
                     break;
             }
 
+            //sets the random rotation position of the tile to the current tile in the foreach loop
             tile.transform.eulerAngles = transformRotation;
+        }
+    }
 
-            var angles = tile.transform.eulerAngles;
-            angles.z = Mathf.Repeat(transformRotation.z,360f);
-            tile.transform.eulerAngles = angles;
+    public void DoorOpener()
+    {
+        foreach (GameObject door in openDoor)
+        {
+            if (door != null)
+            {
+                door.SetActive(false);
+            }
         }
     }
 }

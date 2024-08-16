@@ -194,6 +194,7 @@ MonoBehaviour:
   standingHeight: 2
   crouchSpeed: 1.5
   isCrouching: 0
+  Player: {fileID: 1845421741767541630}
 --- !u!1 &8445801162439476608
 GameObject:
   m_ObjectHideFlags: 0

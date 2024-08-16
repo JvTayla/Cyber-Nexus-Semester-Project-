@@ -9,6 +9,14 @@ TagManager:
   - BigRobot Camera
   - SmallRobot Camera
   - Electric Circuit
+  - Clue
+  - Wall
+  - Laser
+  - Tiles
+  - STiles
+  - OtherTiles
+  - StraightTiles
+  - Interactable
   layers:
   - Default
   - TransparentFX

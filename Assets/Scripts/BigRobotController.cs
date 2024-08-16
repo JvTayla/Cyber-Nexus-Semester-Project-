@@ -48,6 +48,8 @@ public class BigRobotController : MonoBehaviour
     public float PushableRange = 3f; // Range within which objects can be picked up
     private bool isPushing = false;
 
+    public GameObject Player;
+    public Camera bigRobotCamera;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -81,6 +83,10 @@ public class BigRobotController : MonoBehaviour
 
         // Subscribe to the crouch input event
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
+
+        playerInput.Player.Interact.performed += ctx => IntertactWithObject();
+
+        playerInput.Player.TileSelector.performed += ctx => InteractWithPuzzle();
     }
 
     private void Update()
@@ -230,7 +236,54 @@ public class BigRobotController : MonoBehaviour
             isCrouching = true;
         }
     }
+    
+    private void IntertactWithObject()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+        
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
+        
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            if (hit.collider.CompareTag("Electric Circuit")|| hit.collider.CompareTag("OtherTiles") || hit.collider.CompareTag("StraightTiles"))
+            {
+                Transform Spot = hit.collider.transform;
+                Player.transform.position = Spot.position;
+                
+                var angles = Player.transform.eulerAngles;
+                angles.y = 90f;
+                Player.transform.eulerAngles = angles;
+                
+                moveSpeed = 0;
+                jumpHeight = 0;
+                lookSpeed = 0;
+            }
+        }
+    }
+    
+    private void InteractWithPuzzle()
+    {
+       
+        Ray ray = bigRobotCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction *100f, Color.green, 2f);
 
+        //  int layerMask;
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            if (hit.collider.CompareTag("OtherTiles") || hit.collider.CompareTag("StraightTiles"))
+            {
+                GameObject tile = hit.collider.gameObject;
+
+                var angles = tile.transform.eulerAngles;
+                angles.z -= 90f;
+                tile.transform.eulerAngles = angles;
+            }
+        }
+
+        
+    }
     /*public void PushObjects()
     {
 

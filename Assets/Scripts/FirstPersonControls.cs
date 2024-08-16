@@ -41,10 +41,27 @@ public class FirstPersonControls : MonoBehaviour
     public float crouchSpeed = 1.5f; //make slow
     public bool isCrouching = false; //check if crouch
 
+    public GameObject Player;
+    public Camera babyRobotCamera;
+    private bool canMove = true ;
+    private PuzzleScript _PuzzleScript;
+    
+    private float tempSpeed;
+    private float tempLookAroundSpeed;
+    private float tempJumpHeight;
+    private ColorChangerScript _ColorChangerScript;
+    
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+        _PuzzleScript = FindObjectOfType<PuzzleScript>();
+        
+        tempSpeed = moveSpeed;
+        tempLookAroundSpeed = lookSpeed;
+        tempJumpHeight = jumpHeight;
+
+        _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
     }
 
     private void OnEnable()
@@ -75,6 +92,10 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the crouch input event
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
 
+        playerInput.Player.Interact.performed += ctx => IntertactWithObject();
+        playerInput.Player.Interact.canceled += ctx => StopInteracting();
+
+        playerInput.Player.TileSelector.performed += ctx => InteractWithPuzzle();
         /*playerInput.Player.SwitchRobot.performed += ctx => SwitchRobot(); //Call SwitchRobot method when switching input is performed (TAB)*/
     }
 
@@ -224,6 +245,86 @@ public class FirstPersonControls : MonoBehaviour
             characterController.height = crouchHeight;
             isCrouching = true;
         }
+    }
+    
+    
+    private void IntertactWithObject()
+    {
+        if (!_PuzzleScript.IsPuzzleComplete())
+        {
+            Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+            RaycastHit hit;
+
+            Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
+
+            if (Physics.Raycast(ray, out hit, pickUpRange * 2))
+            {
+                if (hit.collider.CompareTag("Interactable") || hit.collider.CompareTag("OtherTiles") ||
+                    hit.collider.CompareTag("StraightTiles"))
+                {
+                    Transform spot = hit.collider.transform;
+                    Player.transform.position = spot.position;
+
+                    var angles = Player.transform.eulerAngles;
+                    angles.y = 90f;
+                    Player.transform.eulerAngles = angles;
+
+                    moveSpeed = 0;
+                    jumpHeight = 0;
+                    lookSpeed = 0;
+                }
+            }
+        }
+        else
+        {
+            moveSpeed = tempSpeed;
+            jumpHeight = tempJumpHeight;
+            lookSpeed = tempLookAroundSpeed;
+            
+            _PuzzleScript.DoorOpener();
+            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
+        }
+        
+    }
+    
+    private void InteractWithPuzzle()
+    {
+        if (!_PuzzleScript.IsPuzzleComplete())
+        {
+            Ray ray = babyRobotCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Debug.DrawRay(ray.origin, ray.direction *100f, Color.green, 2f);
+
+            //  int layerMask;
+            if (Physics.Raycast(ray, out hit, pickUpRange*2))
+            {
+                
+                if (hit.collider.CompareTag("OtherTiles") || hit.collider.CompareTag("StraightTiles"))
+                {
+                    GameObject tile = hit.collider.gameObject;
+
+                    var angles = tile.transform.eulerAngles;
+                    angles.z -= 90f;
+                    tile.transform.eulerAngles = angles;
+                }
+            } 
+        }
+        else
+        {
+            moveSpeed = tempSpeed;
+            jumpHeight = tempJumpHeight;
+            lookSpeed = tempLookAroundSpeed;
+
+            _PuzzleScript.DoorOpener();
+            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
+        }
+    }
+
+    private void StopInteracting()
+    {
+        moveSpeed = tempSpeed;
+        jumpHeight = tempJumpHeight;
+        lookSpeed = tempLookAroundSpeed;
     }
 
     /*public void SwitchRobot()

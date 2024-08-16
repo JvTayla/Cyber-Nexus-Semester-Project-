@@ -302,6 +302,7 @@ MonoBehaviour:
   crouchSpeed: 1.5
   isCrouching: 0
   PushableRange: 3
+  Player: {fileID: 4644783941581962748}
 --- !u!1 &4825001351056981753
 GameObject:
   m_ObjectHideFlags: 0
