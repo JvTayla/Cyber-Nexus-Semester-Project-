@@ -9,6 +9,7 @@ TagManager:
   - BigRobot Camera
   - SmallRobot Camera
   - Electric Circuit
+  - Pushable
   layers:
   - Default
   - TransparentFX

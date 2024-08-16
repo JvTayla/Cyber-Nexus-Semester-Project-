@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BigRobotController : MonoBehaviour
@@ -31,7 +32,7 @@ public class BigRobotController : MonoBehaviour
     [Space(5)]
     public Transform holdPosition; // Position where the picked-up object will be held
     private GameObject heldObject; // Reference to the currently held object
-    public float pickUpRange = 3f; // Range within which objects can be picked up
+    public float pickUpRange = 20f; // Range within which objects can be picked up
     private bool holdingGun = false;
 
     [Header("CROUCH SETTINGS")]
@@ -40,13 +41,6 @@ public class BigRobotController : MonoBehaviour
     public float standingHeight = 2f; //make normal
     public float crouchSpeed = 1.5f; //make slow
     public bool isCrouching = false; //check if crouch
-
-    [Header("PUSHING UP SETTINGS")]
-    [Space(5)]
-    
-    private GameObject PushableObject; // Reference to the currently held object
-    public float PushableRange = 3f; // Range within which objects can be picked up
-    private bool isPushing = false;
 
     private void Awake()
     {
@@ -81,6 +75,8 @@ public class BigRobotController : MonoBehaviour
 
         // Subscribe to the crouch input event
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
+
+      
     }
 
     private void Update()
@@ -116,19 +112,23 @@ public class BigRobotController : MonoBehaviour
 
     public void LookAround()
     {
-        // Get horizontal and vertical look inputs and adjust based on sensitivity
-        float LookX = lookInput.x * lookSpeed;
-        float LookY = lookInput.y * lookSpeed;
+        
+       
+            // Get horizontal and vertical look inputs and adjust based on sensitivity
+            float LookX = lookInput.x * lookSpeed;
+            float LookY = lookInput.y * lookSpeed;
 
-        // Horizontal rotation: Rotate the player object around the y-axis
-        transform.Rotate(0, LookX, 0);
+            // Horizontal rotation: Rotate the player object around the y-axis
+            transform.Rotate(0, LookX, 0);
 
-        // Vertical rotation: Adjust the vertical look rotation and clamp it to prevent flipping
-        verticalLookRotation -= LookY;
-        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90f, 90f);
+            // Vertical rotation: Adjust the vertical look rotation and clamp it to prevent flipping
+            verticalLookRotation -= LookY;
+            verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90f, 90f);
 
-        // Apply the clamped vertical rotation to the player camera
-        playerCamera.localEulerAngles = new Vector3(verticalLookRotation, 0, 0);
+            // Apply the clamped vertical rotation to the player camera
+            playerCamera.localEulerAngles = new Vector3(verticalLookRotation, 0, 0);
+        
+ 
     }
 
     public void ApplyGravity()
@@ -231,34 +231,8 @@ public class BigRobotController : MonoBehaviour
         }
     }
 
-    /*public void PushObjects()
-    {
-
-
-        // Perform a raycast from the camera's position forward
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        RaycastHit hit;
-
-        // Debugging: Draw the ray in the Scene view
-        Debug.DrawRay(playerCamera.position, playerCamera.forward * PushableRange, Color.red, 2f);
-
-        if (Physics.Raycast(ray, out hit, PushableRange))
-        {
-            // Check if the hit object has the tag "PickUp"
-            if (hit.collider.CompareTag("Pushable"))
-            {
-                // Pick up the object
-                heldObject = hit.collider.gameObject;
-                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
-
-                //
-                Debug.Log("Pushable Object");
-
-            }
-          
-        }
-    }*/
-
-
 }
+
+
+
 

@@ -225,12 +225,5 @@ public class FirstPersonControls : MonoBehaviour
             isCrouching = true;
         }
     }
-
-    /*public void SwitchRobot()
-    {
-        if (RoboSwitch)
-    }
-
-    */
 }
 
