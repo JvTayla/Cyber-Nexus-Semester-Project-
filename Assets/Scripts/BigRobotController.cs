@@ -52,6 +52,7 @@ public class BigRobotController : MonoBehaviour
     private float tempSpeed;//stores a copy of the speed of the robot for later use
     private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
     private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
+    
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -87,8 +88,8 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
 
         // Subscribe to the interact input event
-        playerInput.Player.Interact.performed += ctx => IntertactWithObject(); // Call the Interact method when interact input is performed
-        playerInput.Player.Interact.canceled += ctx => StopInteracting();// Reset Inteact method when interact is canceled
+       // playerInput.Player.Interact.performed += ctx => IntertactWithObject(); // Call the Interact method when interact input is performed
+       // playerInput.Player.Interact.canceled += ctx => StopInteracting();// Reset Inteact method when interact is canceled
         
     }
 
@@ -241,7 +242,7 @@ public class BigRobotController : MonoBehaviour
     }
     
     //function that that robot uses to interact with interactible objects ( Code soon to be changed because of other interactable objects)
-    private void IntertactWithObject()
+   /* private void IntertactWithObject()
     {
         //checks if the puzzle is not complete to continue
   
@@ -270,12 +271,20 @@ public class BigRobotController : MonoBehaviour
                     Player.transform.eulerAngles = angles;
                     
                     //we know do assign the data of the robot to stop so it can focus on the object in hand
-                    moveSpeed = 0;
-                    jumpHeight = 0;
-                    lookSpeed = 0;
+                    //moveSpeed = 0;
+                    //jumpHeight = 0;
+                   // lookSpeed = 0;
                 }
             }
-        
+    else//if the player solved the puzzle do this
+    {
+        //function makes the player stop interacting with the object
+        StopInteracting();
+            
+        //function opens the doors after solving the puzzle
+       // _PuzzleScript.DoorOpener();
+       // _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
+    }
  
         
     }
@@ -289,7 +298,7 @@ public class BigRobotController : MonoBehaviour
         jumpHeight = tempJumpHeight;
         lookSpeed = tempLookAroundSpeed;
     }
-
+*/
   
 
 
