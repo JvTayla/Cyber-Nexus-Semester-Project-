@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 public class InventoryManage : MonoBehaviour
 {
+    /*Tile: Unity INventory System
+     Author: Solo Game Dev
+     Date: 12-16 August 2024
+     Code Version: Unity 2022.3.38f1
+     Availability :https://www.youtube.com/watch?v=AoD_F1fSFFg&t=614s
+     */
     public static InventoryManage Instance;
     public List<item> inventory = new List<item>();
 
