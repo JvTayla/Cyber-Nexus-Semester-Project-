@@ -125,12 +125,15 @@ public class PuzzleScript : MonoBehaviour
         }
     }
 
+    //function that opens the doors
     public void DoorOpener()
     {
+        
         foreach (GameObject door in openDoor)
         {
             if (door != null)
             {
+                //opens the doors by hiding them
                 door.SetActive(false);
             }
         }
