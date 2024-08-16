@@ -209,7 +209,6 @@ public class BigRobotController : MonoBehaviour
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
-                InventoryManage.Instance.SpawnItem(Item); 
             }
             else if (hit.collider.CompareTag("Gun"))
             {
@@ -220,10 +219,25 @@ public class BigRobotController : MonoBehaviour
                 // Attach the object to the hold position
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
-                heldObject.transform.parent = holdPosition; 
-                InventoryManage.Instance.SpawnItem(Item);
+                heldObject.transform.parent = holdPosition;
 
                 holdingGun = true;
+            }
+            else
+            if (hit.collider.CompareTag("TestTube"))
+            {
+                // Pick up the object
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+                InventoryManage.Instance.SpawnItem(Item);
+
+                // Attach the object to the hold position
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+                
+                heldObject.SetActive(false);
+                
             }
         }
     }
