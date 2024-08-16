@@ -13321,7 +13321,7 @@ GameObject:
   - component: {fileID: 599485251}
   - component: {fileID: 599485254}
   m_Layer: 0
-  m_Name: NumberPad
+  m_Name: Puzzle1
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
