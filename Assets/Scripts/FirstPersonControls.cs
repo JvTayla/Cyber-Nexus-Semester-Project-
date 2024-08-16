@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -33,6 +34,7 @@ public class FirstPersonControls : MonoBehaviour
     private GameObject heldObject; // Reference to the currently held object
     public float pickUpRange = 3f; // Range within which objects can be picked up
     private bool holdingGun = false;
+    public item Item;
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -41,31 +43,10 @@ public class FirstPersonControls : MonoBehaviour
     public float crouchSpeed = 1.5f; //make slow
     public bool isCrouching = false; //check if crouch
 
-    public GameObject Player;//Gameobject of the small robot
-    public Camera babyRobotCamera;//Camera of the small robot
-    private PuzzleScript _PuzzleScript;// Reference to the puzzle script
-    
-    private float tempSpeed;//stores a copy of the speed of the robot for later use
-    private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
-    private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
-    
-    private ColorChangerScript _ColorChangerScript; //reference to the colorchangescript
-    
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        
-        //Gets all the public functions and variables in the puzzlescript
-        _PuzzleScript = FindObjectOfType<PuzzleScript>();
-        
-        //store the robot data in temp data for later use
-        tempSpeed = moveSpeed;
-        tempLookAroundSpeed = lookSpeed;
-        tempJumpHeight = jumpHeight;
-
-        //Get all the public functions and variables in the Colorchangescript
-        _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
     }
 
     private void OnEnable()
@@ -95,15 +76,6 @@ public class FirstPersonControls : MonoBehaviour
 
         // Subscribe to the crouch input event
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
-
-        // Subscribe to the interact input event
-        playerInput.Player.Interact.performed += ctx => IntertactWithObject(); // Call the Interact method when interact input is performed
-        playerInput.Player.Interact.canceled += ctx => StopInteracting();// Reset Inteact method when interact is canceled
-
-        playerInput.Player.TileSelector.performed += ctx => InteractWithPuzzle();
-        
-        /*playerInput.Player.SwitchRobot.performed += ctx => SwitchRobot();
-         //Call SwitchRobot method when switching input is performed (TAB)*/
     }
 
     private void Update()
@@ -215,7 +187,8 @@ public class FirstPersonControls : MonoBehaviour
             {
                 // Pick up the object
                 heldObject = hit.collider.gameObject;
-                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics 
+                InventoryManage.Instance.SpawnItem(Item);
 
                 // Attach the object to the hold position
                 heldObject.transform.position = holdPosition.position;
@@ -227,7 +200,7 @@ public class FirstPersonControls : MonoBehaviour
                 // Pick up the object
                 heldObject = hit.collider.gameObject;
                 heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
-
+                InventoryManage.Instance.SpawnItem(Item);
                 // Attach the object to the hold position
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
@@ -253,110 +226,7 @@ public class FirstPersonControls : MonoBehaviour
             isCrouching = true;
         }
     }
-    
-    
-    //function that that robot uses to interact with interactible objects ( Code soon to be changed because of other interactable objects)
-    private void IntertactWithObject()
-    {
-        //checks if the puzzle is not complete to continue
-        if (!_PuzzleScript.IsPuzzleComplete())
-        {
-            // Perform a raycast from the camera's position forward
-            Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-            RaycastHit hit;
-            
-            // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
-            
-            
-            if (Physics.Raycast(ray, out hit, pickUpRange * 2))
-            {
-                //checks if the raycast hits the objects with the tags shown below
-                if (hit.collider.CompareTag("Interactable") || hit.collider.CompareTag("OtherTiles") ||
-                    hit.collider.CompareTag("StraightTiles"))
-                {
-                    //spot stores the transform of the hit that the raycast hit
-                    Transform spot = hit.collider.transform;
-                    
-                    //we now make the position of the player to the position of the spot
-                    Player.transform.position = spot.position;
 
-                    //we now also make the rotation of the player to the rotation of the spot
-                    var angles = Player.transform.eulerAngles;
-                    angles.y = 90f;
-                    Player.transform.eulerAngles = angles;
-                    
-                    //we know do assign the data of the robot to stop so it can focus on the object in hand
-                    moveSpeed = 0;
-                    jumpHeight = 0;
-                    lookSpeed = 0;
-                }
-            }
-        }
-        else//if the player solved the puzzle do this
-        {
-            //function makes the player stop interacting with the object
-            StopInteracting();
-            
-            //function opens the doors after solving the puzzle
-            _PuzzleScript.DoorOpener();
-            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-        }
-        
-    }
-    
-    //this function allows the player interact with tiles in the puzzle
-    private void InteractWithPuzzle()
-    {
-        //checks if the puzzle is already solved or not
-        if (!_PuzzleScript.IsPuzzleComplete())
-        {
-            //makes a raycase from the baby camera where the mouse is pointing
-            Ray ray = babyRobotCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            
-            // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(ray.origin, ray.direction *100f, Color.green, 2f);
 
-            
-            if (Physics.Raycast(ray, out hit, pickUpRange*2))
-            {
-                //checks if the hit of the raycast has a tag of the specific tags shown below
-                if (hit.collider.CompareTag("OtherTiles") || hit.collider.CompareTag("StraightTiles"))
-                {
-                    //store the hit of the raycast in the tile gameobject
-                    GameObject tile = hit.collider.gameObject;
-                    
-                    //rotate the tile by 90 degrees
-                    var angles = tile.transform.eulerAngles;
-                    angles.z -= 90f;
-                    tile.transform.eulerAngles = angles;
-                }
-            } 
-        }
-        else //if the player solves the player they can move now
-        {
-            moveSpeed = tempSpeed;
-            jumpHeight = tempJumpHeight;
-            lookSpeed = tempLookAroundSpeed;
-            
-            // function opens the door
-            _PuzzleScript.DoorOpener();
-            
-            //makes the puzzle background green to show the puzzle is complete
-            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-        }
-    }
-
-    //function that allows the player to start moving again
-    private void StopInteracting()
-    {
-        
-        moveSpeed = tempSpeed;
-        jumpHeight = tempJumpHeight;
-        lookSpeed = tempLookAroundSpeed;
-    }
-
-   
 }
 

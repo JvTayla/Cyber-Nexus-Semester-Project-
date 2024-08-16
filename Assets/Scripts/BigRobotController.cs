@@ -33,6 +33,7 @@ public class BigRobotController : MonoBehaviour
     private GameObject heldObject; // Reference to the currently held object
     public float pickUpRange = 3f; // Range within which objects can be picked up
     private bool holdingGun = false;
+    public item Item;
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -208,6 +209,7 @@ public class BigRobotController : MonoBehaviour
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
+                InventoryManage.Instance.SpawnItem(Item); 
             }
             else if (hit.collider.CompareTag("Gun"))
             {
@@ -218,7 +220,8 @@ public class BigRobotController : MonoBehaviour
                 // Attach the object to the hold position
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
-                heldObject.transform.parent = holdPosition;
+                heldObject.transform.parent = holdPosition; 
+                InventoryManage.Instance.SpawnItem(Item);
 
                 holdingGun = true;
             }
