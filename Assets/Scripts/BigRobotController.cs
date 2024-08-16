@@ -49,28 +49,13 @@ public class BigRobotController : MonoBehaviour
     private bool isPushing = false;
 
     public GameObject Player;
-    public Camera bigRobotCamera;
-    private PuzzleScript _PuzzleScript;// Reference to the puzzle script
-    
     private float tempSpeed;//stores a copy of the speed of the robot for later use
     private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
     private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
-    private ColorChangerScript _ColorChangerScript; //reference to the colorchangescript
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        
-        //Gets all the public functions and variables in the puzzlescript
-        _PuzzleScript = FindObjectOfType<PuzzleScript>();
-        
-        //store the robot data in temp data for later use
-        tempSpeed = moveSpeed;
-        tempLookAroundSpeed = lookSpeed;
-        tempJumpHeight = jumpHeight;
-
-        //Get all the public functions and variables in the Colorchangescript
-        _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
     }
 
     private void OnEnable()
@@ -104,9 +89,7 @@ public class BigRobotController : MonoBehaviour
         // Subscribe to the interact input event
         playerInput.Player.Interact.performed += ctx => IntertactWithObject(); // Call the Interact method when interact input is performed
         playerInput.Player.Interact.canceled += ctx => StopInteracting();// Reset Inteact method when interact is canceled
-
-
-        playerInput.Player.TileSelector.performed += ctx => InteractWithPuzzle();
+        
     }
 
     private void Update()
@@ -261,8 +244,7 @@ public class BigRobotController : MonoBehaviour
     private void IntertactWithObject()
     {
         //checks if the puzzle is not complete to continue
-        if (!_PuzzleScript.IsPuzzleComplete())
-        {
+  
             // Perform a raycast from the camera's position forward
             Ray ray = new Ray(playerCamera.position, playerCamera.forward);
             RaycastHit hit;
@@ -274,8 +256,7 @@ public class BigRobotController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, pickUpRange * 2))
             {
                 //checks if the raycast hits the objects with the tags shown below
-                if (hit.collider.CompareTag("Interactable") || hit.collider.CompareTag("OtherTiles") ||
-                    hit.collider.CompareTag("StraightTiles"))
+                if (hit.collider.CompareTag("Interactable") )
                 {
                     //spot stores the transform of the hit that the raycast hit
                     Transform spot = hit.collider.transform;
@@ -294,61 +275,12 @@ public class BigRobotController : MonoBehaviour
                     lookSpeed = 0;
                 }
             }
-        }
-        else if (_PuzzleScript.IsPuzzleComplete())//if the player solved the puzzle do this
-        {
-            //function makes the player stop interacting with the object
-            StopInteracting();
-            
-            //function opens the doors after solving the puzzle
-            _PuzzleScript.DoorOpener();
-            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-        }
+        
+ 
         
     }
     
-    private void InteractWithPuzzle()
-    {
-        //checks if the puzzle is already solved or not
-        if (!_PuzzleScript.IsPuzzleComplete())
-        {
-            //makes a raycase from the baby camera where the mouse is pointing
-            Ray ray = bigRobotCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            
-            // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(ray.origin, ray.direction *100f, Color.green, 2f);
-
-            
-            if (Physics.Raycast(ray, out hit, pickUpRange*2))
-            {
-                //checks if the hit of the raycast has a tag of the specific tags shown below
-                if (hit.collider.CompareTag("OtherTiles") || hit.collider.CompareTag("StraightTiles"))
-                {
-                    //store the hit of the raycast in the tile gameobject
-                    GameObject tile = hit.collider.gameObject;
-                    
-                    //rotate the tile by 90 degrees
-                    var angles = tile.transform.eulerAngles;
-                    angles.z -= 90f;
-                    tile.transform.eulerAngles = angles;
-                }
-            } 
-        }
-        else if (_PuzzleScript.IsPuzzleComplete()) //if the player solves the player they can move now
-        {
-            moveSpeed = tempSpeed;
-            jumpHeight = tempJumpHeight;
-            lookSpeed = tempLookAroundSpeed;
-            
-            // function opens the door
-            _PuzzleScript.DoorOpener();
-            
-            //makes the puzzle background green to show the puzzle is complete
-            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-        }
-    }
-    
+   
     //function that allows the player to start moving again
     private void StopInteracting()
     {
@@ -358,33 +290,7 @@ public class BigRobotController : MonoBehaviour
         lookSpeed = tempLookAroundSpeed;
     }
 
-    /*public void PushObjects()
-    {
-
-
-        // Perform a raycast from the camera's position forward
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        RaycastHit hit;
-
-        // Debugging: Draw the ray in the Scene view
-        Debug.DrawRay(playerCamera.position, playerCamera.forward * PushableRange, Color.red, 2f);
-
-        if (Physics.Raycast(ray, out hit, PushableRange))
-        {
-            // Check if the hit object has the tag "PickUp"
-            if (hit.collider.CompareTag("Pushable"))
-            {
-                // Pick up the object
-                heldObject = hit.collider.gameObject;
-                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
-
-                //
-                Debug.Log("Pushable Object");
-
-            }
-          
-        }
-    }*/
+  
 
 
 }

@@ -357,11 +357,6 @@ public class FirstPersonControls : MonoBehaviour
         lookSpeed = tempLookAroundSpeed;
     }
 
-    /*public void SwitchRobot()
-    {
-        if (RoboSwitch)
-    }
-
-    */
+   
 }
 
