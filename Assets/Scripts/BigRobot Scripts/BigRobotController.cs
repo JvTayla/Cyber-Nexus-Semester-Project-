@@ -33,6 +33,7 @@ public class BigRobotController : MonoBehaviour
     private GameObject heldObject; // Reference to the currently held object
     public float pickUpRange = 3f; // Range within which objects can be picked up
     private bool holdingGun = false;
+    public item Item;
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -221,6 +222,22 @@ public class BigRobotController : MonoBehaviour
                 heldObject.transform.parent = holdPosition;
 
                 holdingGun = true;
+            }
+            else
+            if (hit.collider.CompareTag("TestTube"))
+            {
+                // Pick up the object
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+                InventoryManage.Instance.SpawnItem(Item);
+
+                // Attach the object to the hold position
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+                
+                heldObject.SetActive(false);
+                
             }
         }
     }

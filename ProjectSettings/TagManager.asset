@@ -18,6 +18,7 @@ TagManager:
   - StraightTiles
   - Interactable
   - Pushable
+  - TestTube
   layers:
   - Default
   - TransparentFX
