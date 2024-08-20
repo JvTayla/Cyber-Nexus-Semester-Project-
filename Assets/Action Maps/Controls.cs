@@ -100,7 +100,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Focus"",
                     ""type"": ""Button"",
                     ""id"": ""530d8884-53b0-4086-ac90-e9f5d2c03588"",
                     ""expectedControlType"": ""Button"",
@@ -112,6 +112,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""TileSelector"",
                     ""type"": ""Button"",
                     ""id"": ""99a333d6-3946-498b-8510-8170a41a2181"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""8525459d-ef68-4b0a-87b9-80c94930d62c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""76058026-7f4c-4070-b6af-931aa60d0155"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -401,7 +419,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Focus"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -412,7 +430,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Focus"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -424,6 +442,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TileSelector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcdd60a3-7b90-44ca-8ec0-9a0ee157ebb0"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4122c1ae-bfda-4db4-a84c-ad6b1cab15f9"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfe64176-f6c5-4331-8e6d-a81cc6a1fe45"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7a93a96-f981-48ac-8e81-f8a7314327dd"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;Gamepad"",
+                    ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -465,8 +527,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_PushObject = m_Player.FindAction("PushObject", throwIfNotFound: true);
         m_Player_SwitchRobot = m_Player.FindAction("Switch Robot", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Focus = m_Player.FindAction("Focus", throwIfNotFound: true);
         m_Player_TileSelector = m_Player.FindAction("TileSelector", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -536,8 +600,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_PushObject;
     private readonly InputAction m_Player_SwitchRobot;
-    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Focus;
     private readonly InputAction m_Player_TileSelector;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Inventory;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -550,8 +616,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @PushObject => m_Wrapper.m_Player_PushObject;
         public InputAction @SwitchRobot => m_Wrapper.m_Player_SwitchRobot;
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Focus => m_Wrapper.m_Player_Focus;
         public InputAction @TileSelector => m_Wrapper.m_Player_TileSelector;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -585,12 +653,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SwitchRobot.started += instance.OnSwitchRobot;
             @SwitchRobot.performed += instance.OnSwitchRobot;
             @SwitchRobot.canceled += instance.OnSwitchRobot;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
+            @Focus.started += instance.OnFocus;
+            @Focus.performed += instance.OnFocus;
+            @Focus.canceled += instance.OnFocus;
             @TileSelector.started += instance.OnTileSelector;
             @TileSelector.performed += instance.OnTileSelector;
             @TileSelector.canceled += instance.OnTileSelector;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -619,12 +693,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SwitchRobot.started -= instance.OnSwitchRobot;
             @SwitchRobot.performed -= instance.OnSwitchRobot;
             @SwitchRobot.canceled -= instance.OnSwitchRobot;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
+            @Focus.started -= instance.OnFocus;
+            @Focus.performed -= instance.OnFocus;
+            @Focus.canceled -= instance.OnFocus;
             @TileSelector.started -= instance.OnTileSelector;
             @TileSelector.performed -= instance.OnTileSelector;
             @TileSelector.canceled -= instance.OnTileSelector;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -670,7 +750,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnPushObject(InputAction.CallbackContext context);
         void OnSwitchRobot(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnFocus(InputAction.CallbackContext context);
         void OnTileSelector(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
 }

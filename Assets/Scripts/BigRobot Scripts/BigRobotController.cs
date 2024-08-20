@@ -42,13 +42,14 @@ public class BigRobotController : MonoBehaviour
     public float crouchSpeed = 1.5f; //make slow
     public bool isCrouching = false; //check if crouch
 
-    [Header("PUSHING UP SETTINGS")]
+    /*[Header("PUSHING BOX SETTINGS")]
     [Space(5)]
     
     private GameObject PushableObject; // Reference to the currently held object
-    public float PushableRange = 3f; // Range within which objects can be picked up
-    private bool isPushing = false;
+    public float PushableRange = 3f; // Range within which objects can be picked up */
 
+    [Header("PUZZLE 1 SETTINGS")]
+    [Space(5)]
     public GameObject Player;
     private float tempSpeed;//stores a copy of the speed of the robot for later use
     private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use

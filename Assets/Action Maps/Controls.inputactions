@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Switch Robot",
+                    "name": "SwitchRobot",
                     "type": "Button",
                     "id": "d4e0a624-9229-4c46-9bc2-f69600f1922b",
                     "expectedControlType": "Button",
@@ -78,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "Focus",
                     "type": "Button",
                     "id": "530d8884-53b0-4086-ac90-e9f5d2c03588",
                     "expectedControlType": "Button",
@@ -90,6 +90,24 @@
                     "name": "TileSelector",
                     "type": "Button",
                     "id": "99a333d6-3946-498b-8510-8170a41a2181",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "8525459d-ef68-4b0a-87b9-80c94930d62c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "76058026-7f4c-4070-b6af-931aa60d0155",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -357,7 +375,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Switch Robot",
+                    "action": "SwitchRobot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -368,7 +386,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Switch Robot",
+                    "action": "SwitchRobot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -379,7 +397,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Interact",
+                    "action": "Focus",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -390,7 +408,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Interact",
+                    "action": "Focus",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -402,6 +420,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "TileSelector",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bcdd60a3-7b90-44ca-8ec0-9a0ee157ebb0",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4122c1ae-bfda-4db4-a84c-ad6b1cab15f9",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfe64176-f6c5-4331-8e6d-a81cc6a1fe45",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a7a93a96-f981-48ac-8e81-f8a7314327dd",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard;Gamepad",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
