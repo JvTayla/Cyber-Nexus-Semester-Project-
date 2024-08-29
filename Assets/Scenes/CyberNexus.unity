@@ -50842,8 +50842,8 @@ Transform:
   m_GameObject: {fileID: 1593491264}
   serializedVersion: 2
   m_LocalRotation: {x: 0.065143846, y: 0.70409966, z: 0.70409966, w: -0.065143846}
-  m_LocalPosition: {x: 9.75, y: 0.63, z: 86.71}
-  m_LocalScale: {x: 3.4944158, y: 0.39956963, z: 3.237924}
+  m_LocalPosition: {x: 9.75, y: 0.63, z: 86.75}
+  m_LocalScale: {x: 3.4944158, y: 0.3247582, z: 3.237924}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1228318424}
@@ -63601,8 +63601,6 @@ MonoBehaviour:
   FirstPersonControls: {fileID: 1938803803}
   AudioListenerLil: {fileID: 272498755}
   AudioListenerBig: {fileID: 1458374524}
-  counter: 0
-  isBabyRobot: 0
 --- !u!4 &2074767111
 Transform:
   m_ObjectHideFlags: 0
