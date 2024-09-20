@@ -19,6 +19,8 @@ TagManager:
   - Interactable
   - Pushable
   - TestTube
+  - Switch
+  - Door
   layers:
   - Default
   - TransparentFX
