@@ -54,11 +54,14 @@ public class BigRobotController : MonoBehaviour
     private float tempSpeed;//stores a copy of the speed of the robot for later use
     private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
     private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
-    
+
+    private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+
+        _BigRobotHeadBobbingHead = FindObjectOfType<BIgRobotHeadBobbingHead>();
     }
 
     private void OnEnable()
@@ -72,7 +75,9 @@ public class BigRobotController : MonoBehaviour
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
-
+        playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
+        playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
+        
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
         playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
@@ -259,65 +264,7 @@ public class BigRobotController : MonoBehaviour
         }
     }
     
-    //function that that robot uses to interact with interactible objects ( Code soon to be changed because of other interactable objects)
-   /* private void IntertactWithObject()
-    {
-        //checks if the puzzle is not complete to continue
-  
-            // Perform a raycast from the camera's position forward
-            Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-            RaycastHit hit;
-            
-            // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
-            
-            
-            if (Physics.Raycast(ray, out hit, pickUpRange * 2))
-            {
-                //checks if the raycast hits the objects with the tags shown below
-                if (hit.collider.CompareTag("Interactable") )
-                {
-                    //spot stores the transform of the hit that the raycast hit
-                    Transform spot = hit.collider.transform;
-                    
-                    //we now make the position of the player to the position of the spot
-                    Player.transform.position = spot.position;
 
-                    //we now also make the rotation of the player to the rotation of the spot
-                    var angles = Player.transform.eulerAngles;
-                    angles.y = 90f;
-                    Player.transform.eulerAngles = angles;
-                    
-                    //we know do assign the data of the robot to stop so it can focus on the object in hand
-                    //moveSpeed = 0;
-                    //jumpHeight = 0;
-                   // lookSpeed = 0;
-                }
-            }
-    else//if the player solved the puzzle do this
-    {
-        //function makes the player stop interacting with the object
-        StopInteracting();
-            
-        //function opens the doors after solving the puzzle
-       // _PuzzleScript.DoorOpener();
-       // _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-    }
- 
-        
-    }
-    
-   
-    //function that allows the player to start moving again
-    private void StopInteracting()
-    {
-        
-        moveSpeed = tempSpeed;
-        jumpHeight = tempJumpHeight;
-        lookSpeed = tempLookAroundSpeed;
-    }
-*/
-  
 
 
 }

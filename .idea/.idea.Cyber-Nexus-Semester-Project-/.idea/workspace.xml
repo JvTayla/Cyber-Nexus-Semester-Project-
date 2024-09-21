@@ -5,13 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/URP/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/URP/Settings/URP-Balanced.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/URP/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/URP/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/URP/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/URP/Settings/URP-Performant.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/BIgRobotHeadBobbingHead.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/BIgRobotHeadBobbingHead.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/BigRobot Camera.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/BigRobot Camera.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingBigRobot.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingBigRobot.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingSmallRobot.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingSmallRobot.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/SmallRobotCamera.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/SmallRobotCamera.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/SmallRobotHeadBobbing.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/SmallRobotHeadBobbing.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/Assets2.0.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/Assets2.0.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/Assets2.0Texture.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/Assets2.0Texture.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper3.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper4.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/AssetsTextures.fbm/Paper5.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Unity Assets/Books.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/CyberNexus(Makwe Addition.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/CyberNexus(Makwe Addition.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/SkyBox.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/SkyBox.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/bot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/bot.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/top.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BabyRobot Scripts/FirstPersonControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BabyRobot Scripts/FirstPersonControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,13 +68,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Downloads/First Person Shooting And Picking Up.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/FirstPersonControls.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/FirstPersonControls.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -46,7 +86,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Makwe2.0",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -123,6 +163,7 @@
       <workItem from="1723537168513" duration="1537000" />
       <workItem from="1723632646846" duration="15811000" />
       <workItem from="1723777975441" duration="26648000" />
+      <workItem from="1726852398448" duration="9175000" />
     </task>
     <servers />
   </component>
