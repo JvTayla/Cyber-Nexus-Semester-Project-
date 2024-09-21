@@ -189,7 +189,7 @@ public class PuzzleScript : MonoBehaviour
             DoorOpener();
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
 
-           // _RedBlinkingLights.StopBlinking();
+            _RedBlinkingLights.StopBlinking();
         }
         
     }
@@ -235,7 +235,7 @@ public class PuzzleScript : MonoBehaviour
             //makes the puzzle background green to show the puzzle is complete
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
             
-           // _RedBlinkingLights.StopBlinking();
+           _RedBlinkingLights.StopBlinking();
         }
     }
 
