@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4233876234481073015}
   m_Layer: 0
   m_Name: TestTube
-  m_TagString: PickUp
+  m_TagString: TestTube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
