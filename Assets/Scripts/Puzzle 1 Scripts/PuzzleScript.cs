@@ -16,11 +16,14 @@ public class PuzzleScript : MonoBehaviour
     private FirstPersonControls _FirstPersonControls;
 
     private ColorChangerScript _ColorChangerScript;
+
+    private RedBlinkingLights _RedBlinkingLights;
     // Start is called before the first frame update
     void Start()
     {
         _FirstPersonControls = FindObjectOfType<FirstPersonControls>();
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
+        _RedBlinkingLights = FindObjectOfType<RedBlinkingLights>();
         // counts the number of children in from the puzzleScreen object which is the parent
         int numPuzzles = puzzleScreen.transform.childCount;
 
@@ -188,6 +191,8 @@ public class PuzzleScript : MonoBehaviour
             //function opens the doors after solving the puzzle
             DoorOpener();
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
+
+            _RedBlinkingLights.StopBlinking();
         }
         
     }
@@ -203,7 +208,7 @@ public class PuzzleScript : MonoBehaviour
             RaycastHit hit;
             
             // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(ray.origin, ray.direction *100f, Color.green, 2f);
+            Debug.DrawRay(ray.origin, ray.direction * 100f, Color.green, 2f);
 
             
             if (Physics.Raycast(ray, out hit, _FirstPersonControls.pickUpRange*2))
@@ -232,13 +237,14 @@ public class PuzzleScript : MonoBehaviour
             
             //makes the puzzle background green to show the puzzle is complete
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
+            
+            _RedBlinkingLights.StopBlinking();
         }
     }
 
     //function that allows the player to start moving again
     public void StopInteracting()
     {
-        
         _FirstPersonControls.moveSpeed = _FirstPersonControls.tempSpeed;
         _FirstPersonControls.jumpHeight = _FirstPersonControls.tempJumpHeight;
         _FirstPersonControls.lookSpeed = _FirstPersonControls.tempLookAroundSpeed;

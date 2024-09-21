@@ -75,7 +75,10 @@ public class BigRobotController : MonoBehaviour
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
+        
         playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
+        
+        
         playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
         
         // Subscribe to the look input events
@@ -166,6 +169,7 @@ public class BigRobotController : MonoBehaviour
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+     
     }
 
     public void Shoot()
