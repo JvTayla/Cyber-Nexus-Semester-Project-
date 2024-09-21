@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 
 [CreateAssetMenu(menuName = "Scriptable object/item")]
@@ -22,17 +23,20 @@ public class item : ScriptableObject
     public bool stackable = true;
     [Header("Both")]
     public Sprite image;
+    public Button RemoveItem; 
 }
 
 public enum ItemType
 {
-    Tube
+    Tube,
+    Fireball,
     
 }
 
 public enum ActionType
 {
-    Research
+    Research, 
+    experiment,
    
 }
 

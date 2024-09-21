@@ -35,9 +35,11 @@ public class InventoryManage : MonoBehaviour
             Image image = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var ItemIcon = image;
             var ItemName = obj.transform.Find("ItemName").GetComponent<Text>();
-
+            Button button = obj.transform.Find("RemoveButton").GetComponent<Button>();
+            var RemoveButon = button;
             ItemIcon.sprite = item.image;
             ItemName.text = item.ItemName;
+          
         }
     }
 

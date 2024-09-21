@@ -293,11 +293,19 @@ public class FirstPersonControls : MonoBehaviour
     
 
 
+    //public Material White;
+    //public MeshRenderer console;
+    public GameObject consolOff;
+    public GameObject consolOn;
+    public int consultCount;
+
     public void Interact()
     {
         // Perform a raycast to detect the lightswitch
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
+
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
 
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
@@ -314,11 +322,17 @@ public class FirstPersonControls : MonoBehaviour
                 }
             }
 
-            else if (hit.collider.CompareTag("Door")) // Check if the object is a door
+            else if (hit.collider.CompareTag("Comp")) 
+            {
+                Debug.Log("hit");
+                consultCount++;
+            }
+
+            /*else if (hit.collider.CompareTag("Door")) // Check if the object is a door
             {
                 // Start moving the door upwards
                 StartCoroutine(RaiseDoor(hit.collider.gameObject));
-            }
+            }*/
         }
     }
 
