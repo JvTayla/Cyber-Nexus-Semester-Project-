@@ -21,7 +21,9 @@ TagManager:
   - TestTube
   - Switch
   - Door
-  - Comp
+  - CanBePicked
+  - FireBall
+  - Switch2
   layers:
   - Default
   - TransparentFX
