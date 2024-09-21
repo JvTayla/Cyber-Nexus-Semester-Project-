@@ -21,6 +21,7 @@ TagManager:
   - TestTube
   - Switch
   - Door
+  - Comp
   layers:
   - Default
   - TransparentFX
