@@ -183,7 +183,6 @@ public class BigRobotController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
@@ -369,7 +368,6 @@ public class BigRobotController : MonoBehaviour
                 }
             }
 
+           }
         }
-    }
 }
-
