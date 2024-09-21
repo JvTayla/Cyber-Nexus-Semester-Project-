@@ -63,6 +63,12 @@ public class BigRobotController : MonoBehaviour
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
  
 
+
+    [Header("INTERACT SETTINGS")]
+    [Space(5)]
+    public Material switchMaterial; // Material to apply when switch is activated
+    public GameObject[] objectsToChangeColor; // Array of objects to change color
+
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject

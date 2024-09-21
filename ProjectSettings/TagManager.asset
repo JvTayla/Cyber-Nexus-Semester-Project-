@@ -32,8 +32,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - IgnorBigRobot
+  - IgnorBabyRobot
   - 
   - 
   - 
