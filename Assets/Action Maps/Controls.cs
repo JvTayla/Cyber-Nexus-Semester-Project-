@@ -91,7 +91,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Switch Robot"",
+                    ""name"": ""SwitchRobot"",
                     ""type"": ""Button"",
                     ""id"": ""d4e0a624-9229-4c46-9bc2-f69600f1922b"",
                     ""expectedControlType"": ""Button"",
@@ -352,7 +352,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -397,7 +397,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Switch Robot"",
+                    ""action"": ""SwitchRobot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -408,7 +408,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Switch Robot"",
+                    ""action"": ""SwitchRobot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -526,7 +526,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_PickUp = m_Player.FindAction("PickUp", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_PushObject = m_Player.FindAction("PushObject", throwIfNotFound: true);
-        m_Player_SwitchRobot = m_Player.FindAction("Switch Robot", throwIfNotFound: true);
+        m_Player_SwitchRobot = m_Player.FindAction("SwitchRobot", throwIfNotFound: true);
         m_Player_Focus = m_Player.FindAction("Focus", throwIfNotFound: true);
         m_Player_TileSelector = m_Player.FindAction("TileSelector", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
