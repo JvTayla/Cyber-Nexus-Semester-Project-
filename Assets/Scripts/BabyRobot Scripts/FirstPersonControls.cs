@@ -96,8 +96,8 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
-        playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
-        playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
+        //playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
+       // playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
         
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed

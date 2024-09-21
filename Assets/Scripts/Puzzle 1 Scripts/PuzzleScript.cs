@@ -135,14 +135,9 @@ public class PuzzleScript : MonoBehaviour
     //function that opens the doors
     public void DoorOpener()
     {
-        foreach (GameObject door in openDoor)
-        {
-            if (door != null)
-            {
-                //opens the doors by hiding them
-                door.SetActive(false);
-            }
-        }
+        openDoor[0].SetActive(false);
+        openDoor[1].SetActive(false);
+        openDoor[2] = openDoor[3];
     }
     
         //function that that robot uses to interact with interactible objects ( Code soon to be changed because of other interactable objects)
@@ -192,7 +187,7 @@ public class PuzzleScript : MonoBehaviour
             DoorOpener();
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
 
-            _RedBlinkingLights.StopBlinking();
+           // _RedBlinkingLights.StopBlinking();
         }
         
     }
@@ -238,7 +233,7 @@ public class PuzzleScript : MonoBehaviour
             //makes the puzzle background green to show the puzzle is complete
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
             
-            _RedBlinkingLights.StopBlinking();
+           // _RedBlinkingLights.StopBlinking();
         }
     }
 

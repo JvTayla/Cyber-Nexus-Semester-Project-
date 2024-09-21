@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/BigRobot Camera.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/BigRobot Camera.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/HeadBobbingBigRobot.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingBigRobot.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/HeadBobbingSmallRobot.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingSmallRobot.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/SmallRobotCamera.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/SmallRobotCamera.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Characters/2546842_JordynVanAswegen_WSOA2026_Assignment01_Group13(CyberNexus).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Characters/2546842_JordynVanAswegen_WSOA2026_Assignment01_Group13(CyberNexus).fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Chemicals and waterCapsule/Chemicals_waterCapsules.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Chemicals and waterCapsule/Chemicals_waterCapsules.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CyberNexus(Makwe Addition.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CyberNexus(Makwe Addition.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BabyRobot Scripts/FirstPersonControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BabyRobot Scripts/FirstPersonControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +27,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Downloads/First Person Shooting And Picking Up.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -34,26 +43,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Makwe2.0",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Makwe2.0&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\seeem\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\seeem\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\seeem\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\seeem\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\seeem\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\seeem\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.38f1\Editor\Unity.exe" />
@@ -115,7 +124,7 @@
       <workItem from="1723537168513" duration="1537000" />
       <workItem from="1723632646846" duration="15811000" />
       <workItem from="1723777975441" duration="26648000" />
-      <workItem from="1726852398448" duration="14634000" />
+      <workItem from="1726852398448" duration="18234000" />
     </task>
     <servers />
   </component>

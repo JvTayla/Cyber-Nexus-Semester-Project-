@@ -89,10 +89,10 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
-        playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
+       // playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
         
         
-        playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
+       // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
         
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed

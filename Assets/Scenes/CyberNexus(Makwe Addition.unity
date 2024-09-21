@@ -270,6 +270,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -339,6 +344,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -863,6 +873,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -933,6 +948,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -952,6 +972,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1021,6 +1046,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1146,6 +1176,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1215,6 +1250,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5256,6 +5296,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -5325,6 +5370,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6864,6 +6914,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6933,6 +6988,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7407,7 +7467,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1845421741767541630, guid: 838b30e43ff500443b0c2f4c4a7bed70,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1938803809}
+    - targetCorrespondingSourceObject: {fileID: 8445801162439476608, guid: 838b30e43ff500443b0c2f4c4a7bed70,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 272498759}
   m_SourcePrefab: {fileID: 100100000, guid: 838b30e43ff500443b0c2f4c4a7bed70, type: 3}
 --- !u!1 &245171133
 GameObject:
@@ -7742,6 +7810,27 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 240710038}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &272498759
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272498752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9741f6d209c95a34f91d7c13a2c4ac22, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &273667508
 GameObject:
   m_ObjectHideFlags: 0
@@ -8275,6 +8364,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8344,6 +8438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11283,6 +11382,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Lights
       objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11851,6 +11955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09eca59aaa814c4284f029253bf1fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightBulbColor: {r: 1, g: 0.95, b: 0.8, a: 1}
 --- !u!1 &395426020
 GameObject:
   m_ObjectHideFlags: 0
@@ -20544,6 +20649,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -20613,6 +20723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21185,6 +21300,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -21254,6 +21374,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21490,6 +21615,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -21559,6 +21689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24621,6 +24756,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -24690,6 +24830,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25753,6 +25898,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Red Lights
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31357,6 +31507,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -31426,6 +31581,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32771,6 +32931,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Red Lights
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34362,6 +34527,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -34431,6 +34601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39069,6 +39244,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -39138,6 +39318,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43661,6 +43846,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Lights
       objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -44743,124 +44933,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345899345}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1346676264
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 386.5264
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 66.52714
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -202.73114
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_Name
-      value: Assets2.0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 315.63828
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 99.94558
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -40.107788
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.000004878254
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.000005333615
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.73790437
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.6749053
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 264.89398
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.009002686
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306643203051859313, guid: 7775e7a17b3219e488fd54806f8b047f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180.009
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7775e7a17b3219e488fd54806f8b047f, type: 3}
 --- !u!1 &1347870784
 GameObject:
   m_ObjectHideFlags: 0
@@ -45184,6 +45256,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -45253,6 +45330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47566,6 +47648,27 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 6476275559020101729}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1458374530
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458374521}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae2e5d51bbef4094494cb024356670ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1460551864
 GameObject:
   m_ObjectHideFlags: 0
@@ -52165,6 +52268,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -52234,6 +52342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55152,6 +55265,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6476275559020101729}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1773677928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773677907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab4ac2399d8abc4d8726a9073c3cdd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 1458374521}
 --- !u!1 &1774283359
 GameObject:
   m_ObjectHideFlags: 0
@@ -55724,6 +55850,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -55793,6 +55924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58666,6 +58802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09eca59aaa814c4284f029253bf1fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightBulbColor: {r: 1, g: 0.95, b: 0.8, a: 1}
 --- !u!1 &1896702732
 GameObject:
   m_ObjectHideFlags: 0
@@ -58869,6 +59006,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Lights
       objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58987,6 +59129,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -59056,6 +59203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60148,6 +60300,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 240710038}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1938803809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938803802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b114594ff8b2e64ea1f58d4c719f91e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 272498752}
 --- !u!1 &1946407670
 GameObject:
   m_ObjectHideFlags: 0
@@ -61770,6 +61935,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 389500281}
     m_Modifications:
+    - target: {fileID: 439050830096413417, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7197860816095342490, guid: 212148abdff8a8c4f97df84343f8caf0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -61839,6 +62009,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -71341,6 +71516,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1773677918}
+    - targetCorrespondingSourceObject: {fileID: 4644783941581962748, guid: f7a407395c1e94946827466c49f75728,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1773677928}
+    - targetCorrespondingSourceObject: {fileID: 1514788242130072362, guid: f7a407395c1e94946827466c49f75728,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1458374530}
   m_SourcePrefab: {fileID: 100100000, guid: f7a407395c1e94946827466c49f75728, type: 3}
 --- !u!33 &6501737374407780371
 MeshFilter:
@@ -71569,6 +71752,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Lights
       objectReference: {fileID: 0}
+    - target: {fileID: 7859178377952871926, guid: 212148abdff8a8c4f97df84343f8caf0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71766,4 +71954,3 @@ SceneRoots:
   - {fileID: 1569465354}
   - {fileID: 1549884085}
   - {fileID: 2103619810}
-  - {fileID: 1346676264}
