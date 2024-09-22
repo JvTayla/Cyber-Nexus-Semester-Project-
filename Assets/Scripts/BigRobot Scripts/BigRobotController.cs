@@ -209,7 +209,7 @@ public class BigRobotController : MonoBehaviour
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
             }
-            else if (hit.collider.CompareTag("FireBall"))
+            else if (hit.collider.CompareTag("Chemicals"))
             {
                 heldObject = hit.collider.gameObject;
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;

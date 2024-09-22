@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 579423b5176e8d54baa2bd577b30467e, type: 3}
-  m_Name: Fireball
+  m_Name: Chemicals
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
   type: 1
-  ItemName: Fireball
+  ItemName: Chemicals
   actionType: 1
   range: {x: 5, y: 4}
   stackable: 0
-  image: {fileID: 21300000, guid: 9c561d4abed12c845bbd7600bd190a4c, type: 3}
+  image: {fileID: 21300000, guid: 59ce410b22b443e41b44044f365c274e, type: 3}
+  RemoveItem: {fileID: 0}
