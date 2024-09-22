@@ -51,18 +51,18 @@ public class FirstPersonControls : MonoBehaviour
     public Camera babyRobotCamera;//Camera of the small robot
     private PuzzleScript _PuzzleScript;// Reference to the puzzle script
     
-    private float tempSpeed;//stores a copy of the speed of the robot for later use
-    private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
-    private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
+    public float tempSpeed;//stores a copy of the speed of the robot for later use
+    public float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
+    public float tempJumpHeight; // stores a copy of the jump height of the robot for later use
     
     private ColorChangerScript _ColorChangerScript; //reference to the colorchangescript
-
+    private SmallRobotHeadBobbing _SmallRobotHeadBobbing;
 
     [Header("INTERACT SETTINGS")]
     [Space(5)]
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
-
+    
 
 
     private void Awake()
@@ -81,6 +81,8 @@ public class FirstPersonControls : MonoBehaviour
         //Get all the public functions and variables in the Colorchangescript
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
 
+        _SmallRobotHeadBobbing = FindObjectOfType<SmallRobotHeadBobbing>();
+
     }
 
     private void OnEnable()
@@ -94,7 +96,9 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
-
+        //playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
+       // playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
+        
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
         playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
@@ -112,10 +116,10 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
 
         // Subscribe to the interact input event
-        playerInput.Player.Focus.performed += ctx => IntertactWithObject(); // Call the Interact method when interact input is performed
-        playerInput.Player.Focus.canceled += ctx => StopInteracting();// Reset Inteact method when interact is canceled
+        playerInput.Player.Focus.performed += ctx => _PuzzleScript.IntertactWithObject(); // Call the Interact method when interact input is performed
+        playerInput.Player.Focus.canceled += ctx => _PuzzleScript.StopInteracting();// Reset Inteact method when interact is canceled
 
-        playerInput.Player.TileSelector.performed += ctx => InteractWithPuzzle();
+        playerInput.Player.TileSelector.performed += ctx => _PuzzleScript.InteractWithPuzzle();
         
         // Subscribe to the interact input event
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
@@ -287,107 +291,7 @@ public class FirstPersonControls : MonoBehaviour
     }
     
     
-    //function that that robot uses to interact with interactible objects ( Code soon to be changed because of other interactable objects)
-    private void IntertactWithObject()
-    {
-        //checks if the puzzle is not complete to continue
-        if (!_PuzzleScript.IsPuzzleComplete())
-        {
-            // Perform a raycast from the camera's position forward
-            Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-            RaycastHit hit;
-            
-            // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
-            
-            
-            if (Physics.Raycast(ray, out hit, pickUpRange * 2))
-            {
-                //checks if the raycast hits the objects with the tags shown below
-                if (hit.collider.CompareTag("Interactable") || hit.collider.CompareTag("OtherTiles") ||
-                    hit.collider.CompareTag("StraightTiles"))
-                {
-                    //spot stores the transform of the hit that the raycast hit
-                    Transform spot = hit.collider.transform;
-                    
-                    //we now make the position of the player to the position of the spot
-                    Player.transform.position = spot.position;
 
-                    //we now also make the rotation of the player to the rotation of the spot
-                    var angles = Player.transform.eulerAngles;
-                    angles.y = 90f;
-                    Player.transform.eulerAngles = angles;
-                    
-                    //we know do assign the data of the robot to stop so it can focus on the object in hand
-                    moveSpeed = 0;
-                    jumpHeight = 0;
-                    lookSpeed = 0;
-                }
-            }
-        }
-        else//if the player solved the puzzle do this
-        {
-            //function makes the player stop interacting with the object
-            StopInteracting();
-            
-            //function opens the doors after solving the puzzle
-            _PuzzleScript.DoorOpener();
-            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-        }
-        
-    }
-    
-    //this function allows the player interact with tiles in the puzzle
-    private void InteractWithPuzzle()
-    {
-        //checks if the puzzle is already solved or not
-        if (!_PuzzleScript.IsPuzzleComplete())
-        {
-            //makes a raycase from the baby camera where the mouse is pointing
-            Ray ray = babyRobotCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            
-            // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(ray.origin, ray.direction *100f, Color.green, 2f);
-
-            
-            if (Physics.Raycast(ray, out hit, pickUpRange*2))
-            {
-                //checks if the hit of the raycast has a tag of the specific tags shown below
-                if (hit.collider.CompareTag("OtherTiles") || hit.collider.CompareTag("StraightTiles"))
-                {
-                    //store the hit of the raycast in the tile gameobject
-                    GameObject tile = hit.collider.gameObject;
-                    
-                    //rotate the tile by 90 degrees
-                    var angles = tile.transform.eulerAngles;
-                    angles.z -= 90f;
-                    tile.transform.eulerAngles = angles;
-                }
-            } 
-        }
-        else //if the player solves the player they can move now
-        {
-            moveSpeed = tempSpeed;
-            jumpHeight = tempJumpHeight;
-            lookSpeed = tempLookAroundSpeed;
-            
-            // function opens the door
-            _PuzzleScript.DoorOpener();
-            
-            //makes the puzzle background green to show the puzzle is complete
-            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-        }
-    }
-
-    //function that allows the player to start moving again
-    private void StopInteracting()
-    {
-        
-        moveSpeed = tempSpeed;
-        jumpHeight = tempJumpHeight;
-        lookSpeed = tempLookAroundSpeed;
-    }
 
     //public Material White;
     //public MeshRenderer console;
@@ -432,6 +336,7 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
+    
     private IEnumerator RaiseDoor(GameObject door)
     {
         float raiseAmount = 5f; // The total distance the door will be raised
@@ -447,7 +352,6 @@ public class FirstPersonControls : MonoBehaviour
             yield return null; // Wait until the next frame before continuing the loop
         }
     }
-
 
 }
 

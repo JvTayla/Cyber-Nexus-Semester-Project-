@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/URP/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/URP/Settings/URP-Balanced.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/URP/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/URP/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/URP/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/URP/Settings/URP-Performant.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,13 +17,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Downloads/First Person Shooting And Picking Up.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/FirstPersonControls.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/FirstPersonControls.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -46,7 +37,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Makwe3.0",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -123,6 +114,7 @@
       <workItem from="1723537168513" duration="1537000" />
       <workItem from="1723632646846" duration="15811000" />
       <workItem from="1723777975441" duration="26648000" />
+      <workItem from="1726852398448" duration="18234000" />
     </task>
     <servers />
   </component>

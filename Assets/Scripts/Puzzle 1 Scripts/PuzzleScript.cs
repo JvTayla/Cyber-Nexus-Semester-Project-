@@ -12,11 +12,18 @@ public class PuzzleScript : MonoBehaviour
     private GameObject[] arrAllCorrectTiles; // array that will store all the correct pipe tiles gameobjects
     public GameObject NumberPad;
     public GameObject[] openDoor;
+
+    private FirstPersonControls _FirstPersonControls;
+
+    private ColorChangerScript _ColorChangerScript;
+
+    private RedBlinkingLights _RedBlinkingLights;
     // Start is called before the first frame update
     void Start()
     {
-        //Self plagrism NB
-        
+        _FirstPersonControls = FindObjectOfType<FirstPersonControls>();
+        _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
+        _RedBlinkingLights = FindObjectOfType<RedBlinkingLights>();
         // counts the number of children in from the puzzleScreen object which is the parent
         int numPuzzles = puzzleScreen.transform.childCount;
 
@@ -128,14 +135,115 @@ public class PuzzleScript : MonoBehaviour
     //function that opens the doors
     public void DoorOpener()
     {
-        
-        foreach (GameObject door in openDoor)
+        openDoor[0].SetActive(false);
+        openDoor[1].SetActive(false);
+        openDoor[3].transform.position = openDoor[2].transform.position;
+        openDoor[2].transform.position = new Vector3(10000, 0, 0);
+        openDoor[4].SetActive(true);
+    }
+    
+        //function that that robot uses to interact with interactible objects ( Code soon to be changed because of other interactable objects)
+    public void IntertactWithObject()
+    {
+        //checks if the puzzle is not complete to continue
+        if (!IsPuzzleComplete())
         {
-            if (door != null)
+            // Perform a raycast from the camera's position forward
+            Ray ray = new Ray(_FirstPersonControls.playerCamera.position, _FirstPersonControls.playerCamera.forward);
+            RaycastHit hit;
+            
+            // Debugging: Draw the ray in the Scene view
+            Debug.DrawRay(_FirstPersonControls.playerCamera.position, _FirstPersonControls.playerCamera.forward * _FirstPersonControls.pickUpRange, Color.red, 2f);
+            
+            
+            if (Physics.Raycast(ray, out hit, _FirstPersonControls.pickUpRange * 2))
             {
-                //opens the doors by hiding them
-                door.SetActive(false);
+                //checks if the raycast hits the objects with the tags shown below
+                if (hit.collider.CompareTag("Interactable") || hit.collider.CompareTag("OtherTiles") ||
+                    hit.collider.CompareTag("StraightTiles"))
+                {
+                    //spot stores the transform of the hit that the raycast hit
+                    Transform spot = hit.collider.transform;
+                    
+                    //we now make the position of the player to the position of the spot
+                    _FirstPersonControls.Player.transform.position = spot.position;
+
+                    //we now also make the rotation of the player to the rotation of the spot
+                    var angles = _FirstPersonControls.Player.transform.eulerAngles;
+                    angles.y = 90f;
+                    _FirstPersonControls.Player.transform.eulerAngles = angles;
+                    
+                    //we know do assign the data of the robot to stop so it can focus on the object in hand
+                    _FirstPersonControls.moveSpeed = 0;
+                    _FirstPersonControls.jumpHeight = 0;
+                    _FirstPersonControls.lookSpeed = 0;
+                }
             }
         }
+        else//if the player solved the puzzle do this
+        {
+            //function makes the player stop interacting with the object
+            StopInteracting();
+            
+            //function opens the doors after solving the puzzle
+            DoorOpener();
+            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
+
+            _RedBlinkingLights.StopBlinking();
+        }
+        
+    }
+    
+    //this function allows the player interact with tiles in the puzzle
+    public void InteractWithPuzzle()
+    {
+        //checks if the puzzle is already solved or not
+        if (!IsPuzzleComplete())
+        {
+            //makes a raycase from the baby camera where the mouse is pointing
+            Ray ray = _FirstPersonControls.babyRobotCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            
+            // Debugging: Draw the ray in the Scene view
+            Debug.DrawRay(ray.origin, ray.direction * 100f, Color.green, 2f);
+
+            
+            if (Physics.Raycast(ray, out hit, _FirstPersonControls.pickUpRange*2))
+            {
+                //checks if the hit of the raycast has a tag of the specific tags shown below
+                if (hit.collider.CompareTag("OtherTiles") || hit.collider.CompareTag("StraightTiles"))
+                {
+                    //store the hit of the raycast in the tile gameobject
+                    GameObject tile = hit.collider.gameObject;
+                    
+                    //rotate the tile by 90 degrees
+                    var angles = tile.transform.eulerAngles;
+                    angles.z -= 90f;
+                    tile.transform.eulerAngles = angles;
+                }
+            } 
+        }
+        else //if the player solves the player they can move now
+        {
+            _FirstPersonControls.moveSpeed = _FirstPersonControls.tempSpeed;
+            _FirstPersonControls.jumpHeight = _FirstPersonControls.tempJumpHeight;
+            _FirstPersonControls.lookSpeed = _FirstPersonControls.tempLookAroundSpeed;
+            
+            // function opens the door
+            DoorOpener();
+            
+            //makes the puzzle background green to show the puzzle is complete
+            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
+            
+           _RedBlinkingLights.StopBlinking();
+        }
+    }
+
+    //function that allows the player to start moving again
+    public void StopInteracting()
+    {
+        _FirstPersonControls.moveSpeed = _FirstPersonControls.tempSpeed;
+        _FirstPersonControls.jumpHeight = _FirstPersonControls.tempJumpHeight;
+        _FirstPersonControls.lookSpeed = _FirstPersonControls.tempLookAroundSpeed;
     }
 }

@@ -56,9 +56,12 @@ public class BigRobotController : MonoBehaviour
     [Header("PUZZLE 1 SETTINGS")]
     [Space(5)]
     public GameObject Player;
-    private float tempSpeed;
-    private float tempLookAroundSpeed;
-    private float tempJumpHeight;
+    private float tempSpeed;//stores a copy of the speed of the robot for later use
+    private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
+    private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
+
+    private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
+ 
 
 
     [Header("INTERACT SETTINGS")]
@@ -68,7 +71,10 @@ public class BigRobotController : MonoBehaviour
 
     private void Awake()
     {
+        // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+
+        _BigRobotHeadBobbingHead = FindObjectOfType<BIgRobotHeadBobbingHead>();
 
         // Set the inventory manager to the instance (make sure it's in the scene)
         if (inventoryManage == null)
@@ -79,9 +85,30 @@ public class BigRobotController : MonoBehaviour
 
     private void OnEnable()
     {
+        // Create a new instance of the input actions
         var playerInput = new Controls();
+
+        // Enable the input actions
         playerInput.Player.Enable();
 
+        // Subscribe to the movement input events
+        playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
+        playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
+        
+       // playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
+        
+        
+       // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
+        
+        // Subscribe to the look input events
+        playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
+        playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
+
+        // Subscribe to the jump input event
+        playerInput.Player.Jump.performed += ctx => Jump(); // Call the Jump method when jump input is performed
+
+        // Subscribe to the shoot input event
+        playerInput.Player.Shoot.performed += ctx => Shoot(); // Call the Shoot method when shoot input is performed
         // Input handling
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
@@ -101,6 +128,7 @@ public class BigRobotController : MonoBehaviour
 
     private void Update()
     {
+        // Call Move and LookAround methods every frame to handle player movement and camera rotation
         Move();
         LookAround();
         ApplyGravity();
@@ -108,23 +136,41 @@ public class BigRobotController : MonoBehaviour
 
     public void Move()
     {
+        // Create a movement vector based on the input
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
+
+        // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
-        float currentSpeed = isCrouching ? crouchSpeed : moveSpeed;
+        //Adjust speed if crouching
+        float currentSpeed;
+        if (isCrouching)
+        {
+            currentSpeed = crouchSpeed;
+        }
+        else
+        {
+            currentSpeed = moveSpeed;
+        }
+
+        // Move the character controller based on the movement vector and speed
         characterController.Move(move * currentSpeed * Time.deltaTime);
     }
 
     public void LookAround()
     {
+        // Get horizontal and vertical look inputs and adjust based on sensitivity
         float LookX = lookInput.x * lookSpeed;
         float LookY = lookInput.y * lookSpeed;
 
+        // Horizontal rotation: Rotate the player object around the y-axis
         transform.Rotate(0, LookX, 0);
 
+        // Vertical rotation: Adjust the vertical look rotation and clamp it to prevent flipping
         verticalLookRotation -= LookY;
         verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90f, 90f);
 
+        // Apply the clamped vertical rotation to the player camera
         playerCamera.localEulerAngles = new Vector3(verticalLookRotation, 0, 0);
     }
 
@@ -132,69 +178,85 @@ public class BigRobotController : MonoBehaviour
     {
         if (characterController.isGrounded && velocity.y < 0)
         {
-            velocity.y = -0.5f;
+            velocity.y = -0.5f; // Small value to keep the player grounded
         }
 
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
+        velocity.y += gravity * Time.deltaTime; // Apply gravity to the velocity
+        characterController.Move(velocity * Time.deltaTime); // Apply the velocity to the character
     }
 
     public void Jump()
     {
         if (characterController.isGrounded)
         {
+            // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
 
     public void Shoot()
     {
-        if (holdingGun)
+        if (holdingGun == true)
         {
+            // Instantiate the projectile at the fire point
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+            // Get the Rigidbody component of the projectile and set its velocity
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = firePoint.forward * projectileSpeed;
+
+            // Destroy the projectile after 3 seconds
             Destroy(projectile, 3f);
         }
     }
 
     public void PickUpObject()
     {
+        // Check if we are already holding an object
         if (heldObject != null)
         {
-            heldObject.GetComponent<Rigidbody>().isKinematic = false;
+            heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
             heldObject.transform.parent = null;
             holdingGun = false;
         }
 
+        // Perform a raycast from the camera's position forward
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
 
+        // Debugging: Draw the ray in the Scene view
         Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
+
 
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
+            // Check if the hit object has the tag "PickUp"
             if (hit.collider.CompareTag("PickUp"))
             {
+                // Pick up the object
                 heldObject = hit.collider.gameObject;
-                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
 
+                // Attach the object to the hold position
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
             }
             else if (hit.collider.CompareTag("Gun"))
             {
+                // Pick up the object
                 heldObject = hit.collider.gameObject;
-                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
 
+                // Attach the object to the hold position
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
 
                 holdingGun = true;
             }
-            else if (hit.collider.CompareTag("TestTube"))
+            else
+            if (hit.collider.CompareTag("TestTube"))
             {
                 heldObject = hit.collider.gameObject;
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -223,6 +285,7 @@ public class BigRobotController : MonoBehaviour
 
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
+                
             }
         }
     }
@@ -231,11 +294,13 @@ public class BigRobotController : MonoBehaviour
     {
         if (isCrouching)
         {
+            //Stand up
             characterController.height = standingHeight;
             isCrouching = false;
         }
         else
         {
+            //Crouch down
             characterController.height = crouchHeight;
             isCrouching = true;
         }
@@ -310,67 +375,7 @@ public class BigRobotController : MonoBehaviour
                 }
             }
 
-           }
-        }
-
-
-    //public Material White;
-    //public MeshRenderer console;
-    public GameObject consolOff;
-    public GameObject consolOn;
-    public int consultCount;
-
-    public void Interact()
-    {
-        // Perform a raycast to detect the lightswitch
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        RaycastHit hit;
-
-        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
-
-        if (Physics.Raycast(ray, out hit, pickUpRange))
-        {
-            if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
-            {
-                // Change the material color of the objects in the array
-                foreach (GameObject obj in objectsToChangeColor)
-                {
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    if (renderer != null)
-                    {
-                        renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
-                    }
-                }
-            }
-
-            else if (hit.collider.CompareTag("Comp"))
-            {
-                Debug.Log("hit");
-                consultCount++;
-            }
-
-            /*else if (hit.collider.CompareTag("Door")) // Check if the object is a door
-            {
-                // Start moving the door upwards
-                StartCoroutine(RaiseDoor(hit.collider.gameObject));
-            }*/
         }
     }
-
-    private IEnumerator RaiseDoor(GameObject door)
-    {
-        float raiseAmount = 5f; // The total distance the door will be raised
-        float raiseSpeed = 2f; // The speed at which the door will be raised
-        Vector3 startPosition = door.transform.position; // Store the initial position of the door
-        Vector3 endPosition = startPosition + Vector3.up * raiseAmount; // Calculate the final position of the door after raising
-
-        // Continue raising the door until it reaches the target height
-        while (door.transform.position.y < endPosition.y)
-        {
-            // Move the door towards the target position at the specified speed
-            door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
-            yield return null; // Wait until the next frame before continuing the loop
-        }
-    }
-
 }
+
