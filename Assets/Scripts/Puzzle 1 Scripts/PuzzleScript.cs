@@ -137,10 +137,13 @@ public class PuzzleScript : MonoBehaviour
     {
         openDoor[0].SetActive(false);
         openDoor[1].SetActive(false);
-        openDoor[3].transform.position = openDoor[2].transform.position;
-        openDoor[2].transform.position = new Vector3(10000, 0, 0);
+        openDoor[2].SetActive(false);
+        openDoor[3].SetActive(true);
+       /* openDoor[3].transform.position = openDoor[2].transform.position;
+        openDoor[2].transform.position = new Vector3(10000, 0, 0);*/
         openDoor[4].SetActive(true);
         openDoor[5].SetActive(false);
+        
     }
     
         //function that that robot uses to interact with interactible objects ( Code soon to be changed because of other interactable objects)

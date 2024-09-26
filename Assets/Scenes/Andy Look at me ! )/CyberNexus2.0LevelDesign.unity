@@ -2510,6 +2510,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767955502534084426, guid: 79a927e0adc89d34889b601cb092c90f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 106.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 767955502534084426, guid: 79a927e0adc89d34889b601cb092c90f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 106.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 767955502534084426, guid: 79a927e0adc89d34889b601cb092c90f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 106.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 767955502534084426, guid: 79a927e0adc89d34889b601cb092c90f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 198.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 767955502534084426, guid: 79a927e0adc89d34889b601cb092c90f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 48.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 767955502534084426, guid: 79a927e0adc89d34889b601cb092c90f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -548.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777167337443995835, guid: 79a927e0adc89d34889b601cb092c90f,
+        type: 3}
+      propertyPath: m_Name
+      value: Puzzle1Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777167337443995835, guid: 79a927e0adc89d34889b601cb092c90f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5757833199176389071, guid: 79a927e0adc89d34889b601cb092c90f,
         type: 3}
       propertyPath: m_IsActive
@@ -11066,7 +11106,7 @@ PrefabInstance:
         type: 3}
       propertyPath: openDoor.Array.data[3]
       value: 
-      objectReference: {fileID: 966876833}
+      objectReference: {fileID: 2011341851}
     - target: {fileID: 7844356772726225628, guid: 2b6a0027df4dac14bb61f94008868194,
         type: 3}
       propertyPath: openDoor.Array.data[4]
@@ -11077,6 +11117,11 @@ PrefabInstance:
       propertyPath: openDoor.Array.data[5]
       value: 
       objectReference: {fileID: 209305967}
+    - target: {fileID: 7844356772726225628, guid: 2b6a0027df4dac14bb61f94008868194,
+        type: 3}
+      propertyPath: openDoor.Array.data[6]
+      value: 
+      objectReference: {fileID: 2011341851}
     - target: {fileID: 7913129365472886982, guid: 2b6a0027df4dac14bb61f94008868194,
         type: 3}
       propertyPath: m_Camera
@@ -18539,12 +18584,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5425546930820302477, guid: 7f37ca56016e2ca42a1d774cb6987695,
     type: 3}
   m_PrefabInstance: {fileID: 961381607}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &966876833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2777167337443995835, guid: 79a927e0adc89d34889b601cb092c90f,
-    type: 3}
-  m_PrefabInstance: {fileID: 858077511}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &968884752 stripped
 GameObject:
@@ -33947,6 +33986,12 @@ MonoBehaviour:
   SwitchOff: {fileID: 1956512930}
   respawn: {fileID: 923314849}
   laserDistance: 500
+--- !u!1 &2011341851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2777167337443995835, guid: 79a927e0adc89d34889b601cb092c90f,
+    type: 3}
+  m_PrefabInstance: {fileID: 159789575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2018812755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6600829518862294892, guid: 7f37ca56016e2ca42a1d774cb6987695,
