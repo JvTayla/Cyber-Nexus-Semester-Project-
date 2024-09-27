@@ -29,7 +29,7 @@ public class item : ScriptableObject
 public enum ItemType
 {
     Tube,
-    Fireball,
+    Chemicals,
     
 }
 
