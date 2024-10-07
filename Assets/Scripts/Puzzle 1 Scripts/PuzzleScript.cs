@@ -205,11 +205,11 @@ public class PuzzleScript : MonoBehaviour
         if (!IsPuzzleComplete())
         {
             //makes a raycase from the baby camera where the mouse is pointing
-            Ray ray = _FirstPersonControls.babyRobotCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = new Ray(_FirstPersonControls.playerCamera.position, _FirstPersonControls.playerCamera.forward);
             RaycastHit hit;
             
             // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(ray.origin, ray.direction * 100f, Color.green, 2f);
+            Debug.DrawRay(_FirstPersonControls.playerCamera.position, _FirstPersonControls.playerCamera.forward * _FirstPersonControls.pickUpRange, Color.red, 2f);
 
             
             if (Physics.Raycast(ray, out hit, _FirstPersonControls.pickUpRange*2))

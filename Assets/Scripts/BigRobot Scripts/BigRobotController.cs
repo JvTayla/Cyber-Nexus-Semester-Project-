@@ -15,6 +15,7 @@ public class BigRobotController : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
     private float verticalLookRotation = 0f;
+    private float horizontalLookRotaion = 0f;
     private Vector3 velocity;
     private CharacterController characterController;
 
@@ -60,7 +61,13 @@ public class BigRobotController : MonoBehaviour
     private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
     private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
 
-    private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
+    [Header("UI")] 
+    public GameObject SmallRobotUI;
+    public GameObject BigRobotUI;
+
+    private bool isMenuMode = true;
+
+    private HealthScript _HealthScript;
  
 
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
@@ -68,8 +75,9 @@ public class BigRobotController : MonoBehaviour
 
     private void Awake()
     {
-        // Get and store the CharacterController component attached to this GameObject
+         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
+        _HealthScript = FindObjectOfType<HealthScript>();
 
         _BigRobotHeadBobbingHead = FindObjectOfType<BIgRobotHeadBobbingHead>();
 
@@ -92,10 +100,8 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
-       // playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
-        
-        
-       // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
+        playerInput.Player.Movement.performed += ctx => _BigRobotHeadBobbingHead.StartBobbing();
+        playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
         
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
@@ -118,10 +124,19 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.PickUp.performed += ctx => PickUpObject();
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch();
 
+        playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+
         // Handle inventory toggle
         playerInput.Player.Inventory.performed += ctx => ToggleInventory();
         playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch(); 
-    } 
+    }
+
+    private void SwitchToWisp()
+    {
+        BigRobotUI.SetActive(false);
+        SmallRobotUI.SetActive(true);
+        _HealthScript.IsBigRobotInControl = false;
+    }
 
     private void Update()
     {
@@ -131,6 +146,7 @@ public class BigRobotController : MonoBehaviour
         ApplyGravity();
     }
 
+    
     public void Move()
     {
         // Create a movement vector based on the input
@@ -151,7 +167,7 @@ public class BigRobotController : MonoBehaviour
         }
 
         // Move the character controller based on the movement vector and speed
-        characterController.Move(move * currentSpeed * Time.deltaTime);
+        characterController.Move(move * (currentSpeed * Time.deltaTime));
     }
 
     public void LookAround()
@@ -169,6 +185,7 @@ public class BigRobotController : MonoBehaviour
 
         // Apply the clamped vertical rotation to the player camera
         playerCamera.localEulerAngles = new Vector3(verticalLookRotation, 0, 0);
+       
     }
 
     public void ApplyGravity()
@@ -371,8 +388,8 @@ public class BigRobotController : MonoBehaviour
                 }
             }
 
-           }
         }
+    }
 
 
     //public Material White;
@@ -394,14 +411,15 @@ public class BigRobotController : MonoBehaviour
             if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
             {
                 // Change the material color of the objects in the array
-                foreach (GameObject obj in objectsToChangeColor)
+                
+               /* foreach (GameObject obj in objectsToChangeColor)
                 {
                     Renderer renderer = obj.GetComponent<Renderer>();
                     if (renderer != null)
                     {
                         renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
                     }
-                }
+                }*/
             }
 
             else if (hit.collider.CompareTag("Comp"))
@@ -410,11 +428,11 @@ public class BigRobotController : MonoBehaviour
                 consultCount++;
             }
 
-            /*else if (hit.collider.CompareTag("Door")) // Check if the object is a door
+            else if (hit.collider.CompareTag("Door")) // Check if the object is a door
             {
                 // Start moving the door upwards
                 StartCoroutine(RaiseDoor(hit.collider.gameObject));
-            }*/
+            }
         }
     }
 

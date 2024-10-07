@@ -59,8 +59,11 @@ public class FirstPersonControls : MonoBehaviour
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
     
+    [Header("UI")] 
+    public GameObject SmallRobotUI;
+    public GameObject BigRobotUI;
 
-
+    private HealthScript _HealthScript;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -78,7 +81,8 @@ public class FirstPersonControls : MonoBehaviour
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
 
         _SmallRobotHeadBobbing = FindObjectOfType<SmallRobotHeadBobbing>();
-
+        
+        _HealthScript = FindObjectOfType<HealthScript>();
     }
 
     private void OnEnable()
@@ -92,8 +96,9 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
-        //playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
-       // playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
+        
+        playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
+        playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
         
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
@@ -119,6 +124,8 @@ public class FirstPersonControls : MonoBehaviour
         
         // Subscribe to the interact input event
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
+        
+        playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
 
     }
 
@@ -129,7 +136,13 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
     }
-
+    
+    private void SwitchToAurora()
+    {
+        BigRobotUI.SetActive(true);
+        SmallRobotUI.SetActive(false);
+        _HealthScript.IsBigRobotInControl = true;
+    }
     public void Move()
     {
         // Create a movement vector based on the input
