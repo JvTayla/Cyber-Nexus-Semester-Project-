@@ -26,6 +26,7 @@ TagManager:
   - Switch2
   - Chemicals
   - Comp
+  - item
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -31,6 +32,8 @@ public class BigRobotController : MonoBehaviour
     public float pickUpRange = 3f;
     private bool holdingGun = false;
     public List<item> availableItems = new List<item>();
+    public TextMeshProUGUI pickUpText;
+
 
     [Header("INVENTORY SETTINGS")]
     [Space(5)]
@@ -131,7 +134,8 @@ public class BigRobotController : MonoBehaviour
         // Call Move and LookAround methods every frame to handle player movement and camera rotation
         Move();
         LookAround();
-        ApplyGravity();
+        ApplyGravity(); 
+        CheckForPickUp();
     }
 
     public void Move()
@@ -377,5 +381,32 @@ public class BigRobotController : MonoBehaviour
 
         }
     }
-}
+    private void CheckForPickUp()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+        // Perform raycast to detect objects
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the object has the "PickUp" tag
+            if (hit.collider.CompareTag("PickUp"))
+            {
+                // Display the pick-up text
+                pickUpText.gameObject.SetActive(true);
+                pickUpText.text = hit.collider.gameObject.name;
+            }
+            else
+            {
+                // Hide the pick-up text if not looking at a "PickUp" object
+                pickUpText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            // Hide the text if not looking at any object
+            pickUpText.gameObject.SetActive(false);
+
+        }
+    }
+ }
 
