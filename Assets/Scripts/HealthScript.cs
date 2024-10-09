@@ -19,7 +19,6 @@ public class HealthScript : MonoBehaviour
     private float BnextUpdate = 0f;     // Time for the next update
 
     public GameObject BChargingImg;
-
     public GameObject BChargerImg;
     //Small Robot
     public TextMeshProUGUI StimerText;  // Reference to TextMeshProUGUI component
@@ -115,7 +114,7 @@ public class HealthScript : MonoBehaviour
         }
     }
 
-    public void RobotsHealthPower()
+    private void RobotsHealthPower()
     {
         if (!AreRobotsCharging())
         {

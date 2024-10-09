@@ -68,17 +68,16 @@ public class BigRobotController : MonoBehaviour
     private bool isMenuMode = true;
 
     private HealthScript _HealthScript;
- 
-
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
- 
+    private SwitchCameraAnimationScript _CameraAnimation;
 
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
         _HealthScript = FindObjectOfType<HealthScript>();
-
+        _CameraAnimation = FindObjectOfType<SwitchCameraAnimationScript>();
+        
         _BigRobotHeadBobbingHead = FindObjectOfType<BIgRobotHeadBobbingHead>();
 
         // Set the inventory manager to the instance (make sure it's in the scene)
@@ -112,6 +111,7 @@ public class BigRobotController : MonoBehaviour
 
         // Subscribe to the shoot input event
         playerInput.Player.Shoot.performed += ctx => Shoot(); // Call the Shoot method when shoot input is performed
+        
         // Input handling
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
@@ -125,7 +125,6 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch();
 
         playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
-
         // Handle inventory toggle
         playerInput.Player.Inventory.performed += ctx => ToggleInventory();
         playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch(); 
@@ -133,9 +132,11 @@ public class BigRobotController : MonoBehaviour
 
     private void SwitchToWisp()
     {
+        //_CameraAnimation.SwitchToSmallRobot();
         BigRobotUI.SetActive(false);
         SmallRobotUI.SetActive(true);
         _HealthScript.IsBigRobotInControl = false;
+        
     }
 
     private void Update()

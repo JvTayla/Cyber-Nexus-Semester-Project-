@@ -5,43 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animation/SmallRobotCamera 1.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animation/SmallRobotCamera 1.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/NoMove.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/NoMove.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Robot UI.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Robot UI.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/HealthScript.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Untitled_design__1_-removebg-preview.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Untitled_design__1_-removebg-preview.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/download (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/download (1).png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Orbitron Bold SDF.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Orbitron Bold SDF.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Orbitron Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Orbitron Bold.ttf.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Untitled_design__3_-removebg-preview.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Untitled_design__3_-removebg-preview.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Untitled_design__4_-removebg-preview.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Untitled_design__4_-removebg-preview.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/download (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/download (1).png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SwitchCameraAnimationScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Square.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Square.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/SecurityCamera.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/SecurityCamera.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/SecurityShader.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/SecurityShader.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/square_button-512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/square_button-512.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Action Maps/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Action Maps/Controls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Action Maps/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Action Maps/Controls.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animation/HeadBobbingBigRobot.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingBigRobot.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animation/HeadBobbingSmallRobot.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingSmallRobot.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/SmallRobotCamera.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/SmallRobotCamera.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/CyberNexus2.0LevelDesign.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/CyberNexus2.0LevelDesign.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MK UI Addition.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MK UI Addition.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BabyRobot Scripts/FirstPersonControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BabyRobot Scripts/FirstPersonControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Particle Effects/SkyBox.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Particle Effects/SkyBox.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HealthScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HealthScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Orbitron Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Orbitron Bold SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +34,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Downloads/First Person Shooting And Picking Up.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI Script.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -155,12 +138,16 @@
       <workItem from="1727875447687" duration="779000" />
       <workItem from="1728038625261" duration="2216000" />
       <workItem from="1728319458565" duration="10347000" />
+      <workItem from="1728336743356" duration="262000" />
+      <workItem from="1728367825719" duration="19628000" />
+      <workItem from="1728456997882" duration="4978000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -168,6 +155,17 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

@@ -64,6 +64,7 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject BigRobotUI;
 
     private HealthScript _HealthScript;
+    private SwitchCameraAnimationScript _CameraAnimation;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -79,10 +80,9 @@ public class FirstPersonControls : MonoBehaviour
 
         //Get all the public functions and variables in the Colorchangescript
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
-
         _SmallRobotHeadBobbing = FindObjectOfType<SmallRobotHeadBobbing>();
-        
         _HealthScript = FindObjectOfType<HealthScript>();
+        _CameraAnimation = FindObjectOfType<SwitchCameraAnimationScript>();
     }
 
     private void OnEnable()
@@ -126,7 +126,7 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
         
         playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
-
+        
     }
 
     private void Update()
@@ -139,9 +139,11 @@ public class FirstPersonControls : MonoBehaviour
     
     private void SwitchToAurora()
     {
+        // _CameraAnimation.SwitchToBigRobot();
         BigRobotUI.SetActive(true);
         SmallRobotUI.SetActive(false);
         _HealthScript.IsBigRobotInControl = true;
+        
     }
     public void Move()
     {
