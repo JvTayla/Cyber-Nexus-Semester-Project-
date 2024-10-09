@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BigRobotController : MonoBehaviour
 {
     [Header("MOVEMENT SETTINGS")]
@@ -68,6 +69,13 @@ public class BigRobotController : MonoBehaviour
     [Space(5)]
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
+
+    [Header("UI SETTINGS")]
+    public TextMeshProUGUI pickUpText;
+    public Image healthBar;
+    public float damageAmount = 0.25f; // Reduce the health bar by this amount
+    private float healAmount = 0.5f;// Fill the health bar by this amount
+
 
     private void Awake()
     {
@@ -289,6 +297,34 @@ public class BigRobotController : MonoBehaviour
             }
         }
     }
+
+    private void CheckForPickUp()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+        // Perform raycast to detect objects
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the object has the "PickUp" tag
+            if (hit.collider.CompareTag("PickUp"))
+            {
+                // Display the pick-up text
+                pickUpText.gameObject.SetActive(true);
+                pickUpText.text = hit.collider.gameObject.name;
+            }
+            else
+            {
+                // Hide the pick-up text if not looking at a "PickUp" object
+                pickUpText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            // Hide the text if not looking at any object
+            pickUpText.gameObject.SetActive(false);
+        }
+    }
+
 
     public void ToggleCrouch()
     {
