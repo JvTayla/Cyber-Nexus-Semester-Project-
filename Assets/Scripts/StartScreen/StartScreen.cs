@@ -13,12 +13,15 @@ public class StartScreen : MonoBehaviour
     public GameObject Startscreen;
     public GameObject LoginScreen;
     public GameObject LoginScreenCam;
-    public GameObject StartButton;
+  /*public GameObject StartButton;
     public GameObject QuitButton;
-    public GameObject OptionButton;
+    public GameObject OptionButton; */
     public Animator anim;
     public Animator DoorRS;
     public Animator DoorLS;
+
+    public GameObject FirstScreen;
+
 
 
     public Renderer ConsoleMaterial;
@@ -31,6 +34,7 @@ public class StartScreen : MonoBehaviour
         playerInput = new Controls();
         playerInput.Player.Enable();
         playerInput.Player.Startgame.performed += ctx => StartGame();
+        StartCoroutine(Loadstartscreen());
 
     }
 
@@ -43,15 +47,21 @@ public class StartScreen : MonoBehaviour
         playerInput.Player.Startgame.performed -= ctx => StartGame();
         Startscreen.SetActive(false);
         StartCoroutine(Wait());
-       //tartCoroutine(L());
+      //StartCoroutine(L());
 
 
     }
 
-/**rivate IEnumerator Loadstartscreen()
-    {
+    private IEnumerator Loadstartscreen()
+        {
+        yield return new WaitForSeconds(10f);
 
-    }*/
+        FirstScreen.SetActive(false);
+        Startscreen.SetActive(true);
+
+
+
+    }
 
 
     private IEnumerator Wait()
