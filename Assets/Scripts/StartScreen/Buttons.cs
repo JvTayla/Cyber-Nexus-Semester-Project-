@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Buttons : MonoBehaviour
 {
@@ -23,14 +25,24 @@ public class Buttons : MonoBehaviour
 
     }
     
-    public void StartGame()
+    public IEnumerator StartGame()
     {
+        print("StartButtonPressed");
+
         anim.SetBool("StartPressed", true);
         playerInput.Player.Disable();
-        SceneManager.LoadScene("CyberNexus2.0LevelDesign");
+        
         Loginscreen.SetActive(false);
+
+
+        yield return new WaitForSeconds(0.5F);
+
         DoorLS.SetBool("DoorOpen", true);
         DoorRS.SetBool("DoorOpen", true);
+
+        yield return new WaitForSeconds(3.5F);
+
+        SceneManager.LoadScene("CyberNexus2.0LevelDesign");
 
     }
     
@@ -45,10 +57,11 @@ public class Buttons : MonoBehaviour
         if (ControlPanel != null)
         {
             ControlPanel.SetActive(true);
+            print("StartButtonPressed");
         }
         else
         {
-            Debug.LogWarning("Info Panel not assigned in the Inspector.");
+            print("Info Panel not assigned in the Inspector.");
         }
     }
 
@@ -60,7 +73,12 @@ public class Buttons : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Info Panel not assigned in the Inspector.");
+            print("Info Panel not assigned in the Inspector.");
         }
+    }
+
+    public void StartGaming()
+    {
+        StartCoroutine(StartGame());
     }
 }

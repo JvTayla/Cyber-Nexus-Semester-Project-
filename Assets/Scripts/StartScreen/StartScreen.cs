@@ -17,6 +17,9 @@ public class StartScreen : MonoBehaviour
     public GameObject QuitButton;
     public GameObject OptionButton;
     public Animator anim;
+    public Animator DoorRS;
+    public Animator DoorLS;
+
 
     public Renderer ConsoleMaterial;
 
@@ -40,10 +43,15 @@ public class StartScreen : MonoBehaviour
         playerInput.Player.Startgame.performed -= ctx => StartGame();
         Startscreen.SetActive(false);
         StartCoroutine(Wait());
-
+       //tartCoroutine(L());
 
 
     }
+
+/**rivate IEnumerator Loadstartscreen()
+    {
+
+    }*/
 
 
     private IEnumerator Wait()
