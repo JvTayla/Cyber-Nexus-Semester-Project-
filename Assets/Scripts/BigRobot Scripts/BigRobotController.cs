@@ -21,6 +21,7 @@ public class BigRobotController : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
     private float verticalLookRotation = 0f;
+    private float horizontalLookRotaion = 0f;
     private Vector3 velocity;
     private CharacterController characterController;
 
@@ -70,7 +71,16 @@ public class BigRobotController : MonoBehaviour
     private float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
     private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
 
+    [Header("UI")] 
+    public GameObject SmallRobotUI;
+    public GameObject BigRobotUI;
+
+    private bool isMenuMode = true;
+
+    private HealthScript _HealthScript;
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
+    private SwitchCameraAnimationScript _CameraAnimation;
+    private CorePowerScript _CorePowerScript;
 
 
 
@@ -81,11 +91,13 @@ public class BigRobotController : MonoBehaviour
 
     private void Awake()
     {
-        // Get and store the CharacterController component attached to this GameObject
+         //Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-
+        _HealthScript = FindObjectOfType<HealthScript>();
+        _CameraAnimation = FindObjectOfType<SwitchCameraAnimationScript>();
+        
         _BigRobotHeadBobbingHead = FindObjectOfType<BIgRobotHeadBobbingHead>();
-
+        _CorePowerScript = FindObjectOfType<CorePowerScript>();
         // Set the inventory manager to the instance (make sure it's in the scene)
         if (inventoryManage == null)
         {
@@ -106,6 +118,10 @@ public class BigRobotController : MonoBehaviour
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
+        
+        playerInput.Player.Movement.performed += ctx => _BigRobotHeadBobbingHead.StartBobbing();
+        playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
+        
 
         // playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
 
@@ -121,6 +137,7 @@ public class BigRobotController : MonoBehaviour
 
         // Subscribe to the shoot input event
         playerInput.Player.Shoot.performed += ctx => Shoot(); // Call the Shoot method when shoot input is performed
+        
         // Input handling
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
@@ -133,16 +150,37 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.PickUp.performed += ctx => PickUpObject();
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch();
 
+        
         // Handle inventory toggle
         playerInput.Player.Inventory.performed += ctx => ToggleInventory();
+        playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch(); 
         playerInput.Player.Interact.performed += ctx => ToggleLaserSwitch(); // press F
 
         playerInput.Player.Pause.performed += ctx => PauseGame();
-       
+        playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+
 
         //UiInput.UI.Navigate.performed += ctx => NavigateUI(ctx.ReadValue<Vector2>());
         //UiInput.UI.Submit.performed += ctx => SubmitUI();
         //UiInput.UI.Cancel.performed += ctx => CancelUI();
+    }
+       
+    
+
+    private void SwitchToWisp()
+    {
+        //_CameraAnimation.SwitchToSmallRobot();
+        BigRobotUI.SetActive(false);
+        SmallRobotUI.SetActive(true);
+        _HealthScript.IsBigRobotInControl = false;
+        
+        if (!_HealthScript.IsBigRobotInControl)
+        {
+            _CorePowerScript.BigRobotHideDeadScreen();
+            _CorePowerScript.StopBigRobotWarning();
+            _CorePowerScript.BigRobotUI.SetActive(false);
+        }
+        
     }
 
     private void Update()
@@ -154,6 +192,7 @@ public class BigRobotController : MonoBehaviour
         CheckForPickUp();
     }
 
+    
     public void Move()
     {
         // Create a movement vector based on the input
@@ -174,7 +213,7 @@ public class BigRobotController : MonoBehaviour
         }
 
         // Move the character controller based on the movement vector and speed
-        characterController.Move(move * currentSpeed * Time.deltaTime);
+        characterController.Move(move * (currentSpeed * Time.deltaTime));
     }
 
     public void PauseGame()
@@ -206,6 +245,7 @@ public class BigRobotController : MonoBehaviour
 
         // Apply the clamped vertical rotation to the player camera
         playerCamera.localEulerAngles = new Vector3(verticalLookRotation, 0, 0);
+       
     }
 
     public void ApplyGravity()
@@ -223,7 +263,6 @@ public class BigRobotController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
@@ -320,6 +359,20 @@ public class BigRobotController : MonoBehaviour
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
 
+                
+            }
+            else if (hit.collider.CompareTag("VoiceRecorder"))
+            {
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+                
+                GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
+                VoiceRecrod.SetActive(true);
+               
             }
         }
     }
@@ -421,6 +474,50 @@ public class BigRobotController : MonoBehaviour
         }
     }
 
+
+    //public Material White;
+    //public MeshRenderer console;
+    public GameObject consolOff;
+    public GameObject consolOn;
+    public int consultCount;
+
+    public void Interact()
+    {
+        // Perform a raycast to detect the lightswitch
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
+
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            if (hit.collider.CompareTag("Switch")) // Assuming the switch has this tag
+            {
+                // Change the material color of the objects in the array
+                
+               /* foreach (GameObject obj in objectsToChangeColor)
+                {
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    if (renderer != null)
+                    {
+                        renderer.material.color = switchMaterial.color; // Set the color to match the switch material color
+                    }
+                }*/
+            }
+
+            else if (hit.collider.CompareTag("Comp"))
+            {
+                Debug.Log("hit");
+                consultCount++;
+            }
+            else if (hit.collider.CompareTag("Door")) // Check if the object is a door
+            {
+                // Start moving the door upwards
+                StartCoroutine(RaiseDoor(hit.collider.gameObject));
+            }
+        }
+    }
+
     private void CheckForPickUp()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
@@ -464,8 +561,26 @@ public class BigRobotController : MonoBehaviour
     } 
 
 
+    private IEnumerator RaiseDoor(GameObject door)
+    {
+        float raiseAmount = 5f; // The total distance the door will be raised
+        float raiseSpeed = 2f; // The speed at which the door will be raised
+        Vector3 startPosition = door.transform.position; // Store the initial position of the door
+        Vector3 endPosition = startPosition + Vector3.up * raiseAmount; // Calculate the final position of the door after raising
+
+        // Continue raising the door until it reaches the target height
+        while (door.transform.position.y < endPosition.y)
+        {
+            // Move the door towards the target position at the specified speed
+            door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
+            yield return null; // Wait until the next frame before continuing the loop
+        }
+    }
 
 }
+
+
+
 
 
    

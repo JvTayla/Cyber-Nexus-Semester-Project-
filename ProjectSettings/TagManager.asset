@@ -26,6 +26,8 @@ TagManager:
   - Switch2
   - Chemicals
   - Comp
+  - Robot
+  - VoiceRecorder
   - item
   layers:
   - Default

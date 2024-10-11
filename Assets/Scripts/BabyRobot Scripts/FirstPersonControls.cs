@@ -60,6 +60,10 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
+    
+    [Header("UI")] 
+    public GameObject SmallRobotUI;
+    public GameObject BigRobotUI;
 
     [Header("UI SETTINGS")]
     public TextMeshProUGUI pickUpText;
@@ -67,6 +71,9 @@ public class FirstPersonControls : MonoBehaviour
     public float damageAmount = 0.25f; // Reduce the health bar by this amount
     private float healAmount = 0.5f;// Fill the health bar by this amount
 
+    private HealthScript _HealthScript;
+    private SwitchCameraAnimationScript _CameraAnimation;
+    private CorePowerScript _CorePowerScript;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -80,11 +87,12 @@ public class FirstPersonControls : MonoBehaviour
         tempLookAroundSpeed = lookSpeed;
         tempJumpHeight = jumpHeight;
 
-        //Get all the public functions and variables in the Colorchangescript
+        //Get all the public functions and variables in the script
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
-
         _SmallRobotHeadBobbing = FindObjectOfType<SmallRobotHeadBobbing>();
-
+        _HealthScript = FindObjectOfType<HealthScript>();
+        _CameraAnimation = FindObjectOfType<SwitchCameraAnimationScript>();
+        _CorePowerScript = FindObjectOfType<CorePowerScript>();
     }
 
     private void OnEnable()
@@ -94,12 +102,15 @@ public class FirstPersonControls : MonoBehaviour
 
         // Enable the input actions
         playerInput.Player.Enable();
-
-        // Subscribe to the movement input events
+        
+        if (!_CorePowerScript.SmallRobotDead)
+        {
+                    // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
-        //playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
-       // playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
+        
+        playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
+        playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
         
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
@@ -128,6 +139,10 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
+        playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
+        
+    }
+
     private void Update()
     {
         // Call Move and LookAround methods every frame to handle player movement and camera rotation
@@ -135,7 +150,23 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
     }
+    
+    private void SwitchToAurora()
+    {
+        // _CameraAnimation.SwitchToBigRobot();
+        BigRobotUI.SetActive(true);
+        SmallRobotUI.SetActive(false);
+        _HealthScript.IsBigRobotInControl = true;
 
+        if (_HealthScript.IsBigRobotInControl)
+        {
+            _CorePowerScript.SmallRobotHideDeadScreen();
+            _CorePowerScript.StopSmallRobotWarning();
+            _CorePowerScript.SmallRobotUI.SetActive(false);
+            
+        }
+        
+    }
     public void Move()
     {
         // Create a movement vector based on the input
@@ -156,7 +187,7 @@ public class FirstPersonControls : MonoBehaviour
         }
 
         // Move the character controller based on the movement vector and speed
-        characterController.Move(move * currentSpeed * Time.deltaTime);
+        characterController.Move(move * (currentSpeed * Time.deltaTime));
     }
 
     public void LookAround()
@@ -273,6 +304,19 @@ public class FirstPersonControls : MonoBehaviour
                 
                 heldObject.SetActive(false);
               
+            }
+            else if (hit.collider.CompareTag("VoiceRecorder"))
+            {
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+                
+                GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
+                VoiceRecrod.SetActive(true);
+               
             }
         }
     }
