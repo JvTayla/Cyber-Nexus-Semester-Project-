@@ -479,7 +479,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""bfe64176-f6c5-4331-8e6d-a81cc6a1fe45"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""path"": ""<Keyboard>/alt"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -501,7 +501,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""db4e2f6c-ce7a-4acf-a53f-96c18b0b7d2b"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -539,15 +539,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""Select"",
                     ""type"": ""Button"",
                     ""id"": ""db39ea3e-5e83-4ace-bf1c-62b7e8664b75"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Back"",
-                    ""type"": ""Button"",
-                    ""id"": ""ff9803f8-892b-45ea-b725-698264f8066c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -651,17 +642,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5e02eb8c-51d1-43c3-9ce2-525f580dcb82"",
-                    ""path"": ""<Keyboard>/b"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -859,7 +839,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Movement = m_PauseMenu.FindAction("Movement", throwIfNotFound: true);
         m_PauseMenu_Select = m_PauseMenu.FindAction("Select", throwIfNotFound: true);
-        m_PauseMenu_Back = m_PauseMenu.FindAction("Back", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Movement = m_Inventory.FindAction("Movement", throwIfNotFound: true);
@@ -1069,14 +1048,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IPauseMenuActions> m_PauseMenuActionsCallbackInterfaces = new List<IPauseMenuActions>();
     private readonly InputAction m_PauseMenu_Movement;
     private readonly InputAction m_PauseMenu_Select;
-    private readonly InputAction m_PauseMenu_Back;
     public struct PauseMenuActions
     {
         private @Controls m_Wrapper;
         public PauseMenuActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PauseMenu_Movement;
         public InputAction @Select => m_Wrapper.m_PauseMenu_Select;
-        public InputAction @Back => m_Wrapper.m_PauseMenu_Back;
         public InputActionMap Get() { return m_Wrapper.m_PauseMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1092,9 +1069,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
-            @Back.started += instance.OnBack;
-            @Back.performed += instance.OnBack;
-            @Back.canceled += instance.OnBack;
         }
 
         private void UnregisterCallbacks(IPauseMenuActions instance)
@@ -1105,9 +1079,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
-            @Back.started -= instance.OnBack;
-            @Back.performed -= instance.OnBack;
-            @Back.canceled -= instance.OnBack;
         }
 
         public void RemoveCallbacks(IPauseMenuActions instance)
@@ -1217,7 +1188,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
-        void OnBack(InputAction.CallbackContext context);
     }
     public interface IInventoryActions
     {

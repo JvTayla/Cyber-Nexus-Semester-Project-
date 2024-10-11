@@ -13,6 +13,7 @@ public class PauseScript : MonoBehaviour
     private const float movementThreshold = 0.8f;
     public GameObject controlPage;
     public GameObject pausePage; 
+    public GameObject KeyBoardPage ;
 
    
 
@@ -50,17 +51,18 @@ public class PauseScript : MonoBehaviour
         {
             SelectButton();
         }
-        if (playerInput.PauseMenu.Back.triggered)
+       /* if (playerInput.PauseMenu.Back.triggered)
         {
             BackButton();
-        }
+        }*/
     }
 
     public void BackButton()
     {
         Debug.Log("Back pressed");
         controlPage.SetActive(false);
-        pausePage.SetActive(true);
+        pausePage.SetActive(true); 
+        KeyBoardPage.SetActive(false);
     }
 
     public void NavigateMenu(Vector2 moveInput)
@@ -122,5 +124,26 @@ public class PauseScript : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Sayonara Son!");
+    }
+    public void BackButtonKeyBoard()
+    {
+        Debug.Log("Back pressed");
+        controlPage.SetActive(false);
+        KeyBoardPage.SetActive(false);
+        pausePage.SetActive(true);
+    } 
+    public void KeyBoardButton() 
+    {
+        controlPage.SetActive(false);
+        KeyBoardPage.SetActive(true);
+        pausePage.SetActive(false);
+
+    }
+    public void GamePadButton()
+    {
+        controlPage.SetActive(true);
+        KeyBoardPage.SetActive(false);
+        pausePage.SetActive(false);
+
     }
 }

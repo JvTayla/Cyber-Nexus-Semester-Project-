@@ -457,7 +457,7 @@
                 {
                     "name": "",
                     "id": "bfe64176-f6c5-4331-8e6d-a81cc6a1fe45",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/alt",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -479,7 +479,7 @@
                 {
                     "name": "",
                     "id": "db4e2f6c-ce7a-4acf-a53f-96c18b0b7d2b",
-                    "path": "<Keyboard>/p",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -517,15 +517,6 @@
                     "name": "Select",
                     "type": "Button",
                     "id": "db39ea3e-5e83-4ace-bf1c-62b7e8664b75",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Back",
-                    "type": "Button",
-                    "id": "ff9803f8-892b-45ea-b725-698264f8066c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -629,17 +620,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5e02eb8c-51d1-43c3-9ce2-525f580dcb82",
-                    "path": "<Keyboard>/b",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

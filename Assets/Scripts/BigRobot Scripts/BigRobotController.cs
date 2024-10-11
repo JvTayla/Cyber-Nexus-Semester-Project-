@@ -135,7 +135,7 @@ public class BigRobotController : MonoBehaviour
 
         // Handle inventory toggle
         playerInput.Player.Inventory.performed += ctx => ToggleInventory();
-        playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch();
+        playerInput.Player.Interact.performed += ctx => ToggleLaserSwitch(); // press F
 
         playerInput.Player.Pause.performed += ctx => PauseGame();
        
