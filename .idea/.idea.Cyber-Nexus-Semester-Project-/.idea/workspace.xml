@@ -5,24 +5,637 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SwitchCameraAnimationScript.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Square.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Square.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/URP/SecurityCamera.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/URP/SecurityCamera.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/URP/SecurityShader.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/URP/SecurityShader.shadergraph.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/square_button-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/square_button-512.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/Title Animation.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/Title Animation.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_000_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_000_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_001_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_001_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_002_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_002_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_003_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_003_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_004_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_004_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_005_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_005_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_006_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_006_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_007_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_007_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_008_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_008_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_009_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_009_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_010_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_010_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_011_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_011_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_012_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_012_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_013_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_013_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_014_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_014_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_015_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_015_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_016_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_016_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_017_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_017_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_018_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_018_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_019_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_019_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_020_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_020_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_021_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_021_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_022_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_022_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_023_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_023_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_024_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_024_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_025_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_025_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_026_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_026_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_027_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_027_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_028_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_028_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_029_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_029_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_030_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_030_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_031_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_031_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_032_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_032_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_033_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_033_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_034_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_034_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_035_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_035_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_036_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_036_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_037_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_037_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_038_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_038_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_039_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_039_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_040_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_040_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_041_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_041_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_042_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_042_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_043_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_043_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_044_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_044_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_045_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_045_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_046_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_046_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_047_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_047_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_048_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_048_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_049_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_049_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_050_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_050_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_051_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_051_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_052_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_052_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_053_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_053_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_054_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_054_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_055_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_055_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_056_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_056_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_057_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_057_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_058_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_058_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_059_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_059_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_060_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_060_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_061_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_061_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_062_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_062_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_063_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_063_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_064_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_064_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_065_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_065_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_066_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_066_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_067_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_067_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_068_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_068_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_069_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_069_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_070_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_070_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_071_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_071_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_072_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_072_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_073_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_073_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_074_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_074_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_075_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_075_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_076_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_076_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_077_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_077_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_078_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_078_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_079_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_079_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_080_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_080_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_081_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_081_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_082_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_082_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_083_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_083_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_084_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_084_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_085_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_085_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_086_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_086_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_087_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_087_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_088_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_088_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_089_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_089_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_090_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_090_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_091_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_091_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_092_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_092_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_093_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_093_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_094_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_094_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_095_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_095_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_096_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_096_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_097_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_097_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_098_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_098_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_099_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_099_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_100_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_100_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_101_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_101_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_102_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_102_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_103_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_103_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_104_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_104_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_105_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_105_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_106_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_106_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_107_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_107_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_108_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_108_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_109_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_109_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_110_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_110_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_111_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_111_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_112_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_112_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_113_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_113_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_114_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_114_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_115_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_115_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_116_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_116_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_117_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_117_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_118_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_118_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_119_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_119_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_120_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_120_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_121_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_121_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_122_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_122_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_123_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_123_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_124_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_124_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_125_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_125_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_126_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_126_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_127_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_127_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_128_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_128_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_129_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_129_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_130_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_130_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_131_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_131_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_132_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_132_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_133_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_133_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_134_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_134_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_135_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_135_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_136_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_136_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_137_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_137_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_138_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_138_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_139_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_139_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_140_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_140_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_141_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_141_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_142_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_142_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_143_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_143_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_144_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_144_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_145_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_145_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_146_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_146_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_147_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_147_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_148_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_148_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_149_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_149_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_150_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_150_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_151_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_151_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_152_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_152_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_153_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_153_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_154_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_154_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_155_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_155_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_156_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_156_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_157_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_157_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_158_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_158_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_159_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_159_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_160_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_160_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_161_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_161_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_162_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_162_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_163_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_163_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_164_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_164_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_165_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_165_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_166_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_166_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_167_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_167_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_168_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_168_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_169_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_169_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_170_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_170_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_171_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_171_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_172_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_172_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_173_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_173_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_174_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_174_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_175_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_175_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_176_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_176_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_177_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_177_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_178_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_178_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_179_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_179_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_180_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_180_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_181_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_181_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_182_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_182_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_183_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_183_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_184_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_184_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_185_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_185_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_186_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_186_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_187_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_187_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_188_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_188_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_189_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_189_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_190_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_190_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_191_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_191_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_192_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_192_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_193_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_193_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_194_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_194_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_195_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_195_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_196_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_196_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_197_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_197_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_198_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_198_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_199_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_199_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_200_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_200_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_201_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_201_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_202_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_202_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_203_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_203_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_204_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_204_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_205_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_205_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_206_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_206_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_207_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_207_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_208_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_208_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_209_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_209_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_210_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_210_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_211_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_211_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_212_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_212_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_213_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_213_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_214_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_214_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_215_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_215_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_216_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_216_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_217_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_217_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_218_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_218_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_219_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_219_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_220_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_220_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_221_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_221_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_222_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_222_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_223_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_223_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_224_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_224_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_225_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_225_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_226_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_226_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_227_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_227_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_228_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_228_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_229_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_229_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_230_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_230_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_231_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_231_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_232_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_232_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_233_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_233_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_234_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_234_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_235_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_235_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_236_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_236_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_237_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_237_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_238_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_238_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_239_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_239_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_240_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_240_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_241_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_241_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_242_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_242_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_243_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_243_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_244_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_244_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_245_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_245_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_246_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_246_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_247_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_247_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_248_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_248_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_249_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_249_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_250_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_250_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_251_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_251_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_252_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_252_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_253_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_253_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_254_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_254_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_255_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_255_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_256_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_256_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_257_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_257_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_258_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_258_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_259_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_259_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_260_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_260_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_261_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_261_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_262_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_262_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_263_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_263_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_264_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_264_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_265_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_265_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_266_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_266_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_267_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_267_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_268_delay-0.04s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_268_delay-0.04s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_269_delay-0.03s.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/Title Frames/frame_269_delay-0.03s.gif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/2Alarm.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/2Alarm.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Access Granted Sound.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Access Granted Sound.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Alarm.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Alarm.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/BatteryLow.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/BatteryLow.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Download Sound.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Download Sound.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr AV.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr AV.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr AV2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr AV2.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr EM 2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr EM 2.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr EM.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr EM.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr KT 2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr KT 2.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr KT.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr KT.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr LT.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr LT.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr LT2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr LT2.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr RP 2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr RP 2.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr RP.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr RP.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr SK 2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr SK 2.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr SK.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Dr SK.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/DropSound.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/DropSound.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Lose Music 1.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Lose Music 1.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Lose Music.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Lose Music.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Music.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Music.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Puzzle.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Puzzle.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Robot Steps.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Robot Steps.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DoorRed 1.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DoorRed 1.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DoorRed.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DoorRed.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/LSDoor_001.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/LSDoor_001.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Light_Blue_Sci-Fi_Futuristic_Animated_Logo-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Light_Blue_Sci-Fi_Futuristic_Animated_Logo-removebg-preview.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Orbitron Bold SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Orbitron Bold SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/RSDoor_001.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/RSDoor_001.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AnimationScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AnimationScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Black and Red Edgy Gaming Youtube Banner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Black and Red Edgy Gaming Youtube Banner.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CorePowerScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CorePowerScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Image.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Image.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PauseMenu.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/R.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/R.jpeg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScreenTurnOffScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScreenTurnOffScript.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SoundScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SoundScript.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/HeadBobbingBigRobot.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingBigRobot.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/HeadBobbingSmallRobot.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/HeadBobbingSmallRobot.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MK UI Addition.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MK UI Addition.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BabyRobot Scripts/FirstPersonControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BabyRobot Scripts/FirstPersonControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/HealthScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HealthScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle 1 Scripts/PuzzleScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Orbitron Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Orbitron Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +647,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Downloads/First Person Shooting And Picking Up.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/seeem/OneDrive/Documents/Semester 2/Cyber Nexus/Cyber-Nexus-Semester-Project-/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AnimationScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CorePowerScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Red Blinking Lights.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SoundScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI Script.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -141,6 +756,9 @@
       <workItem from="1728336743356" duration="262000" />
       <workItem from="1728367825719" duration="19628000" />
       <workItem from="1728456997882" duration="4978000" />
+      <workItem from="1728478486026" duration="3209000" />
+      <workItem from="1728552782447" duration="13657000" />
+      <workItem from="1728623988254" duration="20441000" />
     </task>
     <servers />
   </component>

@@ -65,6 +65,7 @@ public class FirstPersonControls : MonoBehaviour
 
     private HealthScript _HealthScript;
     private SwitchCameraAnimationScript _CameraAnimation;
+    private CorePowerScript _CorePowerScript;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -78,22 +79,26 @@ public class FirstPersonControls : MonoBehaviour
         tempLookAroundSpeed = lookSpeed;
         tempJumpHeight = jumpHeight;
 
-        //Get all the public functions and variables in the Colorchangescript
+        //Get all the public functions and variables in the script
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
         _SmallRobotHeadBobbing = FindObjectOfType<SmallRobotHeadBobbing>();
         _HealthScript = FindObjectOfType<HealthScript>();
         _CameraAnimation = FindObjectOfType<SwitchCameraAnimationScript>();
+        _CorePowerScript = FindObjectOfType<CorePowerScript>();
     }
 
     private void OnEnable()
     {
+       
         // Create a new instance of the input actions
         var playerInput = new Controls();
 
         // Enable the input actions
         playerInput.Player.Enable();
-
-        // Subscribe to the movement input events
+        
+        if (!_CorePowerScript.SmallRobotDead)
+        {
+                    // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
@@ -121,10 +126,12 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Focus.canceled += ctx => _PuzzleScript.StopInteracting();// Reset Inteact method when interact is canceled
 
         playerInput.Player.TileSelector.performed += ctx => _PuzzleScript.InteractWithPuzzle();
-        
+        //zdas k a
         // Subscribe to the interact input event
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
         
+        }
+
         playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
         
     }
@@ -143,6 +150,14 @@ public class FirstPersonControls : MonoBehaviour
         BigRobotUI.SetActive(true);
         SmallRobotUI.SetActive(false);
         _HealthScript.IsBigRobotInControl = true;
+
+        if (_HealthScript.IsBigRobotInControl)
+        {
+            _CorePowerScript.SmallRobotHideDeadScreen();
+            _CorePowerScript.StopSmallRobotWarning();
+            _CorePowerScript.SmallRobotUI.SetActive(false);
+            
+        }
         
     }
     public void Move()
@@ -282,6 +297,19 @@ public class FirstPersonControls : MonoBehaviour
                 
                 heldObject.SetActive(false);
               
+            }
+            else if (hit.collider.CompareTag("VoiceRecorder"))
+            {
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+                
+                GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
+                VoiceRecrod.SetActive(true);
+               
             }
         }
     }

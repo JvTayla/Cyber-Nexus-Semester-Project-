@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HealthScript : MonoBehaviour
 {
@@ -27,16 +28,22 @@ public class HealthScript : MonoBehaviour
     public GameObject SChargingImg;
 
     public GameObject SChargerImg;
+
+    private CorePowerScript _CorePowerScript;
+
+    public GameObject MissionFailed;
+
+    private SoundScript _SoundScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _CorePowerScript = FindObjectOfType<CorePowerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-      RobotsHealthPower();
+        RobotsHealthPower();
     }
     
     private void decBigRobotTimer()
@@ -45,7 +52,7 @@ public class HealthScript : MonoBehaviour
         if (Time.time >= BnextUpdate)     // Time for the next update)
         {
             BnextUpdate = Time.time + 1; // Set next update time
-            DecreasePowerBigRobot();
+            DecreasePowerBigRobot(IsBigRobotInControl);
         }
     }
     private void incBigRobotTimer()
@@ -58,18 +65,65 @@ public class HealthScript : MonoBehaviour
         }
     }
     
-    private void DecreasePowerBigRobot()
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void DecreasePowerBigRobot(bool BigRobotInControl)
     {
-        if (BcurrentValue > 0) // Ensure the value doesn't go below 0
+        
+        if (!BigRobotInControl)
         {
-            BcurrentValue--; // Decrease the number by 1
-            BtimerText.text = BcurrentValue.ToString() + "%"; // Update the displayed text with percentage
+            _CorePowerScript.StopBigRobotWarning();
+            _CorePowerScript.BigRobotHideDeadScreen();
+            _CorePowerScript.BigRobotUI.SetActive(false);
+        }
+        else
+        {
+            if (!(BcurrentValue > 0)) // Ensure the value doesn't go below 0
+            {
+                _CorePowerScript.StopBigRobotWarning();
+                _CorePowerScript.BigRobotShowDeadScreen();
+                _CorePowerScript.BigRobotDead = true;
+             
+            }
+            else if (BcurrentValue is > 0 and < 10 )
+            {
+                _CorePowerScript.BigRobotDead = false;
+                _CorePowerScript.BigRobotCoreWarning();
+                BcurrentValue--; // Decrease the number by 1
+                BtimerText.text = BcurrentValue.ToString() + "%"; // Update the displayed text with percentage
+               
+            }
+            else
+            {
+                _CorePowerScript.BigRobotDead = false;
+                _CorePowerScript.StopBigRobotWarning();
+                _CorePowerScript.BigRobotHideDeadScreen();
+                BcurrentValue--; // Decrease the number by 1
+                BtimerText.text = BcurrentValue.ToString() + "%"; // Update the displayed text with percentage
+               
+            }
+            
+            if (_SoundScript != null && _SoundScript.warningSound != null)
+            {
+                if (!(BcurrentValue > 0) && !_SoundScript.warningSound.activeSelf) // Ensure the value doesn't go below 0
+                {
+                    _SoundScript.StopWarningSound();
+                }
+                else if (BcurrentValue is > 0 and < 10 && _SoundScript.warningSound.activeSelf)
+                {
+                    _SoundScript.PlayWarningSound();
+                }
+                else if (!_SoundScript.warningSound.activeSelf)
+                {
+                    _SoundScript.StopWarningSound();
+                }
+            }
+           
         }
     }
     
     private void IncreasePowerBigRobot()
     {
-        if (BcurrentValue < 100) // Ensure the value doesn't go over 000
+        if (BcurrentValue < 100) // Ensure the value doesn't go over 100
         {
             BcurrentValue++; // Increase the number by 1
             BtimerText.text = BcurrentValue.ToString() + "%"; // Update the displayed text with percentage
@@ -82,7 +136,7 @@ public class HealthScript : MonoBehaviour
         if (Time.time >= SnextUpdate)     // Time for the next update)
         {
             SnextUpdate = Time.time + 1; // Set next update time
-            DecreasePowerSmallRobot();
+            DecreasePowerSmallRobot(false);
         }
     }
     
@@ -96,13 +150,59 @@ public class HealthScript : MonoBehaviour
         }
     }
     
-    private void DecreasePowerSmallRobot()
+    private void DecreasePowerSmallRobot(bool BigRobotInControl)
     {
-        if (ScurrentValue > 0) // Ensure the value doesn't go below 0
+        if (BigRobotInControl)
         {
-            ScurrentValue--; // Decrease the number by 1
-            StimerText.text = ScurrentValue.ToString() + "%"; // Update the displayed text with percentage
+            _CorePowerScript.StopSmallRobotWarning();
+            _CorePowerScript.SmallRobotHideDeadScreen();
+            _CorePowerScript.SmallRobotUI.SetActive(false);
+            
         }
+        else
+        {
+            if (!(ScurrentValue > 0)) // Ensure the value doesn't go below 0
+            {
+                _CorePowerScript.StopSmallRobotWarning();
+                _CorePowerScript.SmallRobotShowDeadScreen();
+                _CorePowerScript.SmallRobotDead = true;
+                
+            }
+            else if (ScurrentValue is > 0 and < 10)
+            {
+                _CorePowerScript.SmallRobotCoreWarning();
+                ScurrentValue--; // Decrease the number by 1
+                StimerText.text = ScurrentValue.ToString() + "%";
+                _CorePowerScript.SmallRobotDead = false;// Update the displayed text with percentage
+             
+            }
+            else
+            {
+                _CorePowerScript.SmallRobotDead = false;
+                _CorePowerScript.StopSmallRobotWarning();
+                _CorePowerScript.SmallRobotHideDeadScreen();
+                ScurrentValue--; // Decrease the number by 1
+                StimerText.text = ScurrentValue.ToString() + "%"; // Update the displayed text with percentage
+               
+            }
+            
+            if (_SoundScript != null && _SoundScript.warningSound != null)
+            {
+                if (!(BcurrentValue > 0) && !_SoundScript.warningSound.activeSelf) // Ensure the value doesn't go below 0
+                {
+                    _SoundScript.StopWarningSound();
+                }
+                else if (BcurrentValue is > 0 and < 10 && !_SoundScript.warningSound.activeSelf)
+                {
+                    _SoundScript.PlayWarningSound();
+                }
+                else if (!_SoundScript.warningSound.activeSelf)
+                {
+                    _SoundScript.StopWarningSound();
+                }
+            }
+        }
+        
     }
     
     private void IncreasePowerSmallRobot()
@@ -132,6 +232,12 @@ public class HealthScript : MonoBehaviour
             incBigRobotTimer();
             incSmallRobotTimer();
         }
+
+        if (_CorePowerScript.SmallRobotDead && _CorePowerScript.BigRobotDead)
+        {
+            MissionFailed.SetActive(true);
+            //_SoundScript.PlayLoseMusic();
+        }
     }
 
     private bool AreRobotsCharging()
@@ -159,5 +265,29 @@ public class HealthScript : MonoBehaviour
     {
         // Calculate and return the distance using Vector3.Distance
         return Vector3.Distance(X, Y);
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
+    public void ReturnToMainMenu()
+    {
+        // Load the main menu scene (ensure you have the correct scene name in your build settings)
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    // Function to exit the game
+    public void ExitGame()
+    {
+        // If running in the Unity editor, exit play mode
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            // If running a build, exit the application
+            Application.Quit();
+        #endif
     }
 }

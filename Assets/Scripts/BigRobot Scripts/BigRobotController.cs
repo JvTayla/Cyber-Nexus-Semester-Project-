@@ -70,7 +70,7 @@ public class BigRobotController : MonoBehaviour
     private HealthScript _HealthScript;
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
     private SwitchCameraAnimationScript _CameraAnimation;
-
+    private CorePowerScript _CorePowerScript;
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
@@ -79,7 +79,7 @@ public class BigRobotController : MonoBehaviour
         _CameraAnimation = FindObjectOfType<SwitchCameraAnimationScript>();
         
         _BigRobotHeadBobbingHead = FindObjectOfType<BIgRobotHeadBobbingHead>();
-
+        _CorePowerScript = FindObjectOfType<CorePowerScript>();
         // Set the inventory manager to the instance (make sure it's in the scene)
         if (inventoryManage == null)
         {
@@ -96,7 +96,9 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Enable();
 
         // Subscribe to the movement input events
-        playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
+        if (!_CorePowerScript.BigRobotDead)
+        { 
+            playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
         playerInput.Player.Movement.performed += ctx => _BigRobotHeadBobbingHead.StartBobbing();
@@ -124,10 +126,13 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.PickUp.performed += ctx => PickUpObject();
         playerInput.Player.Crouch.performed += ctx => ToggleCrouch();
 
-        playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+        
         // Handle inventory toggle
         playerInput.Player.Inventory.performed += ctx => ToggleInventory();
         playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch(); 
+        }
+        playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+
     }
 
     private void SwitchToWisp()
@@ -136,6 +141,13 @@ public class BigRobotController : MonoBehaviour
         BigRobotUI.SetActive(false);
         SmallRobotUI.SetActive(true);
         _HealthScript.IsBigRobotInControl = false;
+        
+        if (!_HealthScript.IsBigRobotInControl)
+        {
+            _CorePowerScript.BigRobotHideDeadScreen();
+            _CorePowerScript.StopBigRobotWarning();
+            _CorePowerScript.BigRobotUI.SetActive(false);
+        }
         
     }
 
@@ -300,6 +312,19 @@ public class BigRobotController : MonoBehaviour
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
                 
+            }
+            else if (hit.collider.CompareTag("VoiceRecorder"))
+            {
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+                
+                GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
+                VoiceRecrod.SetActive(true);
+               
             }
         }
     }

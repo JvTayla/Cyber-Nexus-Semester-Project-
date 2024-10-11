@@ -58,7 +58,7 @@ public class UIScript : MonoBehaviour
             {
                textTyper(hit ,"Press E / Sqaure to interact ");
             }
-            else if (hit.collider.CompareTag("Player"))
+            else if (hit.collider.CompareTag("Robot"))
             {
                 textTyper(hit , "Press Tab / L1 anytime to change to Wisp");
             }
@@ -93,7 +93,7 @@ public class UIScript : MonoBehaviour
             {
                 textTyper(hit ,"Press E / Sqaure to interact ");
             }
-            else if (hit.collider.CompareTag("Player"))// plauer tag has problems
+            else if (hit.collider.CompareTag("Robot"))// plauer tag has problems
             {
                 textTyper(hit , "Press Tab / L1 anytime to change to Aurora");
             }
