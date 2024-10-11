@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 public class FirstPersonControls : MonoBehaviour
 {
 
@@ -63,6 +65,12 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject SmallRobotUI;
     public GameObject BigRobotUI;
 
+    [Header("UI SETTINGS")]
+    public TextMeshProUGUI pickUpText;
+    public Image healthBar;
+    public float damageAmount = 0.25f; // Reduce the health bar by this amount
+    private float healAmount = 0.5f;// Fill the health bar by this amount
+
     private HealthScript _HealthScript;
     private SwitchCameraAnimationScript _CameraAnimation;
     private CorePowerScript _CorePowerScript;
@@ -89,7 +97,6 @@ public class FirstPersonControls : MonoBehaviour
 
     private void OnEnable()
     {
-       
         // Create a new instance of the input actions
         var playerInput = new Controls();
 
@@ -126,11 +133,11 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Focus.canceled += ctx => _PuzzleScript.StopInteracting();// Reset Inteact method when interact is canceled
 
         playerInput.Player.TileSelector.performed += ctx => _PuzzleScript.InteractWithPuzzle();
-        //zdas k a
+        
         // Subscribe to the interact input event
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
-        
-        }
+
+    }
 
         playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
         
@@ -180,7 +187,7 @@ public class FirstPersonControls : MonoBehaviour
         }
 
         // Move the character controller based on the movement vector and speed
-        characterController.Move(move * currentSpeed * Time.deltaTime);
+        characterController.Move(move * (currentSpeed * Time.deltaTime));
     }
 
     public void LookAround()
@@ -313,6 +320,33 @@ public class FirstPersonControls : MonoBehaviour
             }
         }
     }
+    private void CheckForPickUp()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+        // Perform raycast to detect objects
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the object has the "PickUp" tag
+            if (hit.collider.CompareTag("PickUp"))
+            {
+                // Display the pick-up text
+                pickUpText.gameObject.SetActive(true);
+                pickUpText.text = hit.collider.gameObject.name;
+            }
+            else
+            {
+                // Hide the pick-up text if not looking at a "PickUp" object
+                pickUpText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            // Hide the text if not looking at any object
+            pickUpText.gameObject.SetActive(false);
+        }
+    }
+
     public void ToggleCrouch()
     {
         if (isCrouching)

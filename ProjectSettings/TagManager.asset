@@ -28,6 +28,7 @@ TagManager:
   - Comp
   - Robot
   - VoiceRecorder
+  - item
   layers:
   - Default
   - TransparentFX

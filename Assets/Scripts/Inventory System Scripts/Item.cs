@@ -23,7 +23,9 @@ public class item : ScriptableObject
     public bool stackable = true;
     [Header("Both")]
     public Sprite image;
-    public Button RemoveItem; 
+    public Button RemoveItem;
+
+    public object transform { get; internal set; }
 }
 
 public enum ItemType
