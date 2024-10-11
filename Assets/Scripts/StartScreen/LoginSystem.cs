@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.UIElements;
+using Unity.Burst.CompilerServices;
 
 public class LogInScript : MonoBehaviour
 /*{
@@ -86,7 +87,7 @@ public class LogInScript : MonoBehaviour
     public GameObject StartButton;
     public GameObject QuitButton;
     public GameObject OptionButton;
-    public GameObject SFXButton;
+    //public GameObject SFXButton;
     public GameObject Timer;
     public GameObject Timer1;
     public GameObject Dashboard;
@@ -94,6 +95,9 @@ public class LogInScript : MonoBehaviour
     public GameObject CorrectPassword;
     public GameObject IncorrectPassword;
     public GameObject InputScreen;
+    public GameObject Hint;
+    public GameObject Light;
+    public GameObject Light2;
 
     // Coroutine to handle the success logic
     public IEnumerator Success()
@@ -115,25 +119,30 @@ public class LogInScript : MonoBehaviour
             alarm.enabled = false;
 
             // Wait for 5 seconds
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(1.5f);
 
             // Turn On Stuff
-            /*StartButton.SetActive(true);
+            StartButton.SetActive(true);
             QuitButton.SetActive(true);
             OptionButton.SetActive(true);
-            SFXButton.SetActive(true);
-            Dashboard.SetActive(true);*/
+            /*SFXButton.SetActive(true);*/
+            Dashboard.SetActive(true);
+            Timer1.SetActive(true);
 
             // Move Things + Scale
-            SwapPositions(Timer, Timer1);
+            /*SwapPositions(Timer, Timer1);
 
-            Timer.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
+            Timer.transform.localScale = new Vector3(1f, 1f, 1f);*/
 
             // Turn Off Stuff
             UserIcon.SetActive(false);
             CorrectPassword.SetActive(false);
             IncorrectPassword.SetActive(false);
             InputScreen.SetActive(false);
+            Hint.SetActive(false);
+            Light.SetActive(false);
+            Light2.SetActive(false);
+            Timer.SetActive(false);
         }
         else
         {
@@ -144,14 +153,14 @@ public class LogInScript : MonoBehaviour
     }
 
 
-    private void SwapPositions(GameObject obj1, GameObject obj2)
+    /*private void SwapPositions(GameObject obj1, GameObject obj2)
     {
         Vector3 tempPosition = obj1.transform.position; // Store position of obj1
         obj1.transform.position = obj2.transform.position; // Swap
         obj2.transform.position = tempPosition; 
 
         Debug.Log($"Swapped positions: {obj1.name} at {obj1.transform.position}, {obj2.name} at {obj2.transform.position}");
-    }
+    }*/
 
 
     // Method to call the Success coroutine when a button is clicked

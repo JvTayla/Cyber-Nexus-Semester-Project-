@@ -6,6 +6,7 @@ using UnityEngine;
 public class ClockTimer : MonoBehaviour
 {
     public TextMeshProUGUI minuteCounterText;
+    public TextMeshProUGUI minuteCounterText2;
     private float timeSpent; // Total time in seconds
     private float elapsedRealTime; // Time elapsed in real seconds
 
@@ -37,6 +38,7 @@ public class ClockTimer : MonoBehaviour
 
         // Update the text display
         minuteCounterText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        minuteCounterText2.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
 
