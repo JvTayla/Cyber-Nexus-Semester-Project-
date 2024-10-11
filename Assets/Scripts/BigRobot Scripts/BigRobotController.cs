@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class BigRobotController : MonoBehaviour
 {
+    public GameObject pauseMenuUI;
+    private Controls playerInput;
+
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
     public float moveSpeed;
@@ -33,6 +38,8 @@ public class BigRobotController : MonoBehaviour
     private bool holdingGun = false;
     public List<item> availableItems = new List<item>();
     public TextMeshProUGUI pickUpText;
+    public TextMeshProUGUI pickUpInstructionText;
+    private string[] interactableTags = { "PickUp", "TestTube", "Chemicals" };
 
 
     [Header("INVENTORY SETTINGS")]
@@ -43,8 +50,8 @@ public class BigRobotController : MonoBehaviour
 
     [Header("PUZZLE3 SETTINGS")]
     [Space(5)]
-    public bool ToggleSwitch; 
-    public GameObject LightOn,LightOff,SwitchOn,SwitchOff;
+    public bool ToggleSwitch;
+    public GameObject LightOn, LightOff, SwitchOn, SwitchOff;
     public float SwitchRange = 5f;
     public GameObject LightOn2, LightOff2, SwitchOn2, SwitchOff2;
 
@@ -64,7 +71,7 @@ public class BigRobotController : MonoBehaviour
     private float tempJumpHeight; // stores a copy of the jump height of the robot for later use
 
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
- 
+
 
 
     [Header("INTERACT SETTINGS")]
@@ -84,25 +91,27 @@ public class BigRobotController : MonoBehaviour
         {
             inventoryManage = InventoryManage.Instance;
         }
+
+        playerInput = new Controls();
     }
 
     private void OnEnable()
     {
-        // Create a new instance of the input actions
-        var playerInput = new Controls();
+        // Create a new instance of the input actions        
 
         // Enable the input actions
         playerInput.Player.Enable();
+        // UiInput.UI.Enable();
 
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
-        
-       // playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
-        
-        
-       // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
-        
+
+        // playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
+
+
+        // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
+
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
         playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
@@ -126,15 +135,22 @@ public class BigRobotController : MonoBehaviour
 
         // Handle inventory toggle
         playerInput.Player.Inventory.performed += ctx => ToggleInventory();
-        playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch(); 
-    } 
+        playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch();
+
+        playerInput.Player.Pause.performed += ctx => PauseGame();
+       
+
+        //UiInput.UI.Navigate.performed += ctx => NavigateUI(ctx.ReadValue<Vector2>());
+        //UiInput.UI.Submit.performed += ctx => SubmitUI();
+        //UiInput.UI.Cancel.performed += ctx => CancelUI();
+    }
 
     private void Update()
     {
         // Call Move and LookAround methods every frame to handle player movement and camera rotation
         Move();
         LookAround();
-        ApplyGravity(); 
+        ApplyGravity();
         CheckForPickUp();
     }
 
@@ -161,6 +177,20 @@ public class BigRobotController : MonoBehaviour
         characterController.Move(move * currentSpeed * Time.deltaTime);
     }
 
+    public void PauseGame()
+    {
+        playerInput.Player.Disable();
+        playerInput.PauseMenu.Enable();
+        pauseMenuUI.SetActive(true);
+    }
+
+
+    public void ResumeScreen()
+    {
+        playerInput.PauseMenu.Disable();
+        playerInput.Player.Enable();
+        pauseMenuUI.SetActive(false);
+    }
     public void LookAround()
     {
         // Get horizontal and vertical look inputs and adjust based on sensitivity
@@ -289,7 +319,7 @@ public class BigRobotController : MonoBehaviour
 
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
-                
+
             }
         }
     }
@@ -312,20 +342,29 @@ public class BigRobotController : MonoBehaviour
 
     // Function to toggle the inventory panel
     public void ToggleInventory()
-    {
+    {   
+        
         isInventoryOpen = !isInventoryOpen;
         inventoryPanel.SetActive(isInventoryOpen); // Toggle panel visibility
-
+        
         if (isInventoryOpen)
         {
-            inventoryManage.ListItems(); // Show the items when inventory is open
+            inventoryManage.ListItems(); // Show the items when inventory is open 
+            playerInput.Inventory.Enable();
+            playerInput.Player.LookAround.Disable(); 
+            playerInput.Player.Movement.Disable();
+           
         }
         else
         {
-            inventoryManage.ClearInventoryDisplay(); // Clear the inventory UI when closing
+            inventoryManage.ClearInventoryDisplay(); // Clear the inventory UI when closing   
+            playerInput.Inventory.Disable();
+            playerInput.Player.LookAround.Enable();
+            playerInput.Player.Movement.Enable();
+
         }
-    } 
-    public void ToggleLaserSwitch () 
+    }
+    public void ToggleLaserSwitch()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
@@ -342,18 +381,18 @@ public class BigRobotController : MonoBehaviour
                     LightOff.SetActive(false);
                     SwitchOn.SetActive(true);
                     SwitchOff.SetActive(false);
-                     
-                   
+
+
                 }
                 if (ToggleSwitch == false)
                 {
                     LightOn.SetActive(false);
                     LightOff.SetActive(true);
                     SwitchOn.SetActive(false);
-                    SwitchOff.SetActive(true); 
-                        
-                    
-                } 
+                    SwitchOff.SetActive(true);
+
+
+                }
 
 
             }
@@ -381,32 +420,52 @@ public class BigRobotController : MonoBehaviour
 
         }
     }
+
     private void CheckForPickUp()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
+
         // Perform raycast to detect objects
         if (Physics.Raycast(ray, out hit, pickUpRange))
         {
-            // Check if the object has the "PickUp" tag
-            if (hit.collider.CompareTag("PickUp"))
+            // Check if the object has any of the specified tags
+            if (IsInteractable(hit.collider.tag))
             {
                 // Display the pick-up text
                 pickUpText.gameObject.SetActive(true);
+                pickUpInstructionText.gameObject.SetActive(true);
                 pickUpText.text = hit.collider.gameObject.name;
             }
             else
             {
-                // Hide the pick-up text if not looking at a "PickUp" object
+                // Hide the pick-up text if not looking at an interactable object
                 pickUpText.gameObject.SetActive(false);
+                pickUpInstructionText.gameObject.SetActive(false);
             }
         }
         else
         {
             // Hide the text if not looking at any object
             pickUpText.gameObject.SetActive(false);
-
         }
     }
- }
+    // Helper function to check if the object's tag is in the interactableTags list
+    private bool IsInteractable(string objectTag)
+    {
+        foreach (string tag in interactableTags)
+        {
+            if (objectTag == tag)
+            {
+                return true;
+            }
+        }
+        return false;
+    } 
 
+
+
+}
+
+
+   
