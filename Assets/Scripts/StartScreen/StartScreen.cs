@@ -54,7 +54,7 @@ public class StartScreen : MonoBehaviour
 
     private IEnumerator Loadstartscreen()
         {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
 
         FirstScreen.SetActive(false);
         Startscreen.SetActive(true);

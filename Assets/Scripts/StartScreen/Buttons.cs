@@ -16,6 +16,9 @@ public class Buttons : MonoBehaviour
     public Animator DoorRS;
     public Animator DoorLS;
 
+    public GameObject GPControls;
+    public GameObject KeyControls;
+   
 
 
     private void Start()
@@ -31,7 +34,11 @@ public class Buttons : MonoBehaviour
 
         anim.SetBool("StartPressed", true);
         playerInput.Player.Disable();
-        
+
+        ControlPanel.SetActive(false);
+        GPControls.SetActive(false);
+        KeyControls.SetActive(false);
+
         Loginscreen.SetActive(false);
 
 
@@ -57,7 +64,9 @@ public class Buttons : MonoBehaviour
         if (ControlPanel != null)
         {
             ControlPanel.SetActive(true);
-            print("StartButtonPressed");
+            print("Controlbuttonyesss");
+            KeyControls.SetActive(true);
+            GPControls.SetActive(false);
         }
         else
         {
@@ -81,4 +90,30 @@ public class Buttons : MonoBehaviour
     {
         StartCoroutine(StartGame());
     }
+
+
+
+    public void BackButton()
+    {
+     
+       ControlPanel.SetActive(false);
+        GPControls.SetActive(false);
+        KeyControls.SetActive(false);
+
+    }
+    public void KeyBoardButton()
+    {
+       KeyControls.SetActive(true);
+       GPControls.SetActive(false) ;
+      
+    }
+    public void GamePadButton()
+    {
+        KeyControls.SetActive(false);
+        GPControls.SetActive(true);
+
+    }
+
+
+
 }
