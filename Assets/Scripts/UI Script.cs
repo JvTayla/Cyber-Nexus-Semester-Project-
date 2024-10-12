@@ -56,11 +56,11 @@ public class UIScript : MonoBehaviour
             else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
                      hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Switch2"))
             {
-               textTyper(hit ,"Press E / Sqaure to interact ");
+               textTyper(hit ,"Press Q / Square to interact ");
             }
             else if (hit.collider.CompareTag("Robot"))
             {
-                textTyper(hit , "Press Tab / L1 anytime to change to Wisp");
+                //textTyper(hit , "Press Tab / L1 anytime to change to Wisp");
             }
             else
             {
@@ -91,11 +91,11 @@ public class UIScript : MonoBehaviour
             else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
                      hit.collider.CompareTag("CanBePicked"))
             {
-                textTyper(hit ,"Press E / Sqaure to interact ");
+                textTyper(hit ,"Press Q / Square to interact ");
             }
-            else if (hit.collider.CompareTag("Robot"))// plauer tag has problems
+            else if (hit.collider.CompareTag("Robot"))// player tag has problems
             {
-                textTyper(hit , "Press Tab / L1 anytime to change to Aurora");
+                //textTyper(hit , "Press Tab / L1 anytime to change to Aurora");
             }
             else
             {
