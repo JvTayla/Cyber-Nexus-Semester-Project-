@@ -39,7 +39,6 @@ public class BigRobotController : MonoBehaviour
     private bool holdingGun = false;
     public List<item> availableItems = new List<item>();
     public TextMeshProUGUI pickUpText;
-    public TextMeshProUGUI pickUpInstructionText;
     private string[] interactableTags = { "PickUp", "TestTube", "Chemicals" };
 
 
@@ -229,7 +228,7 @@ public class BigRobotController : MonoBehaviour
         playerInput.PauseMenu.Disable();
         playerInput.Player.Enable();
         pauseMenuUI.SetActive(false);
-    }
+    } 
     public void LookAround()
     {
         // Get horizontal and vertical look inputs and adjust based on sensitivity
@@ -531,14 +530,14 @@ public class BigRobotController : MonoBehaviour
             {
                 // Display the pick-up text
                 pickUpText.gameObject.SetActive(true);
-                pickUpInstructionText.gameObject.SetActive(true);
+                
                 pickUpText.text = hit.collider.gameObject.name;
             }
             else
             {
                 // Hide the pick-up text if not looking at an interactable object
                 pickUpText.gameObject.SetActive(false);
-                pickUpInstructionText.gameObject.SetActive(false);
+               
             }
         }
         else

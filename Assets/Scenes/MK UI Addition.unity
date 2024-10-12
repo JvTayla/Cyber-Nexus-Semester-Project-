@@ -19666,9 +19666,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: []
+  InventoryItems: []
   itemContent: {fileID: 589690390}
   itemPrefab: {fileID: 7940892443730380600, guid: db6b8cc339552bc4a8559b3bcdf1d28d,
     type: 3}
+  selectedMaterial: {fileID: 0}
 --- !u!1 &849216643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6600829518862294892, guid: 7f37ca56016e2ca42a1d774cb6987695,

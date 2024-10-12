@@ -45,7 +45,7 @@ public class UIScript : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(_BigRobotController.playerCamera.position,
-            _BigRobotController.playerCamera.forward * _BigRobotController.pickUpRange, Color.red, _FirstPersonControls.pickUpRange / 2);
+            _BigRobotController.playerCamera.forward * _BigRobotController.pickUpRange, Color.red, _FirstPersonControls.pickUpRange);
 
         if (Physics.Raycast(ray, out hit, _BigRobotController.pickUpRange / 5))
         {

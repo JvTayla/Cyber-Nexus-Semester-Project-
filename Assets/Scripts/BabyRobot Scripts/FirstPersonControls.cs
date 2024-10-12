@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 public class FirstPersonControls : MonoBehaviour
 {
-
+    public GameObject pauseMenuUI;
+    private Controls playerInput;
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
     // Public variables to set movement and look speed, and the player camera
@@ -93,12 +95,15 @@ public class FirstPersonControls : MonoBehaviour
         _HealthScript = FindObjectOfType<HealthScript>();
         _CameraAnimation = FindObjectOfType<SwitchCameraAnimationScript>();
         _CorePowerScript = FindObjectOfType<CorePowerScript>();
+
+         playerInput = new Controls();
+
     }
 
     private void OnEnable()
     {
         // Create a new instance of the input actions
-        var playerInput = new Controls();
+        
 
         // Enable the input actions
         playerInput.Player.Enable();
@@ -135,9 +140,11 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.TileSelector.performed += ctx => _PuzzleScript.InteractWithPuzzle();
         
         // Subscribe to the interact input event
-        playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch
+        playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch 
 
-    }
+        playerInput.Player.Pause.performed += ctx => PauseGame();
+
+        }
 
         playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
         
@@ -424,6 +431,20 @@ public class FirstPersonControls : MonoBehaviour
             door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
             yield return null; // Wait until the next frame before continuing the loop
         }
+    }
+    public void PauseGame()
+    {
+        playerInput.Player.Disable();
+        playerInput.PauseMenu.Enable();
+        pauseMenuUI.SetActive(true);
+    }
+
+
+    public void ResumeScreenBby()
+    {
+        playerInput.PauseMenu.Disable();
+        playerInput.Player.Enable();
+        pauseMenuUI.SetActive(false);
     }
 
 }
