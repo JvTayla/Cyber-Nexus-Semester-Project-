@@ -17,7 +17,9 @@ public class PuzzleScript : MonoBehaviour
 
     private ColorChangerScript _ColorChangerScript;
 
-    private RedBlinkingLights _RedBlinkingLights;
+   // private RedBlinkingLights _RedBlinkingLights;
+
+    private Alarm Alarm;
 
     private AnimationScript _AnimationScript;
 
@@ -27,7 +29,8 @@ public class PuzzleScript : MonoBehaviour
     {
         _FirstPersonControls = FindObjectOfType<FirstPersonControls>();
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
-        _RedBlinkingLights = FindObjectOfType<RedBlinkingLights>();
+        //_RedBlinkingLights = FindObjectOfType<RedBlinkingLights>();
+        Alarm = FindObjectOfType<Alarm>();
         _SoundScript = FindObjectOfType<SoundScript>();
         // counts the number of children in from the puzzleScreen object which is the parent
         int numPuzzles = puzzleScreen.transform.childCount;
@@ -199,7 +202,8 @@ public class PuzzleScript : MonoBehaviour
             DoorOpener();
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
 
-            _RedBlinkingLights.StopBlinking();
+            //_RedBlinkingLights.StopBlinking();
+            Alarm.StopAlarm();
         }
         
     }
@@ -248,7 +252,8 @@ public class PuzzleScript : MonoBehaviour
             _SoundScript.PlayBackgroundMusic();
             _SoundScript.StopAlarmSound();
                 
-           _RedBlinkingLights.StopBlinking();
+           //_RedBlinkingLights.StopBlinking();
+            Alarm.StopAlarm();
         }
     }
 
