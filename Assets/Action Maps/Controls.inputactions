@@ -443,6 +443,17 @@
                 },
                 {
                     "name": "",
+                    "id": "dc60069e-6b3f-405f-8715-c0be09d9e01d",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TileSelector",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "bcdd60a3-7b90-44ca-8ec0-9a0ee157ebb0",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",

@@ -9,6 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/MK Ui.unity
     path: Assets/Scenes/Other Scenes/CyberNexus2.0LevelDesign.unity
     guid: b200b3eb2882661418503c3f3ee248b4
   m_configObjects: {}

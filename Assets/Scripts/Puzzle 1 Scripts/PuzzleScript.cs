@@ -18,12 +18,17 @@ public class PuzzleScript : MonoBehaviour
     private ColorChangerScript _ColorChangerScript;
 
     private RedBlinkingLights _RedBlinkingLights;
+
+    private AnimationScript _AnimationScript;
+
+    private SoundScript _SoundScript;
     // Start is called before the first frame update
     void Start()
     {
         _FirstPersonControls = FindObjectOfType<FirstPersonControls>();
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
         _RedBlinkingLights = FindObjectOfType<RedBlinkingLights>();
+        _SoundScript = FindObjectOfType<SoundScript>();
         // counts the number of children in from the puzzleScreen object which is the parent
         int numPuzzles = puzzleScreen.transform.childCount;
 
@@ -190,6 +195,7 @@ public class PuzzleScript : MonoBehaviour
             StopInteracting();
             
             //function opens the doors after solving the puzzle
+            //_AnimationScript.PlayBothAnimations();
             DoorOpener();
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
 
@@ -205,11 +211,11 @@ public class PuzzleScript : MonoBehaviour
         if (!IsPuzzleComplete())
         {
             //makes a raycase from the baby camera where the mouse is pointing
-            Ray ray = _FirstPersonControls.babyRobotCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = new Ray(_FirstPersonControls.playerCamera.position, _FirstPersonControls.playerCamera.forward);
             RaycastHit hit;
             
             // Debugging: Draw the ray in the Scene view
-            Debug.DrawRay(ray.origin, ray.direction * 100f, Color.green, 2f);
+            Debug.DrawRay(_FirstPersonControls.playerCamera.position, _FirstPersonControls.playerCamera.forward * _FirstPersonControls.pickUpRange, Color.red, 2f);
 
             
             if (Physics.Raycast(ray, out hit, _FirstPersonControls.pickUpRange*2))
@@ -238,7 +244,10 @@ public class PuzzleScript : MonoBehaviour
             
             //makes the puzzle background green to show the puzzle is complete
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-            
+            _SoundScript.PlayAccessGrantedSound();
+            _SoundScript.PlayBackgroundMusic();
+            _SoundScript.StopAlarmSound();
+                
            _RedBlinkingLights.StopBlinking();
         }
     }

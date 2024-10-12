@@ -13,9 +13,9 @@ public class StartScreen : MonoBehaviour
     public GameObject Startscreen;
     public GameObject LoginScreen;
     public GameObject LoginScreenCam;
-  /*public GameObject StartButton;
+    public GameObject StartButton;
     public GameObject QuitButton;
-    public GameObject OptionButton; */
+    public GameObject OptionButton; 
     public Animator anim;
     public Animator DoorRS;
     public Animator DoorLS;
