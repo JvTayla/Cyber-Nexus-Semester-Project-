@@ -152,6 +152,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Blueprints"",
+                    ""type"": ""Button"",
+                    ""id"": ""a96ab704-0767-4422-a03e-719ca73c79b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -513,7 +522,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard;Gamepad"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -535,7 +544,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -812,6 +821,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Startgame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df48acb0-f43b-4184-a6f7-e4be100d2991"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Blueprints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b45329e2-ba4e-4f92-afb1-9112ba08efc8"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Blueprints"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1131,6 +1162,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Startgame = m_Player.FindAction("Startgame", throwIfNotFound: true);
+        m_Player_Blueprints = m_Player.FindAction("Blueprints", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Movement = m_PauseMenu.FindAction("Movement", throwIfNotFound: true);
@@ -1214,6 +1246,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Startgame;
+    private readonly InputAction m_Player_Blueprints;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -1232,6 +1265,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Startgame => m_Wrapper.m_Player_Startgame;
+        public InputAction @Blueprints => m_Wrapper.m_Player_Blueprints;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1283,6 +1317,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Startgame.started += instance.OnStartgame;
             @Startgame.performed += instance.OnStartgame;
             @Startgame.canceled += instance.OnStartgame;
+            @Blueprints.started += instance.OnBlueprints;
+            @Blueprints.performed += instance.OnBlueprints;
+            @Blueprints.canceled += instance.OnBlueprints;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1329,6 +1366,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Startgame.started -= instance.OnStartgame;
             @Startgame.performed -= instance.OnStartgame;
             @Startgame.canceled -= instance.OnStartgame;
+            @Blueprints.started -= instance.OnBlueprints;
+            @Blueprints.performed -= instance.OnBlueprints;
+            @Blueprints.canceled -= instance.OnBlueprints;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1488,6 +1528,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnStartgame(InputAction.CallbackContext context);
+        void OnBlueprints(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {
