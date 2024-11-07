@@ -74,7 +74,7 @@ public class BigRobotController : MonoBehaviour
     public GameObject SmallRobotUI;
     public GameObject BigRobotUI;
 
-    private bool isMenuMode = true;
+    //private bool isMenuMode = true;
 
     private HealthScript _HealthScript;
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
@@ -82,6 +82,9 @@ public class BigRobotController : MonoBehaviour
     private CorePowerScript _CorePowerScript;
 
 
+    [Header("MAP SETTINGS")]
+    public GameObject Map;
+    public GameObject MapCamera;
 
     [Header("INTERACT SETTINGS")]
     [Space(5)]
@@ -158,6 +161,9 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Pause.performed += ctx => PauseGame();
         playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
 
+
+        playerInput.Player.Blueprints.performed += ctx => MapOpen();
+        playerInput.Player.Blueprints.canceled += ctx => MapClose();
 
         //UiInput.UI.Navigate.performed += ctx => NavigateUI(ctx.ReadValue<Vector2>());
         //UiInput.UI.Submit.performed += ctx => SubmitUI();
@@ -576,6 +582,28 @@ public class BigRobotController : MonoBehaviour
         }
     }
 
+
+    public void MapOpen()
+    {
+        playerInput.Player.Disable();
+        //playerInput.PauseMenu.Enable();
+        Map.SetActive(true);
+        MapCamera.SetActive(true);
+        SmallRobotUI.SetActive(false);
+        BigRobotUI.SetActive(false);
+
+    }
+    public void MapClose()
+    {
+        playerInput.Player.Disable();
+        //playerInput.PauseMenu.Enable();
+        Map.SetActive(true);
+        MapCamera.SetActive(false);
+        SmallRobotUI.SetActive(true);
+        BigRobotUI.SetActive(true);
+        //I need to make it so that all the players are disabled and cannot move when theyre looking at the map , need to make sure that Wisp And Aurora UI is turned off when map is open so players can access the button and close map 
+
+    }
 }
 
 
