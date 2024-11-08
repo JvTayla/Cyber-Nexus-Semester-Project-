@@ -30,6 +30,7 @@ TagManager:
   - VoiceRecorder
   - item
   - SecurityTag
+  - Nuclear Battery
   layers:
   - Default
   - TransparentFX
