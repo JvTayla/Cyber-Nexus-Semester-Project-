@@ -34,10 +34,16 @@ public class HealthScript : MonoBehaviour
     public GameObject MissionFailed;
 
     private SoundScript _SoundScript;
+
+    private FirstPersonControls _FirstPersonControls;
+
+    private RobotController _RobotController;
     // Start is called before the first frame update
     void Start()
     {
         _CorePowerScript = FindObjectOfType<CorePowerScript>();
+        _FirstPersonControls = FindObjectOfType<FirstPersonControls>();
+        _RobotController = FindObjectOfType<RobotController>();
     }
 
     // Update is called once per frame
@@ -236,6 +242,8 @@ public class HealthScript : MonoBehaviour
         if (_CorePowerScript.SmallRobotDead && _CorePowerScript.BigRobotDead)
         {
             MissionFailed.SetActive(true);
+            _FirstPersonControls.playerInput.Player.Disable();
+            _RobotController.playerInput.Player.Disable();
             //_SoundScript.PlayLoseMusic();
         }
     }

@@ -15,12 +15,17 @@ public class RobotController : MonoBehaviour
     public AudioListener AudioListenerBig;
 
     private int counter; // Changed to int for better clarity
-    private Controls playerInput; // Reference to the input actions
+    public Controls playerInput; // Reference to the input actions
 
+    private CorePowerScript _CorePowerScript;
+    private HealthScript _HealthScript;
     private void Awake()
     {
         // Create a new instance of the input actions
         playerInput = new Controls();
+        
+        _CorePowerScript = FindObjectOfType<CorePowerScript>();
+        _HealthScript = FindObjectOfType<HealthScript>();
     }
 
     private void OnEnable()
@@ -52,6 +57,18 @@ public class RobotController : MonoBehaviour
             FirstPersonControls.enabled = true;
             AudioListenerLil.enabled = true;
             AudioListenerBig.enabled = false;
+            
+            _CorePowerScript.BigRobotUI.SetActive(false);
+            _CorePowerScript.SmallRobotUI.SetActive(true);
+            _HealthScript.IsBigRobotInControl = false;
+        
+            if (!_HealthScript.IsBigRobotInControl)
+            {
+                _CorePowerScript.BigRobotHideDeadScreen();
+                _CorePowerScript.StopBigRobotWarning();
+                _CorePowerScript.BigRobotUI.SetActive(false);
+            }
+            
         }
         else if (counter == 2)
         {
@@ -63,6 +80,20 @@ public class RobotController : MonoBehaviour
             AudioListenerLil.enabled = false;
             AudioListenerBig.enabled = true;
             counter = 0; // Reset the counter after switching
+            
+            
+            _CorePowerScript.SmallRobotUI.SetActive(false);
+            _CorePowerScript.BigRobotUI.SetActive(true);
+        
+            _HealthScript.IsBigRobotInControl = true;
+
+            if (_HealthScript.IsBigRobotInControl)
+            {
+                _CorePowerScript.SmallRobotHideDeadScreen();
+                _CorePowerScript.StopSmallRobotWarning();
+                _CorePowerScript.SmallRobotUI.SetActive(false);
+            
+            }
         }
     }
 }

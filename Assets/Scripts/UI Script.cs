@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+using System.IO;
+
+
 public class UIScript : MonoBehaviour
 {
     private FirstPersonControls _FirstPersonControls;
@@ -15,6 +18,8 @@ public class UIScript : MonoBehaviour
     private string lastDetectedObjectName = ""; // Track the last detected object name
 
     private HealthScript _HealthScript;
+
+    private string Subtitles = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +27,7 @@ public class UIScript : MonoBehaviour
         _FirstPersonControls = FindAnyObjectByType<FirstPersonControls>();
         uiText.enabled = false; // Initially hide the text
         _HealthScript = FindObjectOfType<HealthScript>();
+        LoadSubtitles();
     }
 
     // Update is called once per frame
@@ -34,6 +40,11 @@ public class UIScript : MonoBehaviour
         else
         {
             SmallRobotUIRayCast(); 
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Return)) // Checks if the Enter key is pressed
+        {
+            DisplayNextLine();
         }
         
     }
@@ -168,6 +179,36 @@ public class UIScript : MonoBehaviour
         }
     }
     
+    public string filePath = "Assets/Subtitles/subtitles.txt"; // Path to your text file
+    private List<string> subtitles = new List<string>();
+    private int currentLineIndex = 0;
+
+    void LoadSubtitles()
+    {
+        if (File.Exists(filePath))
+        {
+            subtitles.AddRange(File.ReadAllLines(filePath));
+            Debug.Log("Subtitles loaded successfully.");
+        }
+        else
+        {
+            Debug.LogError("Subtitle file not found at " + filePath);
+        }
+    }
+
+    void DisplayNextLine()
+    {
+        if (currentLineIndex < subtitles.Count)
+        {
+            Debug.Log(subtitles[currentLineIndex]); // Replace with your subtitle display logic (e.g., UI text element)
+            
+            currentLineIndex++;
+        }
+        else
+        {
+            Debug.Log("End of subtitles.");
+        }
+    }
     //Fix raycast Ui
     //Make cutscenes
     //Pause menu

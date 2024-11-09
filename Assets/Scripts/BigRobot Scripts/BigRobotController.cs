@@ -151,7 +151,7 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Interact.performed += ctx => ToggleLaserSwitch(); // press F
 
         playerInput.Player.Pause.performed += ctx => PauseGame();
-        playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+        //playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
 
 
         //UiInput.UI.Navigate.performed += ctx => NavigateUI(ctx.ReadValue<Vector2>());

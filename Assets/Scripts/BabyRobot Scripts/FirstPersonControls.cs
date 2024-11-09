@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class FirstPersonControls : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    private Controls playerInput;
+    public Controls playerInput;
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
     // Public variables to set movement and look speed, and the player camera
@@ -107,49 +107,55 @@ public class FirstPersonControls : MonoBehaviour
 
         // Enable the input actions
         playerInput.Player.Enable();
-        
-      //if (!_CorePowerScript.SmallRobotDead)
+
+      //  if (!_CorePowerScript.SmallRobotDead)
        // {
-                    // Subscribe to the movement input events
-        playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
-        playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
-        
-       // playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
-       // playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
-        
-        // Subscribe to the look input events
-        playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
-        playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
+            // Subscribe to the movement input events
+            playerInput.Player.Movement.performed +=
+                ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
+            playerInput.Player.Movement.canceled +=
+                ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
 
-        // Subscribe to the jump input event
-        playerInput.Player.Jump.performed += ctx => Jump(); // Call the Jump method when jump input is performed
+            // playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
+            // playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
 
-        // Subscribe to the shoot input event
-        playerInput.Player.Shoot.performed += ctx => Shoot(); // Call the Shoot method when shoot input is performed
+            // Subscribe to the look input events
+            playerInput.Player.LookAround.performed +=
+                ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
+            playerInput.Player.LookAround.canceled +=
+                ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
 
-        // Subscribe to the pick-up input event
-        playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
+            // Subscribe to the jump input event
+            playerInput.Player.Jump.performed += ctx => Jump(); // Call the Jump method when jump input is performed
 
-        // Subscribe to the crouch input event
-        playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
+            // Subscribe to the shoot input event
+            playerInput.Player.Shoot.performed += ctx => Shoot(); // Call the Shoot method when shoot input is performed
 
-        // Subscribe to the interact input event
-        playerInput.Player.Focus.performed += ctx => _PuzzleScript.IntertactWithObject(); // Call the Interact method when interact input is performed
-        playerInput.Player.Focus.canceled += ctx => _PuzzleScript.StopInteracting();// Reset Inteact method when interact is canceled
+            // Subscribe to the pick-up input event
+            playerInput.Player.PickUp.performed +=
+                ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
 
-        playerInput.Player.TileSelector.performed += ctx => _PuzzleScript.InteractWithPuzzle();
-        
-        // Subscribe to the interact input event
-        playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch 
+            // Subscribe to the crouch input event
+            playerInput.Player.Crouch.performed +=
+                ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
 
-        playerInput.Player.Pause.performed += ctx => PauseGame();
-        
-        playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
+            // Subscribe to the interact input event
+            playerInput.Player.Focus.performed +=
+                ctx => _PuzzleScript.IntertactWithObject(); // Call the Interact method when interact input is performed
+            playerInput.Player.Focus.canceled +=
+                ctx => _PuzzleScript.StopInteracting(); // Reset Inteact method when interact is canceled
 
-       
+            playerInput.Player.TileSelector.performed += ctx => _PuzzleScript.InteractWithPuzzle();
 
-        
-        
+            // Subscribe to the interact input event
+            playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch 
+
+            playerInput.Player.Pause.performed += ctx => PauseGame();
+
+           // playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
+
+        //}
+
     }
 
     private void Update()
