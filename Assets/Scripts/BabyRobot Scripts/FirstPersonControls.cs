@@ -23,6 +23,12 @@ public class FirstPersonControls : MonoBehaviour
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
 
+    [Header("ANIM SETTINGS")]
+
+    public bool IsWalking;
+    public bool IsJumping;
+    public Animator animator;
+
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
     public GameObject projectilePrefab; // Projectile prefab for shooting
@@ -192,16 +198,43 @@ public class FirstPersonControls : MonoBehaviour
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
+        if (moveInput.x == 0 && moveInput.y == 0)
+        {
+            IsWalking = false;
+            // velocity = 0f;
+            if (IsWalking == false)
+            {
+                animator.SetBool("IsWalking", false);
+            }
+
+
+
+        }
+        else
+        {
+            
+            IsWalking = true;
+           
+            if (IsWalking == true)
+            {
+                animator.SetBool("IsWalking", true);
+            }
+        }
+
         //Adjust speed if crouching
         float currentSpeed;
         if (isCrouching)
         {
             currentSpeed = crouchSpeed;
+           
         }
         else
         {
             currentSpeed = moveSpeed;
+        
         }
+
+   
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * (currentSpeed * Time.deltaTime));
@@ -241,9 +274,31 @@ public class FirstPersonControls : MonoBehaviour
         {
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            IsJumping = true;
+            //StartCoroutine(PlayCould());
+            animator.SetBool("IsJumping", true);
         }
+
+        if (IsJumping == true)
+        {
+            //Debug.Log("jumping");
+            StartCoroutine(StopJump());
+        }
+
+        if (IsJumping == false)
+        {
+            //animator.SetBool("Jumpingis", false);
+
+        }
+
     }
 
+    public IEnumerator StopJump()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("IsJumping", false);
+        IsJumping = false;
+    }
     public void Shoot()
     {
         if (holdingGun == true)

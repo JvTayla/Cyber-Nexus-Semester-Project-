@@ -24,6 +24,11 @@ public class BigRobotController : MonoBehaviour
     private float horizontalLookRotaion = 0f;
     private Vector3 velocity;
     private CharacterController characterController;
+    [Header("ANIM SETTINGS")]
+
+    public bool IsBWalking;
+    public bool IsBJumping;
+    public Animator animator;
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -206,6 +211,28 @@ public class BigRobotController : MonoBehaviour
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
+        if (moveInput.x == 0 && moveInput.y == 0)
+        {
+            IsBWalking = false;
+            // velocity = 0f;
+            if (IsBWalking == false)
+            {
+                animator.SetBool("IsBWalking", false);
+            }
+
+
+
+        }
+        else
+        {
+
+            IsBWalking = true;
+
+            if (IsBWalking == true)
+            {
+                animator.SetBool("IsBWalking", true);
+            }
+        }
         //Adjust speed if crouching
         float currentSpeed;
         if (isCrouching)
@@ -268,10 +295,32 @@ public class BigRobotController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
+            // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            IsBJumping = true;
+            //StartCoroutine(PlayCould());
+            animator.SetBool("IsBJumping", true);
         }
-    }
 
+        if (IsBJumping == true)
+        {
+            //Debug.Log("jumping");
+            StartCoroutine(StopJump());
+        }
+
+        if (IsBJumping == false)
+        {
+            //animator.SetBool("Jumpingis", false);
+
+        }
+
+    }
+    public IEnumerator StopJump()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("IsBJumping", false);
+        IsBJumping = false;
+    }
     public void Shoot()
     {
         if (holdingGun == true)
