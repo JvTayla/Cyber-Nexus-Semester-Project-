@@ -41,8 +41,8 @@ TagManager:
   - Ground
   - IgnorBigRobot
   - IgnorBabyRobot
-  - 
-  - 
+  - IgnoreHead
+  - IgnoreBigHead
   - 
   - 
   - 
