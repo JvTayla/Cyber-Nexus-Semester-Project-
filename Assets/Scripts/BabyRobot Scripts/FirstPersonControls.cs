@@ -295,7 +295,8 @@ public class FirstPersonControls : MonoBehaviour
 
     public IEnumerator StopJump()
     {
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(2f);
         animator.SetBool("IsJumping", false);
         IsJumping = false;
     }

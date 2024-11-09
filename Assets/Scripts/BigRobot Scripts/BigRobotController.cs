@@ -308,16 +308,16 @@ public class BigRobotController : MonoBehaviour
             StartCoroutine(StopJump());
         }
 
-        if (IsBJumping == false)
+        /*if (IsBJumping == false)
         {
             //animator.SetBool("Jumpingis", false);
 
-        }
+        }*/
 
     }
     public IEnumerator StopJump()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         animator.SetBool("IsBJumping", false);
         IsBJumping = false;
     }
