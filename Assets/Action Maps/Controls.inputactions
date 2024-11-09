@@ -130,6 +130,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Blueprints",
+                    "type": "Button",
+                    "id": "a96ab704-0767-4422-a03e-719ca73c79b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -491,7 +500,7 @@
                     "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard;Gamepad",
+                    "groups": "Gamepad",
                     "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -513,7 +522,7 @@
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -790,6 +799,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Startgame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df48acb0-f43b-4184-a6f7-e4be100d2991",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Blueprints",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b45329e2-ba4e-4f92-afb1-9112ba08efc8",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Blueprints",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -29,10 +29,8 @@ TagManager:
   - Robot
   - VoiceRecorder
   - item
-  - BabyRobot
-  - BigRobot
-  - Jump Tag
-  - Crouch Tag
+  - SecurityTag
+  - Nuclear Battery
   layers:
   - Default
   - TransparentFX

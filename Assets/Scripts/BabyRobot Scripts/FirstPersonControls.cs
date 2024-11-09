@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class FirstPersonControls : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    public Controls playerInput;
+    private Controls playerInput;
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
     // Public variables to set movement and look speed, and the player camera
@@ -23,6 +23,12 @@ public class FirstPersonControls : MonoBehaviour
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
 
+    [Header("ANIM SETTINGS")]
+
+    public bool IsWalking;
+    public bool IsJumping;
+    public Animator animator;
+
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
     public GameObject projectilePrefab; // Projectile prefab for shooting
@@ -36,7 +42,7 @@ public class FirstPersonControls : MonoBehaviour
     public float pickUpRange = 3f; // Range within which objects can be picked up
     private bool holdingGun = false;
     public item Item;
-    
+
     [Header("CROUCH SETTINGS")]
     [Space(5)]
     public float crouchHeight = 1f; //make short
@@ -50,11 +56,11 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject Player;//Gameobject of the small robot
     public Camera babyRobotCamera;//Camera of the small robot
     private PuzzleScript _PuzzleScript;// Reference to the puzzle script
-    
+
     public float tempSpeed;//stores a copy of the speed of the robot for later use
     public float tempLookAroundSpeed; // stores a copy of the speed of the mouse speed for later use
     public float tempJumpHeight; // stores a copy of the jump height of the robot for later use
-    
+
     private ColorChangerScript _ColorChangerScript; //reference to the colorchangescript
     private SmallRobotHeadBobbing _SmallRobotHeadBobbing;
 
@@ -62,8 +68,8 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
-    
-    [Header("UI")] 
+
+    [Header("UI")]
     public GameObject SmallRobotUI;
     public GameObject BigRobotUI;
 
@@ -76,14 +82,20 @@ public class FirstPersonControls : MonoBehaviour
     private HealthScript _HealthScript;
     private SwitchCameraAnimationScript _CameraAnimation;
     private CorePowerScript _CorePowerScript;
+
+    [Header("MAP SETTINGS")]
+    public GameObject Map;
+    public GameObject MapCamera;
+
+
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
         characterController = GetComponent<CharacterController>();
-        
+
         //Gets all the public functions and variables in the puzzlescript
         _PuzzleScript = FindObjectOfType<PuzzleScript>();
-        
+
         //store the robot data in temp data for later use
         tempSpeed = moveSpeed;
         tempLookAroundSpeed = lookSpeed;
@@ -96,14 +108,14 @@ public class FirstPersonControls : MonoBehaviour
         _CameraAnimation = FindObjectOfType<SwitchCameraAnimationScript>();
         _CorePowerScript = FindObjectOfType<CorePowerScript>();
 
-         playerInput = new Controls();
+        playerInput = new Controls();
 
     }
 
     private void OnEnable()
     {
         // Create a new instance of the input actions
-        
+
 
         // Enable the input actions
         playerInput.Player.Enable();
@@ -125,6 +137,19 @@ public class FirstPersonControls : MonoBehaviour
             playerInput.Player.LookAround.canceled +=
                 ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
 
+        if (!_CorePowerScript.SmallRobotDead)
+        {
+            // Subscribe to the movement input events
+            playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
+            playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
+
+            playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
+            playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
+
+            // Subscribe to the look input events
+            playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
+            playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
+
             // Subscribe to the jump input event
             playerInput.Player.Jump.performed += ctx => Jump(); // Call the Jump method when jump input is performed
 
@@ -134,16 +159,23 @@ public class FirstPersonControls : MonoBehaviour
             // Subscribe to the pick-up input event
             playerInput.Player.PickUp.performed +=
                 ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
+            // Subscribe to the pick-up input event
+            playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
 
             // Subscribe to the crouch input event
             playerInput.Player.Crouch.performed +=
                 ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
+            // Subscribe to the crouch input event
+            playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
 
             // Subscribe to the interact input event
             playerInput.Player.Focus.performed +=
                 ctx => _PuzzleScript.IntertactWithObject(); // Call the Interact method when interact input is performed
             playerInput.Player.Focus.canceled +=
                 ctx => _PuzzleScript.StopInteracting(); // Reset Inteact method when interact is canceled
+            // Subscribe to the interact input event
+            playerInput.Player.Focus.performed += ctx => _PuzzleScript.IntertactWithObject(); // Call the Interact method when interact input is performed
+            playerInput.Player.Focus.canceled += ctx => _PuzzleScript.StopInteracting();// Reset Inteact method when interact is canceled
 
             playerInput.Player.TileSelector.performed += ctx => _PuzzleScript.InteractWithPuzzle();
 
@@ -152,8 +184,15 @@ public class FirstPersonControls : MonoBehaviour
 
             playerInput.Player.Pause.performed += ctx => PauseGame();
 
+            playerInput.Player.Blueprints.performed += ctx => MapOpen();
+            playerInput.Player.Blueprints.canceled += ctx => MapClose();
+
+        }
            // playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
 
+        playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
+
+       
         //}
 
     }
@@ -166,6 +205,7 @@ public class FirstPersonControls : MonoBehaviour
         ApplyGravity();
     }
  //Move to robot controller   
+
     private void SwitchToAurora()
     {
         // _CameraAnimation.SwitchToBigRobot();
@@ -179,9 +219,9 @@ public class FirstPersonControls : MonoBehaviour
             _CorePowerScript.SmallRobotHideDeadScreen();
             _CorePowerScript.StopSmallRobotWarning();
             _CorePowerScript.SmallRobotUI.SetActive(false);
-            
+
         }
-        
+
     }
     
     public void Move()
@@ -192,16 +232,43 @@ public class FirstPersonControls : MonoBehaviour
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
+        if (moveInput.x == 0 && moveInput.y == 0)
+        {
+            IsWalking = false;
+            // velocity = 0f;
+            if (IsWalking == false)
+            {
+                animator.SetBool("IsWalking", false);
+            }
+
+
+
+        }
+        else
+        {
+            
+            IsWalking = true;
+           
+            if (IsWalking == true)
+            {
+                animator.SetBool("IsWalking", true);
+            }
+        }
+
         //Adjust speed if crouching
         float currentSpeed;
         if (isCrouching)
         {
             currentSpeed = crouchSpeed;
+           
         }
         else
         {
             currentSpeed = moveSpeed;
+        
         }
+
+   
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * (currentSpeed * Time.deltaTime));
@@ -241,9 +308,32 @@ public class FirstPersonControls : MonoBehaviour
         {
             // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            IsJumping = true;
+            //StartCoroutine(PlayCould());
+            animator.SetBool("IsJumping", true);
         }
+
+        if (IsJumping == true)
+        {
+            //Debug.Log("jumping");
+            StartCoroutine(StopJump());
+        }
+
+        if (IsJumping == false)
+        {
+            //animator.SetBool("Jumpingis", false);
+
+        }
+
     }
 
+    public IEnumerator StopJump()
+    {
+
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("IsJumping", false);
+        IsJumping = false;
+    }
     public void Shoot()
     {
         if (holdingGun == true)
@@ -260,7 +350,7 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
-       public void PickUpObject()
+    public void PickUpObject()
     {
         // Check if we are already holding an object
         if (heldObject != null)
@@ -312,15 +402,15 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject = hit.collider.gameObject;
                 heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
                 InventoryManage.Instance.SpawnItem(Item);
-                
-                
+
+
                 // Attach the object to the hold position
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
-                
+
                 heldObject.SetActive(false);
-              
+
             }
             else if (hit.collider.CompareTag("VoiceRecorder"))
             {
@@ -330,10 +420,10 @@ public class FirstPersonControls : MonoBehaviour
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
-                
-                GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
+
+                GameObject VoiceRecrod = hit.collider.transform.GetChild(0).gameObject;
                 VoiceRecrod.SetActive(true);
-               
+
             }
         }
     }
@@ -379,8 +469,8 @@ public class FirstPersonControls : MonoBehaviour
             isCrouching = true;
         }
     }
-    
-    
+
+
 
 
     //public Material White;
@@ -412,7 +502,7 @@ public class FirstPersonControls : MonoBehaviour
                 }
             }
 
-            else if (hit.collider.CompareTag("Comp")) 
+            else if (hit.collider.CompareTag("Comp"))
             {
                 Debug.Log("hit");
                 consultCount++;
@@ -426,7 +516,7 @@ public class FirstPersonControls : MonoBehaviour
         }
     }
 
-    
+
     private IEnumerator RaiseDoor(GameObject door)
     {
         float raiseAmount = 5f; // The total distance the door will be raised
@@ -455,6 +545,26 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.PauseMenu.Disable();
         playerInput.Player.Enable();
         pauseMenuUI.SetActive(false);
+    }
+
+
+    public void MapOpen()
+    {
+        playerInput.Player.Disable();
+        //playerInput.PauseMenu.Enable();
+        Map.SetActive(true);
+        MapCamera.SetActive(true);
+        SmallRobotUI.SetActive(false);
+        BigRobotUI.SetActive(false);
+    }
+    public void MapClose()
+    {
+        playerInput.Player.Disable();
+        //playerInput.PauseMenu.Enable();
+        Map.SetActive(true);
+        MapCamera.SetActive(false);
+        SmallRobotUI.SetActive(true);
+        BigRobotUI.SetActive(true);
     }
 
 }

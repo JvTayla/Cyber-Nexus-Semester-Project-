@@ -24,6 +24,11 @@ public class BigRobotController : MonoBehaviour
     private float horizontalLookRotaion = 0f;
     private Vector3 velocity;
     private CharacterController characterController;
+    [Header("ANIM SETTINGS")]
+
+    public bool IsBWalking;
+    public bool IsBJumping;
+    public Animator animator;
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -74,7 +79,7 @@ public class BigRobotController : MonoBehaviour
     public GameObject SmallRobotUI;
     public GameObject BigRobotUI;
 
-    private bool isMenuMode = true;
+    //private bool isMenuMode = true;
 
     private HealthScript _HealthScript;
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
@@ -82,6 +87,9 @@ public class BigRobotController : MonoBehaviour
     private CorePowerScript _CorePowerScript;
 
 
+    [Header("MAP SETTINGS")]
+    public GameObject Map;
+    public GameObject MapCamera;
 
     [Header("INTERACT SETTINGS")]
     [Space(5)]
@@ -154,6 +162,9 @@ public class BigRobotController : MonoBehaviour
         //playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
 
 
+        playerInput.Player.Blueprints.performed += ctx => MapOpen();
+        playerInput.Player.Blueprints.canceled += ctx => MapClose();
+
         //UiInput.UI.Navigate.performed += ctx => NavigateUI(ctx.ReadValue<Vector2>());
         //UiInput.UI.Submit.performed += ctx => SubmitUI();
         //UiInput.UI.Cancel.performed += ctx => CancelUI();
@@ -195,6 +206,28 @@ public class BigRobotController : MonoBehaviour
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
+        if (moveInput.x == 0 && moveInput.y == 0)
+        {
+            IsBWalking = false;
+            // velocity = 0f;
+            if (IsBWalking == false)
+            {
+                animator.SetBool("IsBWalking", false);
+            }
+
+
+
+        }
+        else
+        {
+
+            IsBWalking = true;
+
+            if (IsBWalking == true)
+            {
+                animator.SetBool("IsBWalking", true);
+            }
+        }
         //Adjust speed if crouching
         float currentSpeed;
         if (isCrouching)
@@ -257,10 +290,32 @@ public class BigRobotController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
+            // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            IsBJumping = true;
+            //StartCoroutine(PlayCould());
+            animator.SetBool("IsBJumping", true);
         }
-    }
 
+        if (IsBJumping == true)
+        {
+            //Debug.Log("jumping");
+            StartCoroutine(StopJump());
+        }
+
+        /*if (IsBJumping == false)
+        {
+            //animator.SetBool("Jumpingis", false);
+
+        }*/
+
+    }
+    public IEnumerator StopJump()
+    {
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("IsBJumping", false);
+        IsBJumping = false;
+    }
     public void Shoot()
     {
         if (holdingGun == true)
@@ -571,6 +626,28 @@ public class BigRobotController : MonoBehaviour
         }
     }
 
+
+    public void MapOpen()
+    {
+        playerInput.Player.Disable();
+        //playerInput.PauseMenu.Enable();
+        Map.SetActive(true);
+        MapCamera.SetActive(true);
+        SmallRobotUI.SetActive(false);
+        BigRobotUI.SetActive(false);
+
+    }
+    public void MapClose()
+    {
+        playerInput.Player.Disable();
+        //playerInput.PauseMenu.Enable();
+        Map.SetActive(true);
+        MapCamera.SetActive(false);
+        SmallRobotUI.SetActive(true);
+        BigRobotUI.SetActive(true);
+        //I need to make it so that all the players are disabled and cannot move when theyre looking at the map , need to make sure that Wisp And Aurora UI is turned off when map is open so players can access the button and close map 
+
+    }
 }
 
 
