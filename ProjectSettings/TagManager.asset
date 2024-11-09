@@ -29,6 +29,10 @@ TagManager:
   - Robot
   - VoiceRecorder
   - item
+  - BabyRobot
+  - BigRobot
+  - Jump Tag
+  - Crouch Tag
   layers:
   - Default
   - TransparentFX

@@ -108,14 +108,14 @@ public class FirstPersonControls : MonoBehaviour
         // Enable the input actions
         playerInput.Player.Enable();
         
-        if (!_CorePowerScript.SmallRobotDead)
-        {
+      //if (!_CorePowerScript.SmallRobotDead)
+       // {
                     // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
-        playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
-        playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
+       // playerInput.Player.Movement.performed += ctx => _SmallRobotHeadBobbing.StartBobbing();
+       // playerInput.Player.Movement.canceled += ctx => _SmallRobotHeadBobbing.StopBobbing();
         
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
@@ -143,10 +143,12 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Interact.performed += ctx => Interact(); // Interact with switch 
 
         playerInput.Player.Pause.performed += ctx => PauseGame();
-
-        }
-
+        
         playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
+
+       
+
+        
         
     }
 
@@ -157,12 +159,13 @@ public class FirstPersonControls : MonoBehaviour
         LookAround();
         ApplyGravity();
     }
-    
+ //Move to robot controller   
     private void SwitchToAurora()
     {
         // _CameraAnimation.SwitchToBigRobot();
-        BigRobotUI.SetActive(true);
-        SmallRobotUI.SetActive(false);
+        _CorePowerScript.SmallRobotUI.SetActive(false);
+        _CorePowerScript.BigRobotUI.SetActive(true);
+        
         _HealthScript.IsBigRobotInControl = true;
 
         if (_HealthScript.IsBigRobotInControl)
@@ -174,6 +177,7 @@ public class FirstPersonControls : MonoBehaviour
         }
         
     }
+    
     public void Move()
     {
         // Create a movement vector based on the input

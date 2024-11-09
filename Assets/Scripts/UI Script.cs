@@ -42,12 +42,13 @@ public class UIScript : MonoBehaviour
     private void BigRobotUIRayCast()
     {
         Ray ray = new Ray(_BigRobotController.playerCamera.position, _BigRobotController.playerCamera.forward);
+        Ray Jumpray = new Ray(_BigRobotController.playerCamera.position, -_BigRobotController.playerCamera.up); 
         RaycastHit hit;
 
         Debug.DrawRay(_BigRobotController.playerCamera.position,
             _BigRobotController.playerCamera.forward * _BigRobotController.pickUpRange, Color.red, _FirstPersonControls.pickUpRange);
 
-        if (Physics.Raycast(ray, out hit, _BigRobotController.pickUpRange / 5))
+        if (Physics.Raycast(ray, out hit, _BigRobotController.pickUpRange / 5) || Physics.Raycast(Jumpray, out hit, _BigRobotController.pickUpRange))
         {
             if (hit.collider.CompareTag("Door"))
             {
@@ -58,9 +59,17 @@ public class UIScript : MonoBehaviour
             {
                textTyper(hit ,"Press Q / Square to interact ");
             }
-            else if (hit.collider.CompareTag("Robot"))
+            else if (hit.collider.CompareTag("BabyRobot"))
             {
-                //textTyper(hit , "Press Tab / L1 anytime to change to Wisp");
+                textTyper(hit , "Press Tab / L1 anytime to change to Wisp");
+            }
+            else  if (hit.collider.CompareTag("Jump Tag"))
+            {
+                textTyper(hit , "Press Space / X anytime to Jump");
+            }
+            else  if (hit.collider.CompareTag("Crouch Tag"))
+            {
+                textTyper(hit , "Press Ctrl / R3 anytime to Jump");
             }
             else
             {
@@ -71,6 +80,7 @@ public class UIScript : MonoBehaviour
         {
             HideText();
         }
+        
     }
 
     // Handles Small Robot's raycast
@@ -93,9 +103,9 @@ public class UIScript : MonoBehaviour
             {
                 textTyper(hit ,"Press Q / Square to interact ");
             }
-            else if (hit.collider.CompareTag("Robot"))// player tag has problems
+            else if (hit.collider.CompareTag("BigRobot"))
             {
-                //textTyper(hit , "Press Tab / L1 anytime to change to Aurora");
+                textTyper(hit , "Press Tab / L1 anytime to change to Aurora");
             }
             else
             {

@@ -118,15 +118,10 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
-        playerInput.Player.Movement.performed += ctx => _BigRobotHeadBobbingHead.StartBobbing();
-        playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
+        //playerInput.Player.Movement.performed += ctx => _BigRobotHeadBobbingHead.StartBobbing();
+       // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
         
-
-        // playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
-
-
-        // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
-
+        
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
         playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
@@ -165,12 +160,12 @@ public class BigRobotController : MonoBehaviour
     }
        
     
-
+//move to Robot controller
     private void SwitchToWisp()
     {
         //_CameraAnimation.SwitchToSmallRobot();
-        BigRobotUI.SetActive(false);
-        SmallRobotUI.SetActive(true);
+        _CorePowerScript.BigRobotUI.SetActive(false);
+        _CorePowerScript.SmallRobotUI.SetActive(true);
         _HealthScript.IsBigRobotInControl = false;
         
         if (!_HealthScript.IsBigRobotInControl)
