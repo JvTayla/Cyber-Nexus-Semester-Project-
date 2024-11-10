@@ -2408,6 +2408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiText: {fileID: 1139664106}
   filePath: Assets/Subtitles/subtitles.txt
+  filePath2: Assets/Subtitles/subtitles2.txt
 --- !u!114 &147386048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4170,7 +4171,7 @@ Canvas:
   m_GameObject: {fileID: 232831511}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1458374527}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -4211,7 +4212,7 @@ PrefabInstance:
     - target: {fileID: 1845421741767541630, guid: 838b30e43ff500443b0c2f4c4a7bed70,
         type: 3}
       propertyPath: m_TagString
-      value: Robot
+      value: BabyRobot
       objectReference: {fileID: 0}
     - target: {fileID: 3255306506927110505, guid: 838b30e43ff500443b0c2f4c4a7bed70,
         type: 3}
@@ -9187,7 +9188,7 @@ Canvas:
   m_GameObject: {fileID: 496842788}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1458374527}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -40025,6 +40026,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1783899357}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f7e60727eda71824481f639c3e7e043c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783899361}
   m_SourcePrefab: {fileID: 100100000, guid: f7e60727eda71824481f639c3e7e043c, type: 3}
 --- !u!1 &1754496160 stripped
 GameObject:
@@ -40643,6 +40648,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.010272422, y: 0.010405341, z: 0.01938194}
   m_Center: {x: 2.4301317e-17, y: -0.000000014901161, z: -0.0012512485}
+--- !u!54 &1783899361
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783899353}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1788967132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101224,7 +101256,7 @@ PrefabInstance:
     - target: {fileID: 4644783941581962748, guid: f7a407395c1e94946827466c49f75728,
         type: 3}
       propertyPath: m_TagString
-      value: Robot
+      value: BigRobot
       objectReference: {fileID: 0}
     - target: {fileID: 4721365204089213722, guid: f7a407395c1e94946827466c49f75728,
         type: 3}
