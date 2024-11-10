@@ -18,7 +18,7 @@ public class RobotController : MonoBehaviour
     public Animator LittleRobotAnim;
 
 
-    private int counter; // Changed to int for better clarity
+    public int counter; // Changed to int for better clarity
     public Controls playerInput; // Reference to the input actions
 
     private CorePowerScript _CorePowerScript;
@@ -61,8 +61,8 @@ public class RobotController : MonoBehaviour
             FirstPersonControls.enabled = true;
             AudioListenerLil.enabled = true;
             AudioListenerBig.enabled = false;
-            BigRobotAnim.SetBool("IsBWalking", false);
-            BigRobotAnim.SetBool("IsBJumping", false);
+//            BigRobotAnim.SetBool("IsBWalking", false);
+//            BigRobotAnim.SetBool("IsBJumping", false);
             
             _CorePowerScript.BigRobotUI.SetActive(false);
             _CorePowerScript.SmallRobotUI.SetActive(true);
@@ -86,8 +86,8 @@ public class RobotController : MonoBehaviour
             AudioListenerLil.enabled = false;
             AudioListenerBig.enabled = true;
             counter = 0; // Reset the counter after switching
-            LittleRobotAnim.SetBool("IsWalking", false);
-            LittleRobotAnim.SetBool("IsJumping", false);
+           // LittleRobotAnim.SetBool("IsWalking", false);
+           // LittleRobotAnim.SetBool("IsJumping", false);
 
             
             

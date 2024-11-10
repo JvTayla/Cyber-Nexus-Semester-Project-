@@ -161,6 +161,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextLine"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f65c9ac-9194-4acc-99f7-e16ed2a673e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -845,6 +854,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Blueprints"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1042077f-6c67-49c0-bdca-4d4cdfa1378a"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""NextLine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cc6b585-7d8f-4646-becc-86a65f76817b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NextLine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1163,6 +1194,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Startgame = m_Player.FindAction("Startgame", throwIfNotFound: true);
         m_Player_Blueprints = m_Player.FindAction("Blueprints", throwIfNotFound: true);
+        m_Player_NextLine = m_Player.FindAction("NextLine", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Movement = m_PauseMenu.FindAction("Movement", throwIfNotFound: true);
@@ -1247,6 +1279,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Startgame;
     private readonly InputAction m_Player_Blueprints;
+    private readonly InputAction m_Player_NextLine;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -1266,6 +1299,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Startgame => m_Wrapper.m_Player_Startgame;
         public InputAction @Blueprints => m_Wrapper.m_Player_Blueprints;
+        public InputAction @NextLine => m_Wrapper.m_Player_NextLine;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1320,6 +1354,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Blueprints.started += instance.OnBlueprints;
             @Blueprints.performed += instance.OnBlueprints;
             @Blueprints.canceled += instance.OnBlueprints;
+            @NextLine.started += instance.OnNextLine;
+            @NextLine.performed += instance.OnNextLine;
+            @NextLine.canceled += instance.OnNextLine;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1369,6 +1406,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Blueprints.started -= instance.OnBlueprints;
             @Blueprints.performed -= instance.OnBlueprints;
             @Blueprints.canceled -= instance.OnBlueprints;
+            @NextLine.started -= instance.OnNextLine;
+            @NextLine.performed -= instance.OnNextLine;
+            @NextLine.canceled -= instance.OnNextLine;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1529,6 +1569,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnStartgame(InputAction.CallbackContext context);
         void OnBlueprints(InputAction.CallbackContext context);
+        void OnNextLine(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {

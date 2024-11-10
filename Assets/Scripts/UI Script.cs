@@ -20,6 +20,10 @@ public class UIScript : MonoBehaviour
     private HealthScript _HealthScript;
 
     private string Subtitles = "";
+
+    private bool NpcInteract1 = false;
+    private bool NpcInteract2 = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,14 +37,18 @@ public class UIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_HealthScript.IsBigRobotInControl)
-        {
-            BigRobotUIRayCast(); 
+        if (!NpcInteract1)
+        {  
+            if (_HealthScript.IsBigRobotInControl)
+            {
+                BigRobotUIRayCast(); 
+            }
+            else
+            {
+                SmallRobotUIRayCast(); 
+            }
         }
-        else
-        {
-            SmallRobotUIRayCast(); 
-        }
+        
         
         if (Input.GetKeyDown(KeyCode.Return)) // Checks if the Enter key is pressed
         {
@@ -68,19 +76,23 @@ public class UIScript : MonoBehaviour
             else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
                      hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Switch2"))
             {
-               textTyper(hit ,"Press Q / Square to interact ");
+               textTyper(hit ,"Press F / Square to interact ");
             }
             else if (hit.collider.CompareTag("BabyRobot"))
             {
                 textTyper(hit , "Press Tab / L1 anytime to change to Wisp");
             }
-            else  if (hit.collider.CompareTag("Jump Tag"))
+            else  if (hit.collider.CompareTag("NPC") && !_BigRobotController.NpcInteract && !_BigRobotController.Battery)
             {
-                textTyper(hit , "Press Space / X anytime to Jump");
+                textTyper(hit, "Press F / Square to interact");
+            } 
+            else if (hit.collider.CompareTag("NPC") && _BigRobotController.NpcInteract && !_BigRobotController.Battery)
+            {
+               textTyper(hit ,Subtitles); 
             }
-            else  if (hit.collider.CompareTag("Crouch Tag"))
+            else if (hit.collider.CompareTag("NPC") && _BigRobotController.NpcInteract && _BigRobotController.Battery)
             {
-                textTyper(hit , "Press Ctrl / R3 anytime to Jump");
+                textTyper(hit , );
             }
             else
             {
@@ -112,7 +124,7 @@ public class UIScript : MonoBehaviour
             else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
                      hit.collider.CompareTag("CanBePicked"))
             {
-                textTyper(hit ,"Press Q / Square to interact ");
+                textTyper(hit ,"Press F / Square to interact ");
             }
             else if (hit.collider.CompareTag("BigRobot"))
             {
@@ -201,13 +213,22 @@ public class UIScript : MonoBehaviour
         if (currentLineIndex < subtitles.Count)
         {
             Debug.Log(subtitles[currentLineIndex]); // Replace with your subtitle display logic (e.g., UI text element)
-            
+            Subtitles = subtitles[currentLineIndex];
             currentLineIndex++;
         }
         else
         {
             Debug.Log("End of subtitles.");
+            _BigRobotController.NpcInteract = false;
         }
+    }
+
+    public void InteractWithNpc(RaycastHit hit)
+    {
+        _BigRobotController.NpcInteract = true;
+        HideText();
+        DisplayNextLine();
+        textTyper(hit , Subtitles);
     }
     //Fix raycast Ui
     //Make cutscenes

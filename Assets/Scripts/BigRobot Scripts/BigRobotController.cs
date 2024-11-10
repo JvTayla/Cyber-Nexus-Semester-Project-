@@ -9,7 +9,7 @@ using UnityEngine.Windows;
 public class BigRobotController : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    private Controls playerInput;
+    public Controls playerInput;
 
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
@@ -96,6 +96,11 @@ public class BigRobotController : MonoBehaviour
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
+    private UIScript _UIScript;
+    public bool NpcInteract = false;
+    public RobotController _RobotController;
+
+    public bool Battery;
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
@@ -112,6 +117,8 @@ public class BigRobotController : MonoBehaviour
         }
 
         playerInput = new Controls();
+        _UIScript = FindAnyObjectByType<UIScript>();
+        _RobotController = FindAnyObjectByType<RobotController>();
     }
 
     private void OnEnable()
@@ -157,13 +164,16 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Inventory.performed += ctx => ToggleInventory();
         playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch(); 
         playerInput.Player.Interact.performed += ctx => ToggleLaserSwitch(); // press F
-
+        
         playerInput.Player.Pause.performed += ctx => PauseGame();
         //playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
 
 
         playerInput.Player.Blueprints.performed += ctx => MapOpen();
         playerInput.Player.Blueprints.canceled += ctx => MapClose();
+
+        
+
 
         //UiInput.UI.Navigate.performed += ctx => NavigateUI(ctx.ReadValue<Vector2>());
         //UiInput.UI.Submit.performed += ctx => SubmitUI();
@@ -174,6 +184,7 @@ public class BigRobotController : MonoBehaviour
 //move to Robot controller
     private void SwitchToWisp()
     {
+        
         //_CameraAnimation.SwitchToSmallRobot();
         _CorePowerScript.BigRobotUI.SetActive(false);
         _CorePowerScript.SmallRobotUI.SetActive(true);
@@ -212,7 +223,7 @@ public class BigRobotController : MonoBehaviour
             // velocity = 0f;
             if (IsBWalking == false)
             {
-                animator.SetBool("IsBWalking", false);
+              //  animator.SetBool("IsBWalking", false);
             }
 
 
@@ -225,7 +236,7 @@ public class BigRobotController : MonoBehaviour
 
             if (IsBWalking == true)
             {
-                animator.SetBool("IsBWalking", true);
+               // animator.SetBool("IsBWalking", true);
             }
         }
         //Adjust speed if crouching
@@ -423,6 +434,23 @@ public class BigRobotController : MonoBehaviour
                 VoiceRecrod.SetActive(true);
                
             }
+            else if (hit.collider.CompareTag("Nuclear Battery"))
+            {
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                // Add the item to the inventory
+                inventoryManage.SpawnItem(availableItems[2]);
+
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+
+                // Hide the item after picking it up
+                heldObject.SetActive(false);
+                Battery = true;
+            }
+           
         }
     }
 
@@ -518,8 +546,12 @@ public class BigRobotController : MonoBehaviour
 
 
                 }
+            } 
+            if (hit.collider.CompareTag("NPC"))
+            {
+                NpcInteract = true;
+                _UIScript.InteractWithNpc(hit);
             }
-
         }
     }
 
@@ -564,6 +596,7 @@ public class BigRobotController : MonoBehaviour
                 // Start moving the door upwards
                 StartCoroutine(RaiseDoor(hit.collider.gameObject));
             }
+            
         }
     }
 
@@ -647,6 +680,11 @@ public class BigRobotController : MonoBehaviour
         BigRobotUI.SetActive(true);
         //I need to make it so that all the players are disabled and cannot move when theyre looking at the map , need to make sure that Wisp And Aurora UI is turned off when map is open so players can access the button and close map 
 
+    }
+
+    private void NextLine(RaycastHit hit)
+    {
+        playerInput.Player.NextLine.performed += ctx => _UIScript.InteractWithNpc(hit); 
     }
 }
 

@@ -31,6 +31,11 @@ TagManager:
   - item
   - SecurityTag
   - Nuclear Battery
+  - Crouch Tag
+  - Jump Tag
+  - BabyRobot
+  - BigRobot
+  - NPC
   layers:
   - Default
   - TransparentFX

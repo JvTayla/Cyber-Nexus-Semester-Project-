@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class FirstPersonControls : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    private Controls playerInput;
+    public Controls playerInput;
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
     // Public variables to set movement and look speed, and the player camera
@@ -190,7 +190,7 @@ public class FirstPersonControls : MonoBehaviour
         }
            // playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
 
-        playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
+       // playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
 
        
         //}
@@ -238,7 +238,7 @@ public class FirstPersonControls : MonoBehaviour
             // velocity = 0f;
             if (IsWalking == false)
             {
-                animator.SetBool("IsWalking", false);
+              //  animator.SetBool("IsWalking", false);
             }
 
 
@@ -251,7 +251,7 @@ public class FirstPersonControls : MonoBehaviour
            
             if (IsWalking == true)
             {
-                animator.SetBool("IsWalking", true);
+              //  animator.SetBool("IsWalking", true);
             }
         }
 
@@ -559,7 +559,7 @@ public class FirstPersonControls : MonoBehaviour
     }
     public void MapClose()
     {
-        playerInput.Player.Disable();
+        playerInput.Player.Enable();
         //playerInput.PauseMenu.Enable();
         Map.SetActive(true);
         MapCamera.SetActive(false);
