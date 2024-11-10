@@ -1,0 +1,5 @@
+"Access Granted" – Successfully enter the Loading Dock.
+"Charged Up" – Successfully returned the Nuclear Battery.
+"Treasure Hunter" – Successfully collected all voice recordings in the Storage Room.
+"Golden Retriever" – Successfully unlocked the Research Lab using the tag.
+"Mission Accomplished" – Successfully upload all data and complete the mission.

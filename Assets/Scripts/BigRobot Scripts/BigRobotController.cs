@@ -177,10 +177,19 @@ public class BigRobotController : MonoBehaviour
         
         playerInput.Player.Pause.performed += ctx => PauseGame();
         //playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+        
+        int counter = 1 ;
+        if(counter ==1)
+        {
+            playerInput.Player.Blueprints.performed += ctx => MapOpen();
+            counter++;
+        }
+        else if (counter==2)
+        {
+            playerInput.Player.Blueprints.performed += ctx => MapClose();
+            counter--;
+        }
 
-
-        playerInput.Player.Blueprints.performed += ctx => MapOpen();
-        playerInput.Player.Blueprints.canceled += ctx => MapClose();
 
         
 
@@ -233,7 +242,7 @@ public class BigRobotController : MonoBehaviour
             // velocity = 0f;
             if (IsBWalking == false)
             {
-               animator.SetBool("IsBWalking", false);
+              // animator.SetBool("IsBWalking", false);
             }
 
 
@@ -246,7 +255,7 @@ public class BigRobotController : MonoBehaviour
 
             if (IsBWalking == true)
             {
-                animator.SetBool("IsBWalking", true);
+               // animator.SetBool("IsBWalking", true);
             }
         }
         //Adjust speed if crouching
@@ -315,7 +324,7 @@ public class BigRobotController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             IsBJumping = true;
             //StartCoroutine(PlayCould());
-            animator.SetBool("IsBJumping", true);
+            //animator.SetBool("IsBJumping", true);
         }
 
         if (IsBJumping == true)
@@ -471,7 +480,7 @@ public class BigRobotController : MonoBehaviour
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;
 
                 // Add the item to the inventory
-                inventoryManage.SpawnItem(availableItems[2]);
+                //inventoryManage.SpawnItem(availableItems[2]);
 
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
@@ -578,11 +587,20 @@ public class BigRobotController : MonoBehaviour
 
                 }
             } 
-            if (hit.collider.CompareTag("NPC"))
+            else
+            if (hit.collider.CompareTag("NPC")  && !Battery)
             {
                 NpcInteract = true;
                 _UIScript.InteractWithNpc(hit);
             }
+            else
+            if (hit.collider.CompareTag("NPC") && Battery)
+            {
+                NpcInteract = true;
+                Debug.Log("Battery Inter");
+                _UIScript.InteractWithNpc2(hit);
+            }
+            
         }
     }
 
@@ -694,21 +712,27 @@ public class BigRobotController : MonoBehaviour
     public void MapOpen()
     {
         playerInput.Player.Disable();
+        _RobotController.counter = 3;
         //playerInput.PauseMenu.Enable();
         Map.SetActive(true);
         MapCamera.SetActive(true);
-        SmallRobotUI.SetActive(false);
-        BigRobotUI.SetActive(false);
+        
+        _CorePowerScript.SmallRobotUI.SetActive(false);
+        _CorePowerScript.BigRobotUI.SetActive(false);
+        
+        
 
     }
     public void MapClose()
     {
-        playerInput.Player.Disable();
+        _RobotController.counter = 0;
+        playerInput.Player.Enable();
+        _RobotController.counter++;
         //playerInput.PauseMenu.Enable();
-        Map.SetActive(true);
+        Map.SetActive(false);
         MapCamera.SetActive(false);
-        SmallRobotUI.SetActive(true);
-        BigRobotUI.SetActive(true);
+        //_CorePowerScript.SmallRobotUI.SetActive(true);
+        _CorePowerScript.BigRobotUI.SetActive(true);
         //I need to make it so that all the players are disabled and cannot move when theyre looking at the map , need to make sure that Wisp And Aurora UI is turned off when map is open so players can access the button and close map 
 
     }

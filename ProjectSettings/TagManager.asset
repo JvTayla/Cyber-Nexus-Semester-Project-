@@ -37,6 +37,7 @@ TagManager:
   - BigRobot
   - NPC
   - HoloBot
+  - Narrative
   layers:
   - Default
   - TransparentFX
