@@ -20,8 +20,10 @@ public class InventoryManage : MonoBehaviour
 
     private const float movementThreshold = 0.01f;
     public GameObject Testtube;
-    public GameObject Chemicals;
+    public GameObject Chemicals; 
+    public GameObject SecurityTag;
     public Transform holdPosition;
+    public Transform SecurityCardHold;
     private Vector3[] originalScales;
 
     private void Awake()
@@ -180,6 +182,15 @@ public class InventoryManage : MonoBehaviour
             chemicals.transform.position = holdPosition.position;
             chemicals.transform.rotation = holdPosition.rotation;
             chemicals.transform.parent = holdPosition; 
+
+            Debug.Log("Instantiated Chemicals at holdPosition.");
+        }
+        else if (selectedItem.actionType == item.ActionType.Security)
+        {
+            GameObject securitytag = Instantiate(SecurityTag, SecurityCardHold.position, Quaternion.identity);
+            securitytag.transform.position = SecurityCardHold.position;
+            securitytag.transform.rotation = SecurityCardHold.rotation;
+            securitytag.transform.parent = SecurityCardHold;
 
             Debug.Log("Instantiated Chemicals at holdPosition.");
         }

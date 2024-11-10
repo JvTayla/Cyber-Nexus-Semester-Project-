@@ -170,6 +170,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""216b23c8-50a1-46d7-8d8a-cfdcf035bbbb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -876,6 +885,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""NextLine"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cb21b06-625c-4d81-94cc-935187ccf5e4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""907f7fe3-64d4-4e2f-81f0-5128c9a38828"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1195,6 +1226,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Startgame = m_Player.FindAction("Startgame", throwIfNotFound: true);
         m_Player_Blueprints = m_Player.FindAction("Blueprints", throwIfNotFound: true);
         m_Player_NextLine = m_Player.FindAction("NextLine", throwIfNotFound: true);
+        m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Movement = m_PauseMenu.FindAction("Movement", throwIfNotFound: true);
@@ -1280,6 +1312,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Startgame;
     private readonly InputAction m_Player_Blueprints;
     private readonly InputAction m_Player_NextLine;
+    private readonly InputAction m_Player_UseItem;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -1300,6 +1333,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Startgame => m_Wrapper.m_Player_Startgame;
         public InputAction @Blueprints => m_Wrapper.m_Player_Blueprints;
         public InputAction @NextLine => m_Wrapper.m_Player_NextLine;
+        public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1357,6 +1391,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @NextLine.started += instance.OnNextLine;
             @NextLine.performed += instance.OnNextLine;
             @NextLine.canceled += instance.OnNextLine;
+            @UseItem.started += instance.OnUseItem;
+            @UseItem.performed += instance.OnUseItem;
+            @UseItem.canceled += instance.OnUseItem;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1409,6 +1446,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @NextLine.started -= instance.OnNextLine;
             @NextLine.performed -= instance.OnNextLine;
             @NextLine.canceled -= instance.OnNextLine;
+            @UseItem.started -= instance.OnUseItem;
+            @UseItem.performed -= instance.OnUseItem;
+            @UseItem.canceled -= instance.OnUseItem;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1570,6 +1610,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnStartgame(InputAction.CallbackContext context);
         void OnBlueprints(InputAction.CallbackContext context);
         void OnNextLine(InputAction.CallbackContext context);
+        void OnUseItem(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {

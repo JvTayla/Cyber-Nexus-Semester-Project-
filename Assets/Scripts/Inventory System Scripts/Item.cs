@@ -27,14 +27,16 @@ public class item : ScriptableObject
     public enum ItemType
     {
         Tube,
-        Chemicals,
+        Chemicals, 
+        Tag,
 
     }
 
     public enum ActionType
     {
         Research,
-        experiment,
+        experiment, 
+        Security,
 
     }
 
