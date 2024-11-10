@@ -1,32 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using System.Linq;
 
 public class InventoryManage : MonoBehaviour
 {
-    /*Tile: Unity INventory System
-     Author: Solo Game Dev
-     Date: 12-16 August 2024
-     Code Version: Unity 2022.3.38f1
-     Availability: https://www.youtube.com/watch?v=AoD_F1fSFFg&t=614s
-     */
     public static InventoryManage Instance;
-    public List<item> inventory = new List<item>();
-    public List<item> InventoryItems = new List<item>();
+    public List<item> inventory = new List<item>(); // List of items in the inventory
+    public List<GameObject> inventoryButtons = new List<GameObject>(); // Track UI buttons
 
     public Transform itemContent;
     public GameObject itemPrefab;
     private Controls playerInput;
-    
+
     private int currentButtonIndex = 0;
 
-    // Materials for selected and unselected states
-    public Material selectedMaterial; // Material for selected state
-    private Material defaultMaterial; // Material for default state
+    // Colors for selected and unselected states
+    public Color selectedColor = Color.yellow;
+    public Color defaultColor = Color.white;
 
-    private const float movementThreshold = 0.8f;
+    private const float movementThreshold = 0.01f;
+    public GameObject Testtube;
+    public GameObject Chemicals;
+    public Transform holdPosition;
+    private Vector3[] originalScales;
 
     private void Awake()
     {
@@ -34,41 +30,43 @@ public class InventoryManage : MonoBehaviour
         playerInput = new Controls();
         playerInput.Inventory.Enable();
         playerInput.Player.Disable();
+
+        originalScales = new Vector3[inventoryButtons.Count];
+        for (int i = 0; i < inventoryButtons.Count; i++)
+        {
+            originalScales[i] = inventoryButtons[i].transform.localScale;
+        }
     }
 
     public void SpawnItem(item newItem)
     {
-        // Add the new item to the inventory list
         inventory.Add(newItem);
-
-        // Add the new item to the InventoryItems list
-        InventoryItems.Add(newItem); // Add new item directly to InventoryItems
-
-        // Alternatively, if you want to maintain the fixed size of the array:
-        // Ensure InventoryItems array has enough size
-        if (InventoryItems.Count > inventory.Count)
-        {
-            // If there is an excess in InventoryItems, remove it
-            InventoryItems.RemoveAt(inventory.Count);
-        }
+        ListItems(); // Refresh the inventory UI
     }
 
     public void ListItems()
     {
         ClearInventoryDisplay();
+        inventoryButtons.Clear();
 
         foreach (var item in inventory)
         {
-            GameObject obj = Instantiate(itemPrefab, itemContent);
+            GameObject obj = Instantiate(itemPrefab, itemContent); // Instantiate item button
             Image image = obj.transform.Find("ItemIcon").GetComponent<Image>();
-            var ItemIcon = image;
-            var ItemName = obj.transform.Find("ItemName").GetComponent<Text>();
-            Button button = obj.transform.Find("RemoveButton").GetComponent<Button>();
+            Text itemName = obj.transform.Find("ItemName").GetComponent<Text>();
 
-            ItemIcon.sprite = item.image;
-            ItemName.text = item.ItemName;
+            image.sprite = item.image;
+            itemName.text = item.ItemName;
+
+            // Add a listener to use the item when the button is clicked
+            Button button = obj.GetComponent<Button>();
+            button.onClick.AddListener(() => UseItem(item));
+
+            inventoryButtons.Add(obj); // Add to list for navigation
         }
-    } 
+
+        UpdateButtonSelection(); // Highlight the first item if any
+    }
 
     public void ClearInventoryDisplay()
     {
@@ -76,86 +74,119 @@ public class InventoryManage : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        inventoryButtons.Clear();
     }
 
-    public void Update()
+    private void Update()
     {
-        Vector2 moveInput = playerInput.PauseMenu.Movement.ReadValue<Vector2>();
+        Vector2 moveInput = playerInput.Inventory.Movement.ReadValue<Vector2>();
 
-        // Check for vertical movement
-        if (Mathf.Abs(moveInput.y) > movementThreshold)
-        {
-            NavigateInventory(moveInput.y, true); // True indicates vertical navigation
-        }
-
-        // Check for horizontal movement
         if (Mathf.Abs(moveInput.x) > movementThreshold)
         {
-            NavigateInventory(moveInput.x, false); // False indicates horizontal navigation
+            NavigateInventory(moveInput.x); // False indicates horizontal navigation
+        }
+        if (playerInput.Inventory.Select.triggered)
+        {
+            SelectButton();
         }
     }
 
-    public void NavigateInventory(float input, bool isVertical)
+    public void NavigateInventory(float input)
     {
-        if (isVertical) // Vertical navigation
-        {
-            if (input > 0) // Move up
-            {
-                currentButtonIndex++;
-                if (currentButtonIndex >= InventoryItems.Count)
-                {
-                    currentButtonIndex = 0; // Loop back to the start
-                }
-                Debug.Log("Moved up, current button index: " + currentButtonIndex);
-            }
-            else if (input < 0) // Move down
-            {
-                currentButtonIndex--;
-                if (currentButtonIndex < 0)
-                {
-                    currentButtonIndex = InventoryItems.Count - 1; // Loop back to the end
-                }
-            }
-        }
-        else // Horizontal navigation
-        {
+        if (inventoryButtons.Count == 0) return;
+
+       
+        
+        
             if (input > 0) // Move right
             {
                 currentButtonIndex++;
-                if (currentButtonIndex >= InventoryItems.Count)
+                if (currentButtonIndex >= inventoryButtons.Count)
                 {
-                    currentButtonIndex = 0; // Loop back to the start
+                    currentButtonIndex = 0; // Loop back to start
                 }
-                Debug.Log("Moved right, current button index: " + currentButtonIndex);
             }
             else if (input < 0) // Move left
             {
                 currentButtonIndex--;
                 if (currentButtonIndex < 0)
                 {
-                    currentButtonIndex = InventoryItems.Count - 1; // Loop back to the end
+                    currentButtonIndex = inventoryButtons.Count - 1; // Loop back to end
                 }
             }
-        }
+        
 
         UpdateButtonSelection();
     }
 
-
     private void UpdateButtonSelection()
     {
-        for (int i = 0; i < InventoryItems.Count; i++)
+        for (int i = 0; i < inventoryButtons.Count; i++)
         {
-            // Assuming each item has a Renderer component for the button material
-            Renderer buttonRenderer = InventoryItems[i].GetComponent<Renderer>();
-            if (i == currentButtonIndex)
+            Image buttonImage = inventoryButtons[i].GetComponent<Image>();
+            if (buttonImage != null)
             {
-                buttonRenderer.material = selectedMaterial; // Ensure selectedMaterial is defined
+                buttonImage.color = (i == currentButtonIndex) ? selectedColor : defaultColor;
             }
-            else
-            {
-                buttonRenderer.material = defaultMaterial; // Ensure defaultMaterial is defined
-            }
+            
         }
     }
+    public void SelectButton()
+    {
+        // Get the Button component on the current inventory button
+        Button selectedButton = inventoryButtons[currentButtonIndex].GetComponent<Button>();
+
+        if (selectedButton != null)
+        {
+            selectedButton.onClick.Invoke();
+        }
+        else
+        {
+            Debug.LogWarning("No Button component found on the selected inventory button.");
+        }
+    }
+
+
+    // Simplified UseItem function to instantiate the item at holdPosition
+    public void UseItem(item selectedItem)
+    {
+        if (selectedItem == null)
+        {
+            Debug.LogWarning("No item selected to use.");
+            return;
+        }
+        if (holdPosition.childCount > 0)
+        {
+            foreach (Transform child in holdPosition)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        // Check the type of action and instantiate the corresponding object
+        if (selectedItem.actionType == item.ActionType.Research)
+        {
+            GameObject testube =  Instantiate(Testtube, holdPosition.position, Quaternion.identity);
+            testube.transform.position = holdPosition.position;
+            testube.transform.rotation = holdPosition.rotation;
+            testube.transform.parent = holdPosition;
+
+
+            Debug.Log("Instantiated Testtube at holdPosition.");
+        }
+        else if (selectedItem.actionType == item.ActionType.experiment)
+        {
+            GameObject chemicals = Instantiate(Chemicals, holdPosition.position, Quaternion.identity);
+            chemicals.transform.position = holdPosition.position;
+            chemicals.transform.rotation = holdPosition.rotation;
+            chemicals.transform.parent = holdPosition; 
+
+            Debug.Log("Instantiated Chemicals at holdPosition.");
+        }
+        else
+        {
+            Debug.LogWarning("Action type not recognized or not set for this item.");
+        }
+    }
+
 }

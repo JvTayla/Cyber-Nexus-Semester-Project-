@@ -24,21 +24,20 @@ public class item : ScriptableObject
     [Header("Both")]
     public Sprite image;
     public Button RemoveItem;
+    public enum ItemType
+    {
+        Tube,
+        Chemicals,
 
-    public object transform { get; internal set; }
+    }
+
+    public enum ActionType
+    {
+        Research,
+        experiment,
+
+    }
+
 }
 
-public enum ItemType
-{
-    Tube,
-    Chemicals,
-    
-}
-
-public enum ActionType
-{
-    Research, 
-    experiment,
-   
-}
 

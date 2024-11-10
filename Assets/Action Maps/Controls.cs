@@ -152,6 +152,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""145e8de8-93d8-436c-8259-fc9a09897e38"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -814,6 +823,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Startgame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19c47ed6-0bde-40aa-ada9-52a41f8cee5d"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3daadaf2-ad3d-47fb-9976-a05c2de06565"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1071,7 +1102,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1082,7 +1113,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1131,6 +1162,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Startgame = m_Player.FindAction("Startgame", throwIfNotFound: true);
+        m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Movement = m_PauseMenu.FindAction("Movement", throwIfNotFound: true);
@@ -1214,6 +1246,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Startgame;
+    private readonly InputAction m_Player_UseItem;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -1232,6 +1265,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Startgame => m_Wrapper.m_Player_Startgame;
+        public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1283,6 +1317,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Startgame.started += instance.OnStartgame;
             @Startgame.performed += instance.OnStartgame;
             @Startgame.canceled += instance.OnStartgame;
+            @UseItem.started += instance.OnUseItem;
+            @UseItem.performed += instance.OnUseItem;
+            @UseItem.canceled += instance.OnUseItem;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1329,6 +1366,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Startgame.started -= instance.OnStartgame;
             @Startgame.performed -= instance.OnStartgame;
             @Startgame.canceled -= instance.OnStartgame;
+            @UseItem.started -= instance.OnUseItem;
+            @UseItem.performed -= instance.OnUseItem;
+            @UseItem.canceled -= instance.OnUseItem;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1488,6 +1528,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnStartgame(InputAction.CallbackContext context);
+        void OnUseItem(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {

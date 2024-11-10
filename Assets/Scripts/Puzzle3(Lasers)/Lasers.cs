@@ -27,7 +27,7 @@ public class Lasers : MonoBehaviour
                 lineRenderer.SetPosition(1, hit.point); // Laser ends at the hit point
 
                 // Check if the laser hits a player
-                if (hit.collider.CompareTag("Player"))
+                if (hit.collider.CompareTag("Robot"))
                 {
                     SwitchDisplay.SetActive(true);
                     SwitchDisplay1.SetActive(false);

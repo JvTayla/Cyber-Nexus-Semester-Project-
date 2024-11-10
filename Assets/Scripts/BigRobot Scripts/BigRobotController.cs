@@ -151,10 +151,9 @@ public class BigRobotController : MonoBehaviour
 
         
         // Handle inventory toggle
-        playerInput.Player.Inventory.performed += ctx => ToggleInventory();
-        playerInput.Player.Focus.performed += ctx => ToggleLaserSwitch(); 
+        playerInput.Player.Inventory.performed += ctx => ToggleInventory();  
         playerInput.Player.Interact.performed += ctx => ToggleLaserSwitch(); // press F
-
+        playerInput.Player.UseItem.performed += ctx => ToggleItem();
         playerInput.Player.Pause.performed += ctx => PauseGame();
         playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
 
@@ -290,6 +289,7 @@ public class BigRobotController : MonoBehaviour
             heldObject.GetComponent<Rigidbody>().isKinematic = false; // Enable physics
             heldObject.transform.parent = null;
             holdingGun = false;
+            Destroy(heldObject);
         }
 
         // Perform a raycast from the camera's position forward
@@ -341,7 +341,7 @@ public class BigRobotController : MonoBehaviour
                 heldObject.transform.parent = holdPosition;
 
                 // Hide the item after picking it up
-                heldObject.SetActive(false);
+                Destroy(heldObject);
             }
             else if (hit.collider.CompareTag("Chemicals"))
             {
@@ -356,7 +356,7 @@ public class BigRobotController : MonoBehaviour
                 heldObject.transform.parent = holdPosition;
 
                 // Hide the item after picking it up
-                heldObject.SetActive(false);
+                Destroy(heldObject);
 
                 
             }
@@ -416,6 +416,22 @@ public class BigRobotController : MonoBehaviour
 
         }
     }
+    public void ToggleItem()
+    {
+        if (holdPosition.childCount > 0)
+        {
+            foreach (Transform child in holdPosition)
+            {
+                // Toggle the active state
+                child.gameObject.SetActive(!child.gameObject.activeSelf);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No items in holdPosition to toggle.");
+        }
+    }
+
     public void ToggleLaserSwitch()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
@@ -574,7 +590,8 @@ public class BigRobotController : MonoBehaviour
             door.transform.position = Vector3.MoveTowards(door.transform.position, endPosition, raiseSpeed * Time.deltaTime);
             yield return null; // Wait until the next frame before continuing the loop
         }
-    }
+    } 
+    
 
 }
 
