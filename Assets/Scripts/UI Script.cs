@@ -92,7 +92,7 @@ public class UIScript : MonoBehaviour
             }
             else if (hit.collider.CompareTag("NPC") && _BigRobotController.NpcInteract && _BigRobotController.Battery)
             {
-                textTyper(hit , );
+                //textTyper(hit , );
             }
             else
             {
