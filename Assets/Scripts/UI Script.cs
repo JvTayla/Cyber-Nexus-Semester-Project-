@@ -20,6 +20,8 @@ public class UIScript : MonoBehaviour
     private HealthScript _HealthScript;
 
     private string Subtitles = "";
+    private string Subtitles2 = "";
+    private string Subtitles3 = "";
 
     private bool NpcInteract1 = false;
     private bool NpcInteract2 = false;
@@ -32,6 +34,7 @@ public class UIScript : MonoBehaviour
         uiText.enabled = false; // Initially hide the text
         _HealthScript = FindObjectOfType<HealthScript>();
         LoadSubtitles();
+        LoadSubtitles2();
     }
 
     // Update is called once per frame
@@ -82,7 +85,7 @@ public class UIScript : MonoBehaviour
             {
                 textTyper(hit , "Press Tab / L1 anytime to change to Wisp");
             }
-            else  if (hit.collider.CompareTag("NPC") && !_BigRobotController.NpcInteract && !_BigRobotController.Battery)
+            else  if (hit.collider.CompareTag("NPC") && !_BigRobotController.NpcInteract)
             {
                 textTyper(hit, "Press F / Square to interact");
             } 
@@ -92,6 +95,11 @@ public class UIScript : MonoBehaviour
             }
             else if (hit.collider.CompareTag("NPC") && _BigRobotController.NpcInteract && _BigRobotController.Battery)
             {
+                textTyper(hit ,Subtitles2 );
+            }
+            else if(hit.collider.CompareTag("Narrative"))
+            {
+               textTyper(hit , hit.collider.gameObject.name); 
                 //textTyper(hit , );
             }
             else
@@ -191,7 +199,7 @@ public class UIScript : MonoBehaviour
         }
     }
     
-    public string filePath = "Assets/Subtitles/subtitles.txt"; // Path to your text file
+    public string filePath = "Assets/Subtitles/Subtitles.txt"; // Path to your text file
     private List<string> subtitles = new List<string>();
     private int currentLineIndex = 0;
 
@@ -229,6 +237,46 @@ public class UIScript : MonoBehaviour
         HideText();
         DisplayNextLine();
         textTyper(hit , Subtitles);
+    }
+    
+    public string filePath2 = "Assets/Subtitles/Subtitles2.txt"; // Path to your text file
+    private List<string> subtitles2 = new List<string>();
+    private int currentLineIndex2 = 0;
+
+    void LoadSubtitles2()
+    {
+        if (File.Exists(filePath2))
+        {
+            subtitles2.AddRange(File.ReadAllLines(filePath2));
+            Debug.Log("Subtitles loaded successfully.");
+        }
+        else
+        {
+            Debug.LogError("Subtitle file not found at " + filePath2);
+        }
+    }
+
+    void DisplayNextLine2()
+    {
+        if (currentLineIndex2 < subtitles2.Count)
+        {
+            Debug.Log(subtitles2[currentLineIndex2]); // Replace with your subtitle display logic (e.g., UI text element)
+            Subtitles2 = subtitles2[currentLineIndex2];
+            currentLineIndex2++;
+        }
+        else
+        {
+            Debug.Log("End of subtitles2.");
+            _BigRobotController.NpcInteract = false;
+        }
+    }
+
+    public void InteractWithNpc2(RaycastHit hit)
+    {
+        _BigRobotController.NpcInteract = true;
+        HideText();
+        DisplayNextLine2();
+        textTyper(hit , Subtitles2);
     }
     //Fix raycast Ui
     //Make cutscenes

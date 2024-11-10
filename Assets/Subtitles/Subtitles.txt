@@ -1,6 +1,8 @@
-Sparx: System booting up... Intruder alert. Intruder Alert!
-Sparx: Hey YOU! This research lab is OFF-LIMITS. Something terrible happened with one of the power reactors and The scientists had to evacuate quickly when radiation levels spiked, and it's not safe for anyone…. 
-Sparx: Hey... you kind of look like me. Not like those crooked Nova Stratos robots with their evil, malfunctioning processors and glitchy, rusted joints. What are you doing here?
-Player Robots (Wisp and Aurora): We’re here on an important mission. We were sent to retrieve critical data the scientists were working on. We believe it’s in the experiment room.
+Robot Activation and Recognition
+Sparx: “System booting up... Intruder alert. Intruder Alert!”
+Sparx: “ Hey YOU! This research lab is OFF-LIMITS. Something terrible happened with one of the power reactors and The scientists had to evacuate quickly when radiation levels spiked, and it's not safe for anyone…. 
+”Sparx: “Hey... you kind of look like me. Not like those crooked Nova Stratos robots with their evil, malfunctioning processors and glitchy, rusted joints. What are you doing here?”
+Aurora: “We’re here on an important mission. We were sent to retrieve critical data the scientists were working on. We believe it’s in the experiment room.”
+Sparx’s First Mission Request
 Sparx: “Analysing... Well, if you’re serious, perhaps you could help me first. Bring me a nuclear battery pod from the storage room. It should be glowing and emit a bright light. Once you have it and bring it back, I’ll assist you in your mission.”
 Sparx: “Here, take this! It’ll let you store the items I need from you and give you extra details about objects around the ship.” 

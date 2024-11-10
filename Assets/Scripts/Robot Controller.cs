@@ -18,11 +18,12 @@ public class RobotController : MonoBehaviour
     public Animator LittleRobotAnim;
 
 
-    public int counter; // Changed to int for better clarity
+    public int counter=0; // Changed to int for better clarity
     public Controls playerInput; // Reference to the input actions
 
     private CorePowerScript _CorePowerScript;
     private HealthScript _HealthScript;
+    
     private void Awake()
     {
         // Create a new instance of the input actions
@@ -70,8 +71,8 @@ public class RobotController : MonoBehaviour
         
             if (!_HealthScript.IsBigRobotInControl)
             {
-                _CorePowerScript.BigRobotHideDeadScreen();
-                _CorePowerScript.StopBigRobotWarning();
+                //_CorePowerScript.BigRobotHideDeadScreen();
+               // _CorePowerScript.StopBigRobotWarning();
                 _CorePowerScript.BigRobotUI.SetActive(false);
             }
             
@@ -98,11 +99,19 @@ public class RobotController : MonoBehaviour
 
             if (_HealthScript.IsBigRobotInControl)
             {
-                _CorePowerScript.SmallRobotHideDeadScreen();
-                _CorePowerScript.StopSmallRobotWarning();
+                //_CorePowerScript.SmallRobotHideDeadScreen();
+                //_CorePowerScript.StopSmallRobotWarning();
                 _CorePowerScript.SmallRobotUI.SetActive(false);
-            
+                
             }
+            
+        }
+        else if (counter == 3)
+        {
+            _CorePowerScript.SmallRobotUI.SetActive(false);
+            _CorePowerScript.BigRobotUI.SetActive(false);
+            BigRobotCam.SetActive(false);
+            LittleRobotCam.SetActive(false);
         }
     }
 }
