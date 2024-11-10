@@ -8,8 +8,7 @@ public class NPCTrigger : MonoBehaviour
     NPCAnimator npcanimator;
 
     private void Start()
-    {
-        
+    { 
         npcanimator = FindObjectOfType<NPCAnimator>(); // This finds the first NPCAnimator in the scene
     }
     private void OnTriggerEnter(Collider other)
