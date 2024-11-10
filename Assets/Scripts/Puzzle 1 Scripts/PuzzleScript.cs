@@ -17,7 +17,9 @@ public class PuzzleScript : MonoBehaviour
 
     private ColorChangerScript _ColorChangerScript;
 
-    private RedBlinkingLights _RedBlinkingLights;
+   // private RedBlinkingLights _RedBlinkingLights;
+
+    private Alarm Alarm;
 
     private AnimationScript _AnimationScript;
 
@@ -27,7 +29,8 @@ public class PuzzleScript : MonoBehaviour
     {
         _FirstPersonControls = FindObjectOfType<FirstPersonControls>();
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
-        _RedBlinkingLights = FindObjectOfType<RedBlinkingLights>();
+        //_RedBlinkingLights = FindObjectOfType<RedBlinkingLights>();
+        Alarm = FindObjectOfType<Alarm>();
         _SoundScript = FindObjectOfType<SoundScript>();
         // counts the number of children in from the puzzleScreen object which is the parent
         int numPuzzles = puzzleScreen.transform.childCount;
@@ -144,8 +147,8 @@ public class PuzzleScript : MonoBehaviour
         openDoor[1].SetActive(false);
         openDoor[2].SetActive(false);
         openDoor[3].SetActive(true);
-       /* openDoor[3].transform.position = openDoor[2].transform.position;
-        openDoor[2].transform.position = new Vector3(10000, 0, 0);*/
+        openDoor[3].transform.position = openDoor[1].transform.position;
+        openDoor[2].transform.position = new Vector3(10000, 0, 0);
         openDoor[4].SetActive(true);
         openDoor[5].SetActive(false);
         
@@ -199,7 +202,8 @@ public class PuzzleScript : MonoBehaviour
             DoorOpener();
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
 
-            _RedBlinkingLights.StopBlinking();
+            //_RedBlinkingLights.StopBlinking();
+            Alarm.StopAlarm();
         }
         
     }
@@ -243,12 +247,13 @@ public class PuzzleScript : MonoBehaviour
             DoorOpener();
             
             //makes the puzzle background green to show the puzzle is complete
-            _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
+           // _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
             _SoundScript.PlayAccessGrantedSound();
             _SoundScript.PlayBackgroundMusic();
             _SoundScript.StopAlarmSound();
                 
-           _RedBlinkingLights.StopBlinking();
+           //_RedBlinkingLights.StopBlinking();
+            Alarm.StopAlarm();
         }
     }
 

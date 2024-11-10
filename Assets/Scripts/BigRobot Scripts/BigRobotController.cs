@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -9,7 +10,7 @@ using UnityEngine.Windows;
 public class BigRobotController : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    private Controls playerInput;
+    public Controls playerInput;
 
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
@@ -24,6 +25,11 @@ public class BigRobotController : MonoBehaviour
     private float horizontalLookRotaion = 0f;
     private Vector3 velocity;
     private CharacterController characterController;
+    [Header("ANIM SETTINGS")]
+
+    public bool IsBWalking;
+    public bool IsBJumping;
+    public Animator animator;
 
     [Header("SHOOTING SETTINGS")]
     [Space(5)]
@@ -63,6 +69,15 @@ public class BigRobotController : MonoBehaviour
     public float crouchSpeed = 1.5f;
     public bool isCrouching = false;
 
+    [Header("PLAYER SECURITY CLEARANCE")]
+    [Space(5)]
+
+    public bool HasSecurityTag = false;
+    public bool HasNuclearBattery = false;
+    public Transform SecurityTagHoldPosition;
+    private GameObject Securityclearance; //Currently holding security tag
+    public GameObject SecurityClearanceTag;
+
     [Header("PUZZLE 1 SETTINGS")]
     [Space(5)]
     public GameObject Player;
@@ -74,7 +89,7 @@ public class BigRobotController : MonoBehaviour
     public GameObject SmallRobotUI;
     public GameObject BigRobotUI;
 
-    private bool isMenuMode = true;
+    //private bool isMenuMode = true;
 
     private HealthScript _HealthScript;
     private BIgRobotHeadBobbingHead _BigRobotHeadBobbingHead;
@@ -82,12 +97,20 @@ public class BigRobotController : MonoBehaviour
     private CorePowerScript _CorePowerScript;
 
 
+    [Header("MAP SETTINGS")]
+    public GameObject Map;
+    public GameObject MapCamera;
 
     [Header("INTERACT SETTINGS")]
     [Space(5)]
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
+    private UIScript _UIScript;
+    public bool NpcInteract = false;
+    public RobotController _RobotController;
+
+    public bool Battery;
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
@@ -104,6 +127,8 @@ public class BigRobotController : MonoBehaviour
         }
 
         playerInput = new Controls();
+        _UIScript = FindAnyObjectByType<UIScript>();
+        _RobotController = FindAnyObjectByType<RobotController>();
     }
 
     private void OnEnable()
@@ -118,15 +143,10 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
-        playerInput.Player.Movement.performed += ctx => _BigRobotHeadBobbingHead.StartBobbing();
-        playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
+        //playerInput.Player.Movement.performed += ctx => _BigRobotHeadBobbingHead.StartBobbing();
+       // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
         
-
-        // playerInput.Player.Movement.performed += ctx =>_BigRobotHeadBobbingHead.StartBobbing();
-
-
-        // playerInput.Player.Movement.canceled += ctx => _BigRobotHeadBobbingHead.StopBobbing();
-
+        
         // Subscribe to the look input events
         playerInput.Player.LookAround.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
         playerInput.Player.LookAround.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
@@ -155,7 +175,13 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Interact.performed += ctx => ToggleLaserSwitch(); // press F
         playerInput.Player.UseItem.performed += ctx => ToggleItem();
         playerInput.Player.Pause.performed += ctx => PauseGame();
-        playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+        //playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+
+
+        playerInput.Player.Blueprints.performed += ctx => MapOpen();
+        playerInput.Player.Blueprints.canceled += ctx => MapClose();
+
+        
 
 
         //UiInput.UI.Navigate.performed += ctx => NavigateUI(ctx.ReadValue<Vector2>());
@@ -164,12 +190,13 @@ public class BigRobotController : MonoBehaviour
     }
        
     
-
+//move to Robot controller
     private void SwitchToWisp()
     {
+        
         //_CameraAnimation.SwitchToSmallRobot();
-        BigRobotUI.SetActive(false);
-        SmallRobotUI.SetActive(true);
+        _CorePowerScript.BigRobotUI.SetActive(false);
+        _CorePowerScript.SmallRobotUI.SetActive(true);
         _HealthScript.IsBigRobotInControl = false;
         
         if (!_HealthScript.IsBigRobotInControl)
@@ -199,6 +226,28 @@ public class BigRobotController : MonoBehaviour
         // Transform direction from local to world space
         move = transform.TransformDirection(move);
 
+        if (moveInput.x == 0 && moveInput.y == 0)
+        {
+            IsBWalking = false;
+            // velocity = 0f;
+            if (IsBWalking == false)
+            {
+               animator.SetBool("IsBWalking", false);
+            }
+
+
+
+        }
+        else
+        {
+
+            IsBWalking = true;
+
+            if (IsBWalking == true)
+            {
+                animator.SetBool("IsBWalking", true);
+            }
+        }
         //Adjust speed if crouching
         float currentSpeed;
         if (isCrouching)
@@ -261,10 +310,32 @@ public class BigRobotController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
+            // Calculate the jump velocity
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            IsBJumping = true;
+            //StartCoroutine(PlayCould());
+            animator.SetBool("IsBJumping", true);
         }
-    }
 
+        if (IsBJumping == true)
+        {
+            //Debug.Log("jumping");
+            StartCoroutine(StopJump());
+        }
+
+        /*if (IsBJumping == false)
+        {
+            //animator.SetBool("Jumpingis", false);
+
+        }*/
+
+    }
+    public IEnumerator StopJump()
+    {
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("IsBJumping", false);
+        IsBJumping = false;
+    }
     public void Shoot()
     {
         if (holdingGun == true)
@@ -373,6 +444,44 @@ public class BigRobotController : MonoBehaviour
                 VoiceRecrod.SetActive(true);
                
             }
+            else
+            if (hit.collider.CompareTag("SecurityTag"))
+            {
+                // Pick up the object
+                Securityclearance = hit.collider.gameObject;
+                Securityclearance.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+
+                // Attach the object to the hold position
+                Securityclearance.transform.position = SecurityTagHoldPosition.position;
+                Securityclearance.transform.rotation = SecurityTagHoldPosition.rotation;
+                Securityclearance.transform.parent = SecurityTagHoldPosition;
+
+                //SecurityClearanceTag.SetActive(true);(UIThing - Need to add)
+
+                Securityclearance.SetActive(false);
+                HasSecurityTag = true;
+                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+
+
+            }
+            else if (hit.collider.CompareTag("Nuclear Battery"))
+            {
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                // Add the item to the inventory
+                inventoryManage.SpawnItem(availableItems[2]);
+
+                heldObject.transform.position = holdPosition.position;
+                heldObject.transform.rotation = holdPosition.rotation;
+                heldObject.transform.parent = holdPosition;
+
+                // Hide the item after picking it up
+                heldObject.SetActive(false);
+                Battery = true;
+            }
+           
         }
     }
 
@@ -484,8 +593,12 @@ public class BigRobotController : MonoBehaviour
 
 
                 }
+            } 
+            if (hit.collider.CompareTag("NPC"))
+            {
+                NpcInteract = true;
+                _UIScript.InteractWithNpc(hit);
             }
-
         }
     }
 
@@ -530,6 +643,7 @@ public class BigRobotController : MonoBehaviour
                 // Start moving the door upwards
                 StartCoroutine(RaiseDoor(hit.collider.gameObject));
             }
+            
         }
     }
 
@@ -593,6 +707,33 @@ public class BigRobotController : MonoBehaviour
     } 
     
 
+
+    public void MapOpen()
+    {
+        playerInput.Player.Disable();
+        //playerInput.PauseMenu.Enable();
+        Map.SetActive(true);
+        MapCamera.SetActive(true);
+        SmallRobotUI.SetActive(false);
+        BigRobotUI.SetActive(false);
+
+    }
+    public void MapClose()
+    {
+        playerInput.Player.Disable();
+        //playerInput.PauseMenu.Enable();
+        Map.SetActive(true);
+        MapCamera.SetActive(false);
+        SmallRobotUI.SetActive(true);
+        BigRobotUI.SetActive(true);
+        //I need to make it so that all the players are disabled and cannot move when theyre looking at the map , need to make sure that Wisp And Aurora UI is turned off when map is open so players can access the button and close map 
+
+    }
+
+    private void NextLine(RaycastHit hit)
+    {
+        playerInput.Player.NextLine.performed += ctx => _UIScript.InteractWithNpc(hit); 
+    }
 }
 
 

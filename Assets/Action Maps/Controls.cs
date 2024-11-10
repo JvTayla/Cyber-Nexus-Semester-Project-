@@ -154,9 +154,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""UseItem"",
+                    ""name"": ""Blueprints"",
                     ""type"": ""Button"",
-                    ""id"": ""145e8de8-93d8-436c-8259-fc9a09897e38"",
+                    ""id"": ""a96ab704-0767-4422-a03e-719ca73c79b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextLine"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f65c9ac-9194-4acc-99f7-e16ed2a673e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -522,7 +531,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard;Gamepad"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -544,7 +553,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -826,23 +835,45 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""19c47ed6-0bde-40aa-ada9-52a41f8cee5d"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""id"": ""df48acb0-f43b-4184-a6f7-e4be100d2991"",
+                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""UseItem"",
+                    ""action"": ""Blueprints"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3daadaf2-ad3d-47fb-9976-a05c2de06565"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""id"": ""b45329e2-ba4e-4f92-afb1-9112ba08efc8"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""UseItem"",
+                    ""action"": ""Blueprints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1042077f-6c67-49c0-bdca-4d4cdfa1378a"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""NextLine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cc6b585-7d8f-4646-becc-86a65f76817b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NextLine"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1162,7 +1193,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Startgame = m_Player.FindAction("Startgame", throwIfNotFound: true);
-        m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
+        m_Player_Blueprints = m_Player.FindAction("Blueprints", throwIfNotFound: true);
+        m_Player_NextLine = m_Player.FindAction("NextLine", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Movement = m_PauseMenu.FindAction("Movement", throwIfNotFound: true);
@@ -1246,7 +1278,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Startgame;
-    private readonly InputAction m_Player_UseItem;
+    private readonly InputAction m_Player_Blueprints;
+    private readonly InputAction m_Player_NextLine;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -1265,7 +1298,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Startgame => m_Wrapper.m_Player_Startgame;
-        public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
+        public InputAction @Blueprints => m_Wrapper.m_Player_Blueprints;
+        public InputAction @NextLine => m_Wrapper.m_Player_NextLine;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1317,9 +1351,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Startgame.started += instance.OnStartgame;
             @Startgame.performed += instance.OnStartgame;
             @Startgame.canceled += instance.OnStartgame;
-            @UseItem.started += instance.OnUseItem;
-            @UseItem.performed += instance.OnUseItem;
-            @UseItem.canceled += instance.OnUseItem;
+            @Blueprints.started += instance.OnBlueprints;
+            @Blueprints.performed += instance.OnBlueprints;
+            @Blueprints.canceled += instance.OnBlueprints;
+            @NextLine.started += instance.OnNextLine;
+            @NextLine.performed += instance.OnNextLine;
+            @NextLine.canceled += instance.OnNextLine;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1366,9 +1403,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Startgame.started -= instance.OnStartgame;
             @Startgame.performed -= instance.OnStartgame;
             @Startgame.canceled -= instance.OnStartgame;
-            @UseItem.started -= instance.OnUseItem;
-            @UseItem.performed -= instance.OnUseItem;
-            @UseItem.canceled -= instance.OnUseItem;
+            @Blueprints.started -= instance.OnBlueprints;
+            @Blueprints.performed -= instance.OnBlueprints;
+            @Blueprints.canceled -= instance.OnBlueprints;
+            @NextLine.started -= instance.OnNextLine;
+            @NextLine.performed -= instance.OnNextLine;
+            @NextLine.canceled -= instance.OnNextLine;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1528,7 +1568,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnStartgame(InputAction.CallbackContext context);
-        void OnUseItem(InputAction.CallbackContext context);
+        void OnBlueprints(InputAction.CallbackContext context);
+        void OnNextLine(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {

@@ -29,6 +29,14 @@ TagManager:
   - Robot
   - VoiceRecorder
   - item
+  - SecurityTag
+  - Nuclear Battery
+  - Crouch Tag
+  - Jump Tag
+  - BabyRobot
+  - BigRobot
+  - NPC
+  - HoloBot
   layers:
   - Default
   - TransparentFX
@@ -39,8 +47,8 @@ TagManager:
   - Ground
   - IgnorBigRobot
   - IgnorBabyRobot
-  - 
-  - 
+  - IgnoreHead
+  - IgnoreBigHead
   - 
   - 
   - 

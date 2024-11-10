@@ -49,7 +49,7 @@ public class Buttons : MonoBehaviour
 
         yield return new WaitForSeconds(3.5F);
 
-        SceneManager.LoadScene("CyberNexus2.0LevelDesign");
+        SceneManager.LoadScene("MK + Kulani");
 
     }
     
