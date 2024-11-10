@@ -457,6 +457,8 @@ public class BigRobotController : MonoBehaviour
                 Securityclearance.transform.rotation = SecurityTagHoldPosition.rotation;
                 Securityclearance.transform.parent = SecurityTagHoldPosition;
 
+                inventoryManage.SpawnItem(availableItems[2]);
+
                 //SecurityClearanceTag.SetActive(true);(UIThing - Need to add)
 
                 Securityclearance.SetActive(false);

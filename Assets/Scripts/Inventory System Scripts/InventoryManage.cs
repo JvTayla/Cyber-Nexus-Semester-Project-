@@ -186,11 +186,14 @@ public class InventoryManage : MonoBehaviour
             Debug.Log("Instantiated Chemicals at holdPosition.");
         }
         else if (selectedItem.actionType == item.ActionType.Security)
-        {
+        { 
             GameObject securitytag = Instantiate(SecurityTag, SecurityCardHold.position, Quaternion.identity);
+            securitytag.GetComponent<Rigidbody>().isKinematic = true;
             securitytag.transform.position = SecurityCardHold.position;
             securitytag.transform.rotation = SecurityCardHold.rotation;
-            securitytag.transform.parent = SecurityCardHold;
+            securitytag.transform.parent = SecurityCardHold; 
+
+
 
             Debug.Log("Instantiated Chemicals at holdPosition.");
         }
