@@ -37,6 +37,7 @@ TagManager:
   - BigRobot
   - NPC
   - HoloBot
+  - FinalScreen
   layers:
   - Default
   - TransparentFX
