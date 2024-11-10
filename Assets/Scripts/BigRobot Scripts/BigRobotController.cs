@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -67,6 +68,15 @@ public class BigRobotController : MonoBehaviour
     public float standingHeight = 2f;
     public float crouchSpeed = 1.5f;
     public bool isCrouching = false;
+
+    [Header("PLAYER SECURITY CLEARANCE")]
+    [Space(5)]
+
+    public bool HasSecurityTag = false;
+    public bool HasNuclearBattery = false;
+    public Transform SecurityTagHoldPosition;
+    private GameObject Securityclearance; //Currently holding security tag
+    public GameObject SecurityClearanceTag;
 
     [Header("PUZZLE 1 SETTINGS")]
     [Space(5)]
@@ -223,7 +233,7 @@ public class BigRobotController : MonoBehaviour
             // velocity = 0f;
             if (IsBWalking == false)
             {
-              //  animator.SetBool("IsBWalking", false);
+               animator.SetBool("IsBWalking", false);
             }
 
 
@@ -236,7 +246,7 @@ public class BigRobotController : MonoBehaviour
 
             if (IsBWalking == true)
             {
-               // animator.SetBool("IsBWalking", true);
+                animator.SetBool("IsBWalking", true);
             }
         }
         //Adjust speed if crouching
@@ -433,6 +443,27 @@ public class BigRobotController : MonoBehaviour
                 GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
                 VoiceRecrod.SetActive(true);
                
+            }
+            else
+            if (hit.collider.CompareTag("SecurityTag"))
+            {
+                // Pick up the object
+                Securityclearance = hit.collider.gameObject;
+                Securityclearance.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+
+
+                // Attach the object to the hold position
+                Securityclearance.transform.position = SecurityTagHoldPosition.position;
+                Securityclearance.transform.rotation = SecurityTagHoldPosition.rotation;
+                Securityclearance.transform.parent = SecurityTagHoldPosition;
+
+                //SecurityClearanceTag.SetActive(true);(UIThing - Need to add)
+
+                Securityclearance.SetActive(false);
+                HasSecurityTag = true;
+                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+
+
             }
             else if (hit.collider.CompareTag("Nuclear Battery"))
             {

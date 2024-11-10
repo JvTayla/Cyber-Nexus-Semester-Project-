@@ -69,6 +69,17 @@ public class FirstPersonControls : MonoBehaviour
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
+
+    [Header("PLAYER SECURITY CLEARANCE")]
+    [Space(5)]
+
+    public bool HasSecurityTag  = false;
+    public bool HasNuclearBattery = false;
+    public Transform SecurityTagHoldPosition;
+    private GameObject Securityclearance; //Currently holding security tag
+    public GameObject SecurityClearanceTag; // UI thing - Need to add
+    
+
     [Header("UI")]
     public GameObject SmallRobotUI;
     public GameObject BigRobotUI;
@@ -425,6 +436,27 @@ public class FirstPersonControls : MonoBehaviour
                 VoiceRecrod.SetActive(true);
 
             }
+            else
+            if (hit.collider.CompareTag("SecurityTag"))
+            {
+                // Pick up the object
+                Securityclearance = hit.collider.gameObject;
+                Securityclearance.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
+                
+
+                // Attach the object to the hold position
+                Securityclearance.transform.position = SecurityTagHoldPosition.position;
+                Securityclearance.transform.rotation = SecurityTagHoldPosition.rotation;
+                Securityclearance.transform.parent = SecurityTagHoldPosition;
+
+                //SecurityClearanceTag.SetActive(true);(UIThing - Need to add)
+
+                Securityclearance.SetActive(false);
+                HasSecurityTag = true;
+                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+
+
+            }
         }
     }
     private void CheckForPickUp()
@@ -567,6 +599,15 @@ public class FirstPersonControls : MonoBehaviour
         BigRobotUI.SetActive(true);
     }
 
+    public void SecurityClearance()
+    {
+
+    }
+
+    public void NuclearBattery()
+    {
+
+    }
 }
 
 

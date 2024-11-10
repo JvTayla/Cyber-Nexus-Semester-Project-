@@ -36,6 +36,7 @@ TagManager:
   - BabyRobot
   - BigRobot
   - NPC
+  - HoloBot
   layers:
   - Default
   - TransparentFX
@@ -46,8 +47,8 @@ TagManager:
   - Ground
   - IgnorBigRobot
   - IgnorBabyRobot
-  - 
-  - 
+  - IgnoreHead
+  - IgnoreBigHead
   - 
   - 
   - 
