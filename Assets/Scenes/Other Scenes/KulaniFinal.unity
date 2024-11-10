@@ -9911,8 +9911,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00014637824, y: 26.61586}
-  m_SizeDelta: {x: 19.7338, y: 257.23}
+  m_AnchoredPosition: {x: 0.00014637824, y: 26.615852}
+  m_SizeDelta: {x: -148.4845, y: 255.13}
   m_Pivot: {x: 0, y: 1.0953051}
 --- !u!114 &416877509
 MonoBehaviour:
@@ -42834,7 +42834,7 @@ MonoBehaviour:
   itemContent: {fileID: 416877508}
   itemPrefab: {fileID: 914894584002882069, guid: 4cfd30e0e173f3e46a6e37a3bada1c31,
     type: 3}
-  selectedColor: {r: 0.8867924, g: 0.82613915, b: 0.15895326, a: 1}
+  selectedColor: {r: 1, g: 0.95759314, b: 0.4509434, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   Testtube: {fileID: 2109156093596736884, guid: e4612c66e9b48b14585e5995291cf362,
     type: 3}
@@ -43553,8 +43553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64362cbe7e60aac4983e5182c99fc7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  inventoryManage: {fileID: 1739911299}
 --- !u!4 &1763421890
 Transform:
   m_ObjectHideFlags: 0
