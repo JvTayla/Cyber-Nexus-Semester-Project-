@@ -118,8 +118,8 @@ public class BigRobotController : MonoBehaviour
     [Header("MAP SETTINGS")]
     public GameObject Map;
     public GameObject MapCamera;
-
-    [Header("INTERACT SETTINGS")]
+    private int i = 1;
+    [Header("INTERACT SETTINmGS")]
     [Space(5)]
     public Material switchMaterial; // Material to apply when switch is activated
     public GameObject[] objectsToChangeColor; // Array of objects to change color
@@ -138,6 +138,7 @@ public class BigRobotController : MonoBehaviour
     public bool Allrecordings;
     public int recordings = 0;
     public bool Recorderinhand;
+  
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
@@ -222,17 +223,12 @@ public class BigRobotController : MonoBehaviour
         }
        
         playerInput.Player.NextLine.performed += ctx => SubtitlesDisplay();
-        int counter = 1 ;
-        if(counter ==1)
-        {
-            playerInput.Player.Blueprints.performed += ctx => MapOpen();
-            counter++;
-        }
-        else if (counter==2)
-        {
-            playerInput.Player.Blueprints.performed += ctx => MapClose();
-            counter--;
-        }
+      
+        playerInput.Player.Blueprints.performed += ctx => MapOpen();
+          
+     
+   
+       
 
 
         
@@ -512,8 +508,8 @@ public class BigRobotController : MonoBehaviour
                 heldObject.transform.rotation = holdPosition.rotation;
                 heldObject.transform.parent = holdPosition;
                 
-                GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
-                VoiceRecrod.SetActive(true);
+              //  GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
+               // VoiceRecrod.SetActive(true);
                 Recorderinhand = true;
                 _UIScript.Recordings[i] = true;
                 _UIScript.MissionTasks();
@@ -756,12 +752,12 @@ public class BigRobotController : MonoBehaviour
                 Debug.Log("Battery Inter");
                 _UIScript.InteractWithNpc2(hit);
             }
-            /*else if (hit.collider.CompareTag("FinalScreen"))
+            else if (hit.collider.CompareTag("FinalScreen"))
             {
-
-                StartCoroutine(FinalScene());
-
-            }*/
+                //LoginScreen.SetActive(true);
+               // FinalCamara.SetActive(true);
+               _RobotController.FinalScreen = true;
+            }
             else if ( !Allrecordings)
             {
                 hit.collider.gameObject.SetActive(false);
@@ -779,25 +775,6 @@ public class BigRobotController : MonoBehaviour
         }
     }
 
-    /*public IEnumerator FinalScene()
-        {
-        
-        yield return new WaitForSeconds(1f);
-
-        LoginScreen.SetActive(true);
-        FinalCamara.SetActive(true);
-        
-        BigRobotUI.SetActive(false);
-        LittleRobotCam.SetActive(false);
-        LittleRobotUI.SetActive(false);
-
-        yield return new WaitForSeconds(5f);
-
-        FinalScreen.SetActive(true);
-
-        
-
-    }*/
     //public Material White;
     //public MeshRenderer console;
     public GameObject consolOff;
@@ -905,17 +882,35 @@ public class BigRobotController : MonoBehaviour
 
     public void MapOpen()
     {
-        playerInput.Player.Disable();
+        _RobotController.Map = true;
+        //playerInput.Player.Disable();
         //_RobotController.counter = 3;
         //playerInput.PauseMenu.Enable();
-        Map.SetActive(true);
-        MapCamera.SetActive(true);
         
-
-        _CorePowerScript.SmallRobotUI.SetActive(false);
-        _CorePowerScript.BigRobotUI.SetActive(false);
-        SmallRobotUI.SetActive(false);
-        BigRobotUI.SetActive(false);
+        if (i == 1)
+        {
+            Map.SetActive(true);
+            MapCamera.SetActive(true);
+            _CorePowerScript.SmallRobotUI.SetActive(false);
+            _CorePowerScript.BigRobotUI.SetActive(false);
+            SmallRobotUI.SetActive(false);
+            BigRobotUI.SetActive(false);
+            i++;
+        }
+        else
+        {
+            //_RobotController.counter = 0;
+            //playerInput.Player.Enable();
+           // _RobotController.counter++;
+           _RobotController.Map = false;
+            i--;
+            Map.SetActive(false);
+            MapCamera.SetActive(false);
+          
+            _CorePowerScript.BigRobotUI.SetActive(true);
+            SmallRobotUI.SetActive(false);
+            BigRobotUI.SetActive(true);
+        }
 
 
     }

@@ -45,6 +45,7 @@ public class UIScript : MonoBehaviour
         LoadSubtitles2();
         LoadSubtitles3();
         LoadSubtitles4();
+        DisplayNextLine4();
     }
 
     // Update is called once per frame
@@ -62,6 +63,7 @@ public class UIScript : MonoBehaviour
             }
         }
 
+        
         MissionText.text = Subtitles4;
         
         if (Input.GetKeyDown(KeyCode.Return)) // Checks if the Enter key is pressed

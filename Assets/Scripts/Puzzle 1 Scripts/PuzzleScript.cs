@@ -147,7 +147,7 @@ public class PuzzleScript : MonoBehaviour
         openDoor[1].SetActive(false);
         openDoor[2].SetActive(false);
         openDoor[3].SetActive(true);
-        openDoor[3].transform.position = openDoor[1].transform.position;
+        openDoor[3].transform.position = openDoor[0].transform.position;
         openDoor[2].transform.position = new Vector3(10000, 0, 0);
         openDoor[4].SetActive(true);
         openDoor[5].SetActive(false);

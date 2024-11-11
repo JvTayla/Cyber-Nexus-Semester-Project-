@@ -17,13 +17,14 @@ public class NPCAnimator : MonoBehaviour
     public Animator holoanimator;
     public Animator bodyanimator;
     public Animator Camanimator;
-    public GameObject[] OpenDoor; 
+    public GameObject[] OpenDoor;
 
+    private BigRobotController _BigRobotController;
     // Start is called before the first frame update
     
     public void Start()
     {
-
+        _BigRobotController = FindAnyObjectByType<BigRobotController>();
         IsBasePowered = true; //This is after MK Puzzle is completed essentially 
     }
 
@@ -111,6 +112,7 @@ public class NPCAnimator : MonoBehaviour
             bodyanimator.SetBool("IsIdle", true);
 
             StartCoroutine(StopYapping());
+           // _BigRobotController.playerInput.Player.Enable();
         }
      
     }
