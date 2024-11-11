@@ -547,7 +547,7 @@ public class BigRobotController : MonoBehaviour
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;
 
                 // Add the item to the inventory
-                //inventoryManage.SpawnItem(availableItems[3]);
+                inventoryManage.SpawnItem(availableItems[3]);
 
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
