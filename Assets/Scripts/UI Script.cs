@@ -90,9 +90,15 @@ public class UIScript : MonoBehaviour
                 textTyper(hit , "Locked");
             }
             else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
-                     hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Switch2") || hit.collider.CompareTag("VoiceRecorder"))
+                     hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("VoiceRecorder"))
+                
             {
+                
                textTyper(hit ,"Press E / Square to Pickup ");
+            }
+            else if(hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Switch2"))
+            {
+                textTyper(hit ,"Press F / Square to Pickup ");
             }
             else if (hit.collider.CompareTag("BabyRobot"))
             {

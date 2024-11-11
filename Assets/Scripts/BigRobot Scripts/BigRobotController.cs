@@ -548,7 +548,7 @@ public class BigRobotController : MonoBehaviour
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;
 
                 // Add the item to the inventory
-                inventoryManage.SpawnItem(availableItems[3]);
+                //inventoryManage.SpawnItem(availableItems[3]);
 
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
@@ -611,18 +611,18 @@ public class BigRobotController : MonoBehaviour
     public void ToggleItem()
     {
        if(SecurityTagHoldPosition.childCount > 0)
-        {
-            foreach (Transform child in SecurityTagHoldPosition)
-            {
-                // Toggle the active state
-                child.gameObject.SetActive(!child.gameObject.activeSelf);
-            }
+       {
+           foreach (Transform child in SecurityTagHoldPosition)
+           {
+               // Toggle the active state
+               child.gameObject.SetActive(!child.gameObject.activeSelf);
+           }
 
-        }
-        else
-        {
-            Debug.LogWarning("No items in holdPosition to toggle.");
-        }
+       }
+       else
+       {
+           Debug.LogWarning("No items in holdPosition to toggle.");
+       }
     }
     // Reference to the SecurityTag prefab
     
@@ -760,9 +760,9 @@ public class BigRobotController : MonoBehaviour
             }
             else if ( !Allrecordings)
             {
-                hit.collider.gameObject.SetActive(false);
+                //hit.collider.gameObject.SetActive(false);
                 recordings++;
-                _UIScript.CollectRecording(hit);
+               
                 if (recordings == 6)
                 {
                     Allrecordings = true;
