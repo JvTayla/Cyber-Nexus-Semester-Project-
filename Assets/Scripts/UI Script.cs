@@ -22,10 +22,21 @@ public class UIScript : MonoBehaviour
     private string Subtitles = "";
     private string Subtitles2 = "";
     private string Subtitles3 = "";
+    private string Subtitles4 = "";
 
     private bool NpcInteract1 = false;
     private bool NpcInteract2 = false;
-    
+
+    public bool LoadingDeck;
+    public bool Tag;
+    public bool NuclearBattery;
+    public bool Recording1;
+    public bool Recording2;
+    public bool Recording3;
+    public bool Recording4;
+    public bool Recording5;
+    public bool Recording6;
+    public bool Upload;
     // Start is called before the first frame update
     void Start()
     {
@@ -97,6 +108,10 @@ public class UIScript : MonoBehaviour
             else if (hit.collider.CompareTag("NPC") && _BigRobotController.NpcInteract && _BigRobotController.Battery)
             {
                 textTyper(hit ,Subtitles2 );
+            }
+            else if (_BigRobotController.Recorderinhand)
+            {
+                textTyper(hit, Subtitles3);
             }
             else if(hit.collider.CompareTag("Narrative"))
             {
@@ -308,7 +323,7 @@ public class UIScript : MonoBehaviour
 
     void LoadSubtitles3()
     {
-        if (File.Exists(filePath2))
+        if (File.Exists(filePath3))
         {
             subtitles3.AddRange(File.ReadAllLines(filePath3));
             Debug.Log("Subtitles loaded successfully.");
@@ -340,6 +355,47 @@ public class UIScript : MonoBehaviour
         HideText();
         DisplayNextLine3();
         textTyperNoHit(Subtitles3);
+        uiText.text = Subtitles3; 
+    }
+    
+    public string filePath4 = "Assets/Subtitles/MissionTasks.txt"; // Path to your text file
+    private List<string> subtitles4 = new List<string>();
+    private int currentLineIndex4 = 0;
+
+    void LoadSubtitles4()
+    {
+        if (File.Exists(filePath4))
+        {
+            subtitles4.AddRange(File.ReadAllLines(filePath4));
+            Debug.Log("Subtitles loaded successfully.");
+        }
+        else
+        {
+            Debug.LogError("Subtitle file not found at " + filePath4);
+        }
+    }
+
+    void DisplayNextLine4()
+    {
+        if (currentLineIndex4 < subtitles4.Count)
+        {
+            Debug.Log(subtitles4[currentLineIndex4]); // Replace with your subtitle display logic (e.g., UI text element)
+            Subtitles4 = subtitles4[currentLineIndex4];
+            currentLineIndex4++;
+        }
+        else
+        {
+            Debug.Log("End of subtitles2.");
+            _BigRobotController.NpcInteract = false;
+        }
+    }
+
+    public void MissionTasks(RaycastHit hit)
+    {
+        _BigRobotController.NpcInteract = true;
+        HideText();
+        DisplayNextLine4();
+        //text for missions
     }
     //Fix raycast Ui
     //Make cutscenes

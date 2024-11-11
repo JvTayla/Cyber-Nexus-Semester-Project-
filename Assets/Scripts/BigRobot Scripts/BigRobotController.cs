@@ -115,6 +115,7 @@ public class BigRobotController : MonoBehaviour
     public GameObject FinalCamara;
     public bool Allrecordings;
     public int recordings = 0;
+    public bool Recorderinhand;
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
@@ -381,6 +382,7 @@ public class BigRobotController : MonoBehaviour
             heldObject.transform.parent = null;
             holdingGun = false;
             Destroy(heldObject);
+            Recorderinhand = false;
         }
 
         // Perform a raycast from the camera's position forward
@@ -462,6 +464,7 @@ public class BigRobotController : MonoBehaviour
                 
                 GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
                 VoiceRecrod.SetActive(true);
+                Recorderinhand = true;
                _UIScript.CollectRecording(hit);
             }
             else
@@ -647,38 +650,7 @@ public class BigRobotController : MonoBehaviour
                 LoginScreen.SetActive(true);
                 FinalCamara.SetActive(true);
             }
-            else if (hit.collider.CompareTag("VoiceRecorder") && !Allrecordings)
-            {
-                hit.collider.gameObject.SetActive(false);
-                recordings++;
-                _UIScript.CollectRecording(hit);
-                if (recordings == 6)
-                {
-                    Allrecordings = true;
-                }
-            }
-            else if (hit.collider.CompareTag("VoiceRecorder") && Allrecordings)
-            {
-                
-            }else
-            if (hit.collider.CompareTag("NPC")  && !Battery)
-            {
-                NpcInteract = true;
-                _UIScript.InteractWithNpc();
-            }
-            else
-            if (hit.collider.CompareTag("NPC") && Battery)
-            {
-                NpcInteract = true;
-                Debug.Log("Battery Inter");
-                _UIScript.InteractWithNpc2(hit);
-            }
-            else if (hit.collider.CompareTag("FinalScreen"))
-            {
-                LoginScreen.SetActive(true);
-                FinalCamara.SetActive(true);
-            }
-            else if (hit.collider.CompareTag("VoiceRecorder") && !Allrecordings)
+            else if ( !Allrecordings)
             {
                 hit.collider.gameObject.SetActive(false);
                 recordings++;
