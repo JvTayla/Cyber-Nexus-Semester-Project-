@@ -29,6 +29,7 @@ public class item : ScriptableObject
         Tube,
         Chemicals, 
         Tag,
+        Battery,
 
     }
 
@@ -37,6 +38,7 @@ public class item : ScriptableObject
         Research,
         experiment, 
         Security,
+        Nuclear,
 
     }
 

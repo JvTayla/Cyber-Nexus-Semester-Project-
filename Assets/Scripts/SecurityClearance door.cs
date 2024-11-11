@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SecurityClearancedoor : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class SecurityClearancedoor : MonoBehaviour
 
     public GameObject[] SecurityDoorOpened; //GameObject to switch off (RedDoor)
     public GameObject[] SecurityDoorOpening; //GameObject to set Active (Green Door)
-
+    public Text Text2takeout; 
     //public Animator DoorAnimator;
 
 
@@ -37,6 +39,7 @@ public class SecurityClearancedoor : MonoBehaviour
             }
             else
             {
+                //ShowTextForDuration(5.0f);
                 Debug.Log("You need a Security Tag to open this door.");
             }
 
@@ -91,6 +94,12 @@ public class SecurityClearancedoor : MonoBehaviour
         Debug.Log("Door opened!");
         Destroy(Trigger);
     }
-
+    /*public IEnumerator ShowTextForDuration(float duration)
+    {
+        Text2takeout.text = "Take Out Your SecurityTag.";
+        Text2takeout.gameObject.SetActive(true); // Show the text
+        yield return new WaitForSeconds(duration); // Wait for 5 seconds (or the given duration)
+        Text2takeout.gameObject.SetActive(false); // Hide the text after 5 seconds
+    }*/
 }
 

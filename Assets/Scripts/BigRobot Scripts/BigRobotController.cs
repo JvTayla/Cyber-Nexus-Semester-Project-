@@ -46,8 +46,10 @@ public class BigRobotController : MonoBehaviour
     public List<item> availableItems = new List<item>();
     public TextMeshProUGUI pickUpText;
     private string[] interactableTags = { "PickUp", "TestTube", "Chemicals" };
-
-
+    item Item;
+    public GameObject SecurityTagPrefab;
+    private bool hasSecurityTagChecked = false;
+   
     [Header("INVENTORY SETTINGS")]
     [Space(5)]
     public InventoryManage inventoryManage;
@@ -77,6 +79,7 @@ public class BigRobotController : MonoBehaviour
     public Transform SecurityTagHoldPosition;
     private GameObject Securityclearance; //Currently holding security tag
     public GameObject SecurityClearanceTag;
+    private SecurityClearancedoor securityClearancedoor;
 
     [Header("PUZZLE 1 SETTINGS")]
     [Space(5)]
@@ -214,7 +217,8 @@ public class BigRobotController : MonoBehaviour
         Move();
         LookAround();
         ApplyGravity();
-        CheckForPickUp();
+        CheckForPickUp(); 
+        CheckSecurityTag();
     }
 
     
@@ -453,17 +457,18 @@ public class BigRobotController : MonoBehaviour
 
 
                 // Attach the object to the hold position
-                Securityclearance.transform.position = SecurityTagHoldPosition.position;
-                Securityclearance.transform.rotation = SecurityTagHoldPosition.rotation;
-                Securityclearance.transform.parent = SecurityTagHoldPosition;
+                Securityclearance.transform.position = holdPosition.position;
+                Securityclearance.transform.rotation = holdPosition.rotation;
+                Securityclearance.transform.parent = holdPosition; 
+                Securityclearance.SetActive(false);
 
                 inventoryManage.SpawnItem(availableItems[2]);
 
                 //SecurityClearanceTag.SetActive(true);(UIThing - Need to add)
-
-                Securityclearance.SetActive(false);
+                CheckSecurityTag();
+                /*Securityclearance.SetActive(false);
                 HasSecurityTag = true;
-                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+                Debug.Log("HasSecurityTag value: " + HasSecurityTag);*/
 
 
             }
@@ -473,7 +478,7 @@ public class BigRobotController : MonoBehaviour
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;
 
                 // Add the item to the inventory
-                inventoryManage.SpawnItem(availableItems[2]);
+                inventoryManage.SpawnItem(availableItems[3]);
 
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.rotation = holdPosition.rotation;
@@ -529,19 +534,68 @@ public class BigRobotController : MonoBehaviour
     }
     public void ToggleItem()
     {
-        if (holdPosition.childCount > 0)
+       if(SecurityTagHoldPosition.childCount > 0)
         {
-            foreach (Transform child in holdPosition)
+            foreach (Transform child in SecurityTagHoldPosition)
             {
                 // Toggle the active state
                 child.gameObject.SetActive(!child.gameObject.activeSelf);
             }
+
         }
         else
         {
             Debug.LogWarning("No items in holdPosition to toggle.");
         }
     }
+    // Reference to the SecurityTag prefab
+    
+
+    public void CheckSecurityTag()
+    {
+        if (SecurityTagHoldPosition.childCount > 0 && !hasSecurityTagChecked)
+        {
+            // Flag to detect SecurityTag instance
+            bool securityTagFound = false;
+
+            // Loop through each child of SecurityTagHoldPosition
+            foreach (Transform child in SecurityTagHoldPosition)
+            {
+                // Check if the child is an instance of the SecurityTagPrefab
+                if (child.name == SecurityTagPrefab.name + "(Clone)" ||
+                    child.CompareTag("SecurityTag")) // Use tag if set
+                {
+                    securityTagFound = true;
+                    break;
+                }
+            }
+
+            // Perform actions if SecurityTag instance is found
+            if (securityTagFound)
+            {
+                Securityclearance.SetActive(false);
+                HasSecurityTag = true;
+                hasSecurityTagChecked = true; // Flag to prevent redundant checks
+                Debug.Log("SecurityTag instance detected. HasSecurityTag value: " + HasSecurityTag);
+            }
+            else
+            {
+                Debug.Log("No SecurityTag instance found among the children.");
+            }
+        }
+        else if (SecurityTagHoldPosition.childCount == 0)
+        { 
+
+
+            Debug.Log("Take Out SecurityCard");
+            
+
+            hasSecurityTagChecked = false; // Reset for future checks
+            HasSecurityTag = false;
+        }
+    }
+   
+
 
     public void ToggleLaserSwitch()
     {

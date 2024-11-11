@@ -22,6 +22,7 @@ public class InventoryManage : MonoBehaviour
     public GameObject Testtube;
     public GameObject Chemicals; 
     public GameObject SecurityTag;
+    public GameObject NucleurBattery; 
     public Transform holdPosition;
     public Transform SecurityCardHold;
     private Vector3[] originalScales;
@@ -83,9 +84,14 @@ public class InventoryManage : MonoBehaviour
     {
         Vector2 moveInput = playerInput.Inventory.Movement.ReadValue<Vector2>();
 
+        if (Mathf.Abs(moveInput.y) > movementThreshold)
+        {
+            NavigateInventory(moveInput.y, true); // True indicates vertical navigation
+        }
+
         if (Mathf.Abs(moveInput.x) > movementThreshold)
         {
-            NavigateInventory(moveInput.x); // False indicates horizontal navigation
+            NavigateInventory(moveInput.x, false); // False indicates horizontal navigation
         }
         if (playerInput.Inventory.Select.triggered)
         {
@@ -93,13 +99,31 @@ public class InventoryManage : MonoBehaviour
         }
     }
 
-    public void NavigateInventory(float input)
+    public void NavigateInventory(float input, bool isVertical)
     {
         if (inventoryButtons.Count == 0) return;
 
-       
-        
-        
+        if (isVertical)
+        {
+            if (input > 0) // Move up
+            {
+                currentButtonIndex--;
+                if (currentButtonIndex < 0)
+                {
+                    currentButtonIndex = inventoryButtons.Count - 1; // Loop back to end
+                }
+            }
+            else if (input < 0) // Move down
+            {
+                currentButtonIndex++;
+                if (currentButtonIndex >= inventoryButtons.Count)
+                {
+                    currentButtonIndex = 0; // Loop back to start
+                }
+            }
+        }
+        else
+        {
             if (input > 0) // Move right
             {
                 currentButtonIndex++;
@@ -116,7 +140,7 @@ public class InventoryManage : MonoBehaviour
                     currentButtonIndex = inventoryButtons.Count - 1; // Loop back to end
                 }
             }
-        
+        }
 
         UpdateButtonSelection();
     }
@@ -135,8 +159,8 @@ public class InventoryManage : MonoBehaviour
     }
     public void SelectButton()
     {
-        // Get the Button component on the current inventory button
-        Button selectedButton = inventoryButtons[currentButtonIndex].GetComponent<Button>();
+        // Get the Button component on the current inventory button  
+        Button selectedButton = inventoryButtons[currentButtonIndex].GetComponent<Button>(); 
 
         if (selectedButton != null)
         {
@@ -168,7 +192,7 @@ public class InventoryManage : MonoBehaviour
         // Check the type of action and instantiate the corresponding object
         if (selectedItem.actionType == item.ActionType.Research)
         {
-            GameObject testube =  Instantiate(Testtube, holdPosition.position, Quaternion.identity);
+            GameObject testube = Instantiate(Testtube, holdPosition.position, Quaternion.identity);
             testube.transform.position = holdPosition.position;
             testube.transform.rotation = holdPosition.rotation;
             testube.transform.parent = holdPosition;
@@ -178,24 +202,45 @@ public class InventoryManage : MonoBehaviour
         }
         else if (selectedItem.actionType == item.ActionType.experiment)
         {
-            GameObject chemicals = Instantiate(Chemicals, holdPosition.position, Quaternion.identity);
-            chemicals.transform.position = holdPosition.position;
+            // Calculate the position with the offset directly
+            Vector3 offsetPosition = holdPosition.position + new Vector3(0.5f, -0.12f, 0f);
+
+            // Instantiate the chemicals object at the offset position with the same rotation as holdPosition
+            GameObject chemicals = Instantiate(Chemicals, offsetPosition, holdPosition.rotation);
+
+            // Set the chemicals object as a child of holdPosition
+            chemicals.transform.parent = holdPosition;
+
+            // Ensure it keeps the modified offset position even after parenting
+            chemicals.transform.localPosition = new Vector3(0.5f, -0.12f, 0f); // Relative to holdPosition's origin
             chemicals.transform.rotation = holdPosition.rotation;
-            chemicals.transform.parent = holdPosition; 
+
 
             Debug.Log("Instantiated Chemicals at holdPosition.");
         }
         else if (selectedItem.actionType == item.ActionType.Security)
-        { 
+        {
             GameObject securitytag = Instantiate(SecurityTag, SecurityCardHold.position, Quaternion.identity);
             securitytag.GetComponent<Rigidbody>().isKinematic = true;
             securitytag.transform.position = SecurityCardHold.position;
-            securitytag.transform.rotation = SecurityCardHold.rotation;
-            securitytag.transform.parent = SecurityCardHold; 
+            securitytag.transform.rotation = SecurityCardHold.rotation * Quaternion.Euler(180f, 0f, 180f);
+
+            securitytag.transform.parent = SecurityCardHold;
 
 
 
-            Debug.Log("Instantiated Chemicals at holdPosition.");
+            Debug.Log("Instantiated SecurityTag at holdPosition.");
+        }
+        else if (selectedItem.actionType == item.ActionType.Nuclear)
+        {
+            GameObject battery = Instantiate(NucleurBattery, holdPosition.position, Quaternion.identity);
+            battery.GetComponent<Rigidbody>().isKinematic = true;
+            battery.transform.position = holdPosition.position;
+            battery.transform.rotation = holdPosition.rotation * Quaternion.Euler(180f, 0f, 180f); 
+            battery.transform.parent = holdPosition;
+
+
+            Debug.Log("Instantiated Testtube at holdPosition.");
         }
         else
         {
