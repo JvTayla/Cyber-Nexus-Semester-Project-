@@ -25,6 +25,7 @@ public class BigRobotController : MonoBehaviour
     private float horizontalLookRotaion = 0f;
     private Vector3 velocity;
     private CharacterController characterController;
+
     [Header("ANIM SETTINGS")]
 
     public bool IsBWalking;
@@ -89,6 +90,20 @@ public class BigRobotController : MonoBehaviour
     public GameObject SmallRobotUI;
     public GameObject BigRobotUI;
 
+    [Header("UI Extras")]
+    public GameObject Walking;
+    public GameObject Idle;
+    public GameObject Crouching;
+    public GameObject Jumping;
+    public GameObject Intruder;
+    public GameObject SecurityClearance;
+    public GameObject MainMission;
+    public GameObject Mission1;
+    public GameObject Mission2;
+    public GameObject Mission3;
+
+
+
     //private bool isMenuMode = true;
 
     private HealthScript _HealthScript;
@@ -134,6 +149,17 @@ public class BigRobotController : MonoBehaviour
         playerInput = new Controls();
         _UIScript = FindAnyObjectByType<UIScript>();
         _RobotController = FindAnyObjectByType<RobotController>();
+
+        Crouching.SetActive(false);
+        Idle.SetActive(true);
+        Walking.SetActive(false);
+        Jumping.SetActive(false);
+        Intruder.SetActive(true);
+        SecurityClearance.SetActive(false);
+        MainMission.SetActive(true);
+        Mission1.SetActive(false);
+        Mission2.SetActive(false);
+        Mission3.SetActive(false);
         
     }
 
@@ -146,8 +172,8 @@ public class BigRobotController : MonoBehaviour
         // UiInput.UI.Enable();
         if (!NpcInteract)
         { 
-            
-            // Subscribe to the movement input events
+
+        // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
@@ -256,7 +282,10 @@ public class BigRobotController : MonoBehaviour
               animator.SetBool("IsBWalking", false);
             }
 
-
+            Idle.SetActive(true);
+            Crouching.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
 
         }
         else
@@ -268,12 +297,20 @@ public class BigRobotController : MonoBehaviour
             {
                 animator.SetBool("IsBWalking", true);
             }
+            Walking.SetActive(true);
+            Crouching.SetActive(false);
+            Idle.SetActive(false);
+            Jumping.SetActive(false);
         }
         //Adjust speed if crouching
         float currentSpeed;
         if (isCrouching)
         {
             currentSpeed = crouchSpeed;
+            Crouching.SetActive(true);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
         }
         else
         {
@@ -342,6 +379,10 @@ public class BigRobotController : MonoBehaviour
         {
             //Debug.Log("jumping");
             StartCoroutine(StopJump());
+            Crouching.SetActive(false);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(true);
         }
 
         /*if (IsBJumping == false)
@@ -487,6 +528,8 @@ public class BigRobotController : MonoBehaviour
                 Securityclearance.SetActive(false);
                 HasSecurityTag = true;
                 Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+                Intruder.SetActive(false);
+                SecurityClearance.SetActive(true);
 
 
             }
@@ -523,6 +566,10 @@ public class BigRobotController : MonoBehaviour
             //Crouch down
             characterController.height = crouchHeight;
             isCrouching = true;
+            Crouching.SetActive(true);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
         }
     }
 
