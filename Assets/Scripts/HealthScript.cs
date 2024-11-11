@@ -38,12 +38,16 @@ public class HealthScript : MonoBehaviour
     private FirstPersonControls _FirstPersonControls;
 
     private RobotController _RobotController;
+
+    private BigRobotController _BigRobotController;
+    
     // Start is called before the first frame update
     void Start()
     {
         _CorePowerScript = FindObjectOfType<CorePowerScript>();
         _FirstPersonControls = FindObjectOfType<FirstPersonControls>();
         _RobotController = FindObjectOfType<RobotController>();
+        _BigRobotController = FindAnyObjectByType<BigRobotController>();
     }
 
     // Update is called once per frame
@@ -277,14 +281,17 @@ public class HealthScript : MonoBehaviour
 
     public void ResetGame()
     {
+        _FirstPersonControls.playerInput.Player.Disable();
+        _BigRobotController.playerInput.Player.Disable();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
 
     public void ReturnToMainMenu()
     {
         // Load the main menu scene (ensure you have the correct scene name in your build settings)
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("StartCyberNexus");
     }
 
     // Function to exit the game

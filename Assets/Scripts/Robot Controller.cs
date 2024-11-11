@@ -23,7 +23,8 @@ public class RobotController : MonoBehaviour
 
     private CorePowerScript _CorePowerScript;
     private HealthScript _HealthScript;
-    
+    public bool Map = false;
+    public bool FinalScreen = false;
     private void Awake()
     {
         // Create a new instance of the input actions
@@ -62,17 +63,21 @@ public class RobotController : MonoBehaviour
             FirstPersonControls.enabled = true;
             AudioListenerLil.enabled = true;
             AudioListenerBig.enabled = false;
-//            BigRobotAnim.SetBool("IsBWalking", false);
-//            BigRobotAnim.SetBool("IsBJumping", false);
+           BigRobotAnim.SetBool("IsBWalking", false);
+            BigRobotAnim.SetBool("IsBJumping", false);
             
             _CorePowerScript.BigRobotUI.SetActive(false);
             _CorePowerScript.SmallRobotUI.SetActive(true);
             _HealthScript.IsBigRobotInControl = false;
         
-            if (!_HealthScript.IsBigRobotInControl)
+            if (!_HealthScript.IsBigRobotInControl && !FinalScreen && !Map)
             {
-                //_CorePowerScript.BigRobotHideDeadScreen();
-               // _CorePowerScript.StopBigRobotWarning();
+                _CorePowerScript.BigRobotHideDeadScreen();
+                _CorePowerScript.StopBigRobotWarning();
+                _CorePowerScript.BigRobotUI.SetActive(false);
+            }
+            else
+            {
                 _CorePowerScript.BigRobotUI.SetActive(false);
             }
             
@@ -87,8 +92,8 @@ public class RobotController : MonoBehaviour
             AudioListenerLil.enabled = false;
             AudioListenerBig.enabled = true;
             counter = 0; // Reset the counter after switching
-           // LittleRobotAnim.SetBool("IsWalking", false);
-           // LittleRobotAnim.SetBool("IsJumping", false);
+            LittleRobotAnim.SetBool("IsWalking", false);
+            LittleRobotAnim.SetBool("IsJumping", false);
 
             
             
@@ -97,12 +102,16 @@ public class RobotController : MonoBehaviour
         
             _HealthScript.IsBigRobotInControl = true;
 
-            if (_HealthScript.IsBigRobotInControl)
+            if (_HealthScript.IsBigRobotInControl && !FinalScreen && !Map)
             {
-                //_CorePowerScript.SmallRobotHideDeadScreen();
-                //_CorePowerScript.StopSmallRobotWarning();
+                _CorePowerScript.SmallRobotHideDeadScreen();
+                _CorePowerScript.StopSmallRobotWarning();
                 _CorePowerScript.SmallRobotUI.SetActive(false);
                 
+            }
+            else
+            {
+                _CorePowerScript.SmallRobotUI.SetActive(false);
             }
             
         }
