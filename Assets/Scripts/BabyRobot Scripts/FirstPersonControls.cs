@@ -50,6 +50,18 @@ public class FirstPersonControls : MonoBehaviour
     public float crouchSpeed = 1.5f; //make slow
     public bool isCrouching = false; //check if crouch
 
+    [Header("UI Extras")]
+    public GameObject Walking;
+    public GameObject Idle;
+    public GameObject Crouching;
+    public GameObject Jumping;
+    public GameObject Intruder;
+    public GameObject SecurityClearance;
+    public GameObject MainMission;
+    public GameObject Mission1;
+    public GameObject Mission2;
+    public GameObject Mission3;
+
 
     [Header("PUZZLE 1 SETTINGS")]
     [Space(5)]
@@ -70,14 +82,14 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
 
-    [Header("PLAYER SECURITY CLEARANCE")]
+    /*[Header("PLAYER SECURITY CLEARANCE")]
     [Space(5)]
 
     public bool HasSecurityTag  = false;
     public bool HasNuclearBattery = false;
     public Transform SecurityTagHoldPosition;
     private GameObject Securityclearance; //Currently holding security tag
-    public GameObject SecurityClearanceTag; // UI thing - Need to add
+    public GameObject SecurityClearanceTag; // UI thing - Need to add*/
     
 
     [Header("UI")]
@@ -120,6 +132,17 @@ public class FirstPersonControls : MonoBehaviour
         _CorePowerScript = FindObjectOfType<CorePowerScript>();
 
         playerInput = new Controls();
+
+        Crouching.SetActive(false);
+        Idle.SetActive(true);
+        Walking.SetActive(false);
+        Jumping.SetActive(false);
+        Intruder.SetActive(true);
+        SecurityClearance.SetActive(false);
+        MainMission.SetActive(true);
+        Mission1.SetActive(false);
+        Mission2.SetActive(false);
+        Mission3.SetActive(false);
 
     }
 
@@ -173,10 +196,6 @@ public class FirstPersonControls : MonoBehaviour
             // Subscribe to the pick-up input event
             playerInput.Player.PickUp.performed += ctx => PickUpObject(); // Call the PickUpObject method when pick-up input is performed
 
-            // Subscribe to the crouch input event
-            playerInput.Player.Crouch.performed +=
-                ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
-            // Subscribe to the crouch input event
             playerInput.Player.Crouch.performed += ctx => ToggleCrouch(); // Call the ToggleCrouch method when crouch input is performed
 
             // Subscribe to the interact input event
@@ -195,8 +214,8 @@ public class FirstPersonControls : MonoBehaviour
 
             playerInput.Player.Pause.performed += ctx => PauseGame();
 
-            playerInput.Player.Blueprints.performed += ctx => MapOpen();
-            playerInput.Player.Blueprints.canceled += ctx => MapClose();
+            /*playerInput.Player.Blueprints.performed += ctx => MapOpen();
+            playerInput.Player.Blueprints.canceled += ctx => MapClose();*/
 
         }
            // playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
@@ -252,7 +271,10 @@ public class FirstPersonControls : MonoBehaviour
               //  animator.SetBool("IsWalking", false);
             }
 
-
+            Idle.SetActive(true);
+            Crouching.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
 
         }
         else
@@ -264,6 +286,10 @@ public class FirstPersonControls : MonoBehaviour
             {
               //  animator.SetBool("IsWalking", true);
             }
+            Walking.SetActive(true);
+            Crouching.SetActive(false);
+            Idle.SetActive(false);
+            Jumping.SetActive(false);
         }
 
         //Adjust speed if crouching
@@ -271,7 +297,10 @@ public class FirstPersonControls : MonoBehaviour
         if (isCrouching)
         {
             currentSpeed = crouchSpeed;
-           
+            Crouching.SetActive(true);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
         }
         else
         {
@@ -328,13 +357,17 @@ public class FirstPersonControls : MonoBehaviour
         {
             //Debug.Log("jumping");
             StartCoroutine(StopJump());
+            Crouching.SetActive(false);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(true);
         }
 
-        if (IsJumping == false)
+        /*if (IsJumping == false)
         {
             //animator.SetBool("Jumpingis", false);
 
-        }
+        }*/
 
     }
 
@@ -436,7 +469,7 @@ public class FirstPersonControls : MonoBehaviour
                 VoiceRecrod.SetActive(true);
 
             }
-            else
+            /*else
             if (hit.collider.CompareTag("SecurityTag"))
             {
                 // Pick up the object
@@ -456,7 +489,7 @@ public class FirstPersonControls : MonoBehaviour
                 Debug.Log("HasSecurityTag value: " + HasSecurityTag);
 
 
-            }
+            }*/
         }
     }
     private void CheckForPickUp()
@@ -499,6 +532,10 @@ public class FirstPersonControls : MonoBehaviour
             //Crouch down
             characterController.height = crouchHeight;
             isCrouching = true;
+            Crouching.SetActive(true);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
         }
     }
 
@@ -580,7 +617,7 @@ public class FirstPersonControls : MonoBehaviour
     }
 
 
-    public void MapOpen()
+    /*public void MapOpen()
     {
         playerInput.Player.Disable();
         //playerInput.PauseMenu.Enable();
@@ -596,7 +633,7 @@ public class FirstPersonControls : MonoBehaviour
         Map.SetActive(true);
         MapCamera.SetActive(false);
         SmallRobotUI.SetActive(true);
-        BigRobotUI.SetActive(true);
+        BigRobotUI.SetActive(false);
     }
 
     public void SecurityClearance()
@@ -607,7 +644,7 @@ public class FirstPersonControls : MonoBehaviour
     public void NuclearBattery()
     {
 
-    }
+    }*/
 }
 
 

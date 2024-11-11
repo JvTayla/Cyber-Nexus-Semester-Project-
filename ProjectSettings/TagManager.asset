@@ -37,6 +37,8 @@ TagManager:
   - BigRobot
   - NPC
   - HoloBot
+  - FinalScreen
+  - Narrative
   layers:
   - Default
   - TransparentFX
@@ -49,8 +51,8 @@ TagManager:
   - IgnorBabyRobot
   - IgnoreHead
   - IgnoreBigHead
-  - 
-  - 
+  - Aurora UI
+  - Wisp UI
   - 
   - 
   - 

@@ -25,6 +25,7 @@ public class BigRobotController : MonoBehaviour
     private float horizontalLookRotaion = 0f;
     private Vector3 velocity;
     private CharacterController characterController;
+
     [Header("ANIM SETTINGS")]
 
     public bool IsBWalking;
@@ -92,6 +93,20 @@ public class BigRobotController : MonoBehaviour
     public GameObject SmallRobotUI;
     public GameObject BigRobotUI;
 
+    [Header("UI Extras")]
+    public GameObject Walking;
+    public GameObject Idle;
+    public GameObject Crouching;
+    public GameObject Jumping;
+    public GameObject Intruder;
+    public GameObject SecurityClearance;
+    public GameObject MainMission;
+    public GameObject Mission1;
+    public GameObject Mission2;
+    public GameObject Mission3;
+
+
+
     //private bool isMenuMode = true;
 
     private HealthScript _HealthScript;
@@ -114,6 +129,11 @@ public class BigRobotController : MonoBehaviour
     public RobotController _RobotController;
 
     public bool Battery;
+    public GameObject LoginScreen;
+    public GameObject FinalCamara;
+    public bool Allrecordings;
+    public int recordings = 0;
+    public bool Recorderinhand;
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
@@ -132,15 +152,29 @@ public class BigRobotController : MonoBehaviour
         playerInput = new Controls();
         _UIScript = FindAnyObjectByType<UIScript>();
         _RobotController = FindAnyObjectByType<RobotController>();
+
+        Crouching.SetActive(false);
+        Idle.SetActive(true);
+        Walking.SetActive(false);
+        Jumping.SetActive(false);
+        Intruder.SetActive(true);
+        SecurityClearance.SetActive(false);
+        MainMission.SetActive(true);
+        Mission1.SetActive(false);
+        Mission2.SetActive(false);
+        Mission3.SetActive(false);
+        
     }
 
     private void OnEnable()
     {
         // Create a new instance of the input actions        
-
+       
         // Enable the input actions
         playerInput.Player.Enable();
         // UiInput.UI.Enable();
+        if (!NpcInteract)
+        { 
 
         // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
@@ -178,11 +212,24 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Interact.performed += ctx => ToggleLaserSwitch(); // press F
         playerInput.Player.UseItem.performed += ctx => ToggleItem();
         playerInput.Player.Pause.performed += ctx => PauseGame();
+        
         //playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
+        
+        }
+       
+        playerInput.Player.NextLine.performed += ctx => SubtitlesDisplay();
+        int counter = 1 ;
+        if(counter ==1)
+        {
+            playerInput.Player.Blueprints.performed += ctx => MapOpen();
+            counter++;
+        }
+        else if (counter==2)
+        {
+            playerInput.Player.Blueprints.performed += ctx => MapClose();
+            counter--;
+        }
 
-
-        playerInput.Player.Blueprints.performed += ctx => MapOpen();
-        playerInput.Player.Blueprints.canceled += ctx => MapClose();
 
         
 
@@ -236,10 +283,13 @@ public class BigRobotController : MonoBehaviour
             // velocity = 0f;
             if (IsBWalking == false)
             {
-               animator.SetBool("IsBWalking", false);
+              animator.SetBool("IsBWalking", false);
             }
 
-
+            Idle.SetActive(true);
+            Crouching.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
 
         }
         else
@@ -251,12 +301,20 @@ public class BigRobotController : MonoBehaviour
             {
                 animator.SetBool("IsBWalking", true);
             }
+            Walking.SetActive(true);
+            Crouching.SetActive(false);
+            Idle.SetActive(false);
+            Jumping.SetActive(false);
         }
         //Adjust speed if crouching
         float currentSpeed;
         if (isCrouching)
         {
             currentSpeed = crouchSpeed;
+            Crouching.SetActive(true);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
         }
         else
         {
@@ -318,13 +376,17 @@ public class BigRobotController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             IsBJumping = true;
             //StartCoroutine(PlayCould());
-            animator.SetBool("IsBJumping", true);
+            //animator.SetBool("IsBJumping", true);
         }
 
         if (IsBJumping == true)
         {
             //Debug.Log("jumping");
             StartCoroutine(StopJump());
+            Crouching.SetActive(false);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(true);
         }
 
         /*if (IsBJumping == false)
@@ -365,6 +427,7 @@ public class BigRobotController : MonoBehaviour
             heldObject.transform.parent = null;
             holdingGun = false;
             Destroy(heldObject);
+            Recorderinhand = false;
         }
 
         // Perform a raycast from the camera's position forward
@@ -437,6 +500,7 @@ public class BigRobotController : MonoBehaviour
             }
             else if (hit.collider.CompareTag("VoiceRecorder"))
             {
+                int i = 0;
                 heldObject = hit.collider.gameObject;
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;
 
@@ -446,7 +510,11 @@ public class BigRobotController : MonoBehaviour
                 
                 GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
                 VoiceRecrod.SetActive(true);
-               
+                Recorderinhand = true;
+                _UIScript.Recordings[i] = true;
+                _UIScript.MissionTasks();
+                i++;
+               _UIScript.CollectRecording(hit);
             }
             else
             if (hit.collider.CompareTag("SecurityTag"))
@@ -467,8 +535,10 @@ public class BigRobotController : MonoBehaviour
                 //SecurityClearanceTag.SetActive(true);(UIThing - Need to add)
                 CheckSecurityTag();
                 /*Securityclearance.SetActive(false);
-                HasSecurityTag = true;
-                Debug.Log("HasSecurityTag value: " + HasSecurityTag);*/
+                HasSecurityTag = true;*/
+                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+                Intruder.SetActive(false);
+                SecurityClearance.SetActive(true);
 
 
             }
@@ -487,6 +557,8 @@ public class BigRobotController : MonoBehaviour
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
                 Battery = true;
+                _UIScript.NuclearBattery = true; 
+                _UIScript.MissionTasks();
             }
            
         }
@@ -505,6 +577,10 @@ public class BigRobotController : MonoBehaviour
             //Crouch down
             characterController.height = crouchHeight;
             isCrouching = true;
+            Crouching.SetActive(true);
+            Idle.SetActive(false);
+            Walking.SetActive(false);
+            Jumping.SetActive(false);
         }
     }
 
@@ -650,14 +726,53 @@ public class BigRobotController : MonoBehaviour
 
                 }
             } 
-            if (hit.collider.CompareTag("NPC"))
-            {
-                NpcInteract = true;
-                _UIScript.InteractWithNpc(hit);
-            }
+            
+            
         }
     }
 
+    public void SubtitlesDisplay()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        //Debug.DrawRay(playerCamera.position, playerCamera.forward * SwitchRange, Color.red, 2f);
+
+        if (Physics.Raycast(ray, out hit, SwitchRange))
+        {
+            if (hit.collider.CompareTag("NPC")  && !Battery)
+            {
+                NpcInteract = true;
+                _UIScript.InteractWithNpc();
+            }
+            else
+            if (hit.collider.CompareTag("NPC") && Battery)
+            {
+                NpcInteract = true;
+                Debug.Log("Battery Inter");
+                _UIScript.InteractWithNpc2(hit);
+            }
+            else if (hit.collider.CompareTag("FinalScreen"))
+            {
+                LoginScreen.SetActive(true);
+                FinalCamara.SetActive(true);
+            }
+            else if ( !Allrecordings)
+            {
+                hit.collider.gameObject.SetActive(false);
+                recordings++;
+                _UIScript.CollectRecording(hit);
+                if (recordings == 6)
+                {
+                    Allrecordings = true;
+                }
+            }
+            else if (hit.collider.CompareTag("VoiceRecorder") && Allrecordings)
+            {
+                
+            }
+        }
+    }
 
     //public Material White;
     //public MeshRenderer console;
@@ -767,29 +882,36 @@ public class BigRobotController : MonoBehaviour
     public void MapOpen()
     {
         playerInput.Player.Disable();
+        //_RobotController.counter = 3;
         //playerInput.PauseMenu.Enable();
         Map.SetActive(true);
         MapCamera.SetActive(true);
+        
+
+        _CorePowerScript.SmallRobotUI.SetActive(false);
+        _CorePowerScript.BigRobotUI.SetActive(false);
         SmallRobotUI.SetActive(false);
         BigRobotUI.SetActive(false);
+
 
     }
     public void MapClose()
     {
-        playerInput.Player.Disable();
+        _RobotController.counter = 0;
+        playerInput.Player.Enable();
+        _RobotController.counter++;
         //playerInput.PauseMenu.Enable();
-        Map.SetActive(true);
+        Map.SetActive(false);
         MapCamera.SetActive(false);
-        SmallRobotUI.SetActive(true);
+        //_CorePowerScript.SmallRobotUI.SetActive(true);
+        _CorePowerScript.BigRobotUI.SetActive(true);
+        SmallRobotUI.SetActive(false);
         BigRobotUI.SetActive(true);
         //I need to make it so that all the players are disabled and cannot move when theyre looking at the map , need to make sure that Wisp And Aurora UI is turned off when map is open so players can access the button and close map 
 
     }
 
-    private void NextLine(RaycastHit hit)
-    {
-        playerInput.Player.NextLine.performed += ctx => _UIScript.InteractWithNpc(hit); 
-    }
+
 }
 
 
