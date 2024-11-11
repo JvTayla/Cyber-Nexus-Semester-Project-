@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -536,7 +535,7 @@ public class BigRobotController : MonoBehaviour
                 CheckSecurityTag();
                 /*Securityclearance.SetActive(false);
                 HasSecurityTag = true;*/
-                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+               Debug.Log("HasSecurityTag value: " + HasSecurityTag);
                 Intruder.SetActive(false);
                 SecurityClearance.SetActive(true);
 
@@ -647,7 +646,7 @@ public class BigRobotController : MonoBehaviour
             }
 
             // Perform actions if SecurityTag instance is found
-            if (securityTagFound)
+            if (securityTagFound == true)
             {
                 Securityclearance.SetActive(false);
                 HasSecurityTag = true;
@@ -693,7 +692,7 @@ public class BigRobotController : MonoBehaviour
 
 
                 }
-                if (ToggleSwitch == false)
+                else if (ToggleSwitch == false)
                 {
                     LightOn.SetActive(false);
                     LightOff.SetActive(true);
@@ -716,7 +715,7 @@ public class BigRobotController : MonoBehaviour
 
 
                 }
-                if (ToggleSwitch == false)
+                else if (ToggleSwitch == false)
                 {
                     LightOn2.SetActive(false);
                     LightOff2.SetActive(true);
