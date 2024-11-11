@@ -128,6 +128,10 @@ public class BigRobotController : MonoBehaviour
     public bool Battery;
     public GameObject LoginScreen;
     public GameObject FinalCamara;
+    public GameObject FinalScreen;
+    public GameObject LittleRobotUI;
+    public GameObject LittleRobotCam;
+
     public bool Allrecordings;
     public int recordings = 0;
     public bool Recorderinhand;
@@ -696,9 +700,9 @@ public class BigRobotController : MonoBehaviour
             }
             else if (hit.collider.CompareTag("FinalScreen"))
             {
-                LoginScreen.SetActive(true);
-                FinalCamara.SetActive(true);
-                _RobotController.FinalScreen = true;
+                //LoginScreen.SetActive(true);
+               // FinalCamara.SetActive(true);
+               _RobotController.FinalScreen = true;
             }
             else if ( !Allrecordings)
             {
