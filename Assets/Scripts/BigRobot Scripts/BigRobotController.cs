@@ -111,6 +111,8 @@ public class BigRobotController : MonoBehaviour
     public RobotController _RobotController;
 
     public bool Battery;
+    public GameObject LoginScreen;
+    public GameObject FinalCamara;
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
@@ -617,6 +619,11 @@ public class BigRobotController : MonoBehaviour
                 NpcInteract = true;
                 Debug.Log("Battery Inter");
                 _UIScript.InteractWithNpc2(hit);
+            }
+            else if (hit.collider.CompareTag("FinalScreen"))
+            {
+                LoginScreen.SetActive(true);
+                FinalCamara.SetActive(true);
             }
             
         }

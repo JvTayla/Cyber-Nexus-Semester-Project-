@@ -82,7 +82,7 @@ public class CorePowerScript : MonoBehaviour
     public void BigRobotHideDeadScreen()
     {
         bigRobotDeadScreen.SetActive(false);
-        BigRobotUI.SetActive(true);
+       // BigRobotUI.SetActive(true);
     }
     
     public void SmallRobotShowDeadScreen()
@@ -94,6 +94,6 @@ public class CorePowerScript : MonoBehaviour
     public void SmallRobotHideDeadScreen()
     {
         SmallRobotDeadScreen.SetActive(false);
-        SmallRobotUI.SetActive(true);
+       // SmallRobotUI.SetActive(true);
     }
 }
