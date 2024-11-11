@@ -106,12 +106,12 @@ public class RobotController : MonoBehaviour
             }
             
         }
-        else if (counter == 3)
+        /*else if (counter == 3)
         {
             _CorePowerScript.SmallRobotUI.SetActive(false);
             _CorePowerScript.BigRobotUI.SetActive(false);
             BigRobotCam.SetActive(false);
             LittleRobotCam.SetActive(false);
-        }
+        }*/
     }
 }
