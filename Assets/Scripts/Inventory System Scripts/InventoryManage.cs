@@ -240,7 +240,7 @@ public class InventoryManage : MonoBehaviour
             battery.transform.parent = holdPosition;
 
 
-            Debug.Log("Instantiated Testtube at holdPosition.");
+            Debug.Log("Instantiated Battery at holdPosition.");
         }
         else
         {
