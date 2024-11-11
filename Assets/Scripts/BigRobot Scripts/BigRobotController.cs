@@ -113,6 +113,8 @@ public class BigRobotController : MonoBehaviour
     public bool Battery;
     public GameObject LoginScreen;
     public GameObject FinalCamara;
+    public bool Allrecordings;
+    public int recordings = 0;
     private void Awake()
     {
          //Get and store the CharacterController component attached to this GameObject
@@ -131,17 +133,20 @@ public class BigRobotController : MonoBehaviour
         playerInput = new Controls();
         _UIScript = FindAnyObjectByType<UIScript>();
         _RobotController = FindAnyObjectByType<RobotController>();
+        
     }
 
     private void OnEnable()
     {
         // Create a new instance of the input actions        
-
+       
         // Enable the input actions
         playerInput.Player.Enable();
         // UiInput.UI.Enable();
-
-        // Subscribe to the movement input events
+        if (!NpcInteract)
+        { 
+            
+            // Subscribe to the movement input events
         playerInput.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>(); // Update moveInput when movement input is performed
         playerInput.Player.Movement.canceled += ctx => moveInput = Vector2.zero; // Reset moveInput when movement input is canceled
         
@@ -177,8 +182,12 @@ public class BigRobotController : MonoBehaviour
         playerInput.Player.Interact.performed += ctx => ToggleLaserSwitch(); // press F
         playerInput.Player.UseItem.performed += ctx => ToggleItem();
         playerInput.Player.Pause.performed += ctx => PauseGame();
+        
         //playerInput.Player.SwitchRobot.performed += ctx => SwitchToWisp();
         
+        }
+       
+        playerInput.Player.NextLine.performed += ctx => SubtitlesDisplay();
         int counter = 1 ;
         if(counter ==1)
         {
@@ -243,7 +252,7 @@ public class BigRobotController : MonoBehaviour
             // velocity = 0f;
             if (IsBWalking == false)
             {
-              // animator.SetBool("IsBWalking", false);
+              animator.SetBool("IsBWalking", false);
             }
 
 
@@ -256,7 +265,7 @@ public class BigRobotController : MonoBehaviour
 
             if (IsBWalking == true)
             {
-               // animator.SetBool("IsBWalking", true);
+                animator.SetBool("IsBWalking", true);
             }
         }
         //Adjust speed if crouching
@@ -453,7 +462,7 @@ public class BigRobotController : MonoBehaviour
                 
                 GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
                 VoiceRecrod.SetActive(true);
-               
+               _UIScript.CollectRecording(hit);
             }
             else
             if (hit.collider.CompareTag("SecurityTag"))
@@ -607,11 +616,24 @@ public class BigRobotController : MonoBehaviour
 
                 }
             } 
-            else
+            
+            
+        }
+    }
+
+    public void SubtitlesDisplay()
+    {
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        //Debug.DrawRay(playerCamera.position, playerCamera.forward * SwitchRange, Color.red, 2f);
+
+        if (Physics.Raycast(ray, out hit, SwitchRange))
+        {
             if (hit.collider.CompareTag("NPC")  && !Battery)
             {
                 NpcInteract = true;
-                _UIScript.InteractWithNpc(hit);
+                _UIScript.InteractWithNpc();
             }
             else
             if (hit.collider.CompareTag("NPC") && Battery)
@@ -625,10 +647,53 @@ public class BigRobotController : MonoBehaviour
                 LoginScreen.SetActive(true);
                 FinalCamara.SetActive(true);
             }
-            
+            else if (hit.collider.CompareTag("VoiceRecorder") && !Allrecordings)
+            {
+                hit.collider.gameObject.SetActive(false);
+                recordings++;
+                _UIScript.CollectRecording(hit);
+                if (recordings == 6)
+                {
+                    Allrecordings = true;
+                }
+            }
+            else if (hit.collider.CompareTag("VoiceRecorder") && Allrecordings)
+            {
+                
+            }else
+            if (hit.collider.CompareTag("NPC")  && !Battery)
+            {
+                NpcInteract = true;
+                _UIScript.InteractWithNpc();
+            }
+            else
+            if (hit.collider.CompareTag("NPC") && Battery)
+            {
+                NpcInteract = true;
+                Debug.Log("Battery Inter");
+                _UIScript.InteractWithNpc2(hit);
+            }
+            else if (hit.collider.CompareTag("FinalScreen"))
+            {
+                LoginScreen.SetActive(true);
+                FinalCamara.SetActive(true);
+            }
+            else if (hit.collider.CompareTag("VoiceRecorder") && !Allrecordings)
+            {
+                hit.collider.gameObject.SetActive(false);
+                recordings++;
+                _UIScript.CollectRecording(hit);
+                if (recordings == 6)
+                {
+                    Allrecordings = true;
+                }
+            }
+            else if (hit.collider.CompareTag("VoiceRecorder") && Allrecordings)
+            {
+                
+            }
         }
     }
-
 
     //public Material White;
     //public MeshRenderer console;
@@ -767,10 +832,7 @@ public class BigRobotController : MonoBehaviour
 
     }
 
-    private void NextLine(RaycastHit hit)
-    {
-        playerInput.Player.NextLine.performed += ctx => _UIScript.InteractWithNpc(hit); 
-    }
+
 }
 
 

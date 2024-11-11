@@ -35,6 +35,7 @@ public class UIScript : MonoBehaviour
         _HealthScript = FindObjectOfType<HealthScript>();
         LoadSubtitles();
         LoadSubtitles2();
+        LoadSubtitles3();
     }
 
     // Update is called once per frame
@@ -87,7 +88,7 @@ public class UIScript : MonoBehaviour
             }
             else  if (hit.collider.CompareTag("NPC") && !_BigRobotController.NpcInteract)
             {
-                textTyper(hit, "Press F / Square to interact");
+                //textTyper(hit, "Press F / Square to interact");
             } 
             else if (hit.collider.CompareTag("NPC") && _BigRobotController.NpcInteract && !_BigRobotController.Battery)
             {
@@ -191,6 +192,23 @@ public class UIScript : MonoBehaviour
             typingCoroutine = StartCoroutine(TypeText(text));
         }
     }
+    
+    private void textTyperNoHit( string text)
+    {
+        //string objectName = hit.collider.gameObject.name;
+
+        // Check if the object detected is different from the last detected object
+        
+            // Stop any ongoing typing coroutine
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+
+            // Start the typing effect with the new text
+            typingCoroutine = StartCoroutine(TypeText(text));
+        
+    }
 
     // Function to hide text and reset coroutine
     private void HideText()
@@ -236,12 +254,12 @@ public class UIScript : MonoBehaviour
         }
     }
 
-    public void InteractWithNpc(RaycastHit hit)
+    public void InteractWithNpc()
     {
         _BigRobotController.NpcInteract = true;
         HideText();
         DisplayNextLine();
-        textTyper(hit , Subtitles);
+        textTyperNoHit(Subtitles);
     }
     
     public string filePath2 = "Assets/Subtitles/Subtitles2.txt"; // Path to your text file
@@ -281,33 +299,33 @@ public class UIScript : MonoBehaviour
         _BigRobotController.NpcInteract = true;
         HideText();
         DisplayNextLine2();
-        textTyper(hit , Subtitles2);
+        textTyperNoHit(Subtitles2);
     }
     
-   /* public string filePath3 = "Assets/Subtitles/Subtitles2.txt"; // Path to your text file
-    private List<string> subtitles2 = new List<string>();
-    private int currentLineIndex2 = 0;
+    public string filePath3 = "Assets/Subtitles/Recordings.txt"; // Path to your text file
+    private List<string> subtitles3 = new List<string>();
+    private int currentLineIndex3 = 0;
 
-    void LoadSubtitles2()
+    void LoadSubtitles3()
     {
         if (File.Exists(filePath2))
         {
-            subtitles2.AddRange(File.ReadAllLines(filePath2));
+            subtitles3.AddRange(File.ReadAllLines(filePath3));
             Debug.Log("Subtitles loaded successfully.");
         }
         else
         {
-            Debug.LogError("Subtitle file not found at " + filePath2);
+            Debug.LogError("Subtitle file not found at " + filePath3);
         }
     }
 
-    void DisplayNextLine2()
+    void DisplayNextLine3()
     {
-        if (currentLineIndex2 < subtitles2.Count)
+        if (currentLineIndex3 < subtitles3.Count)
         {
-            Debug.Log(subtitles2[currentLineIndex2]); // Replace with your subtitle display logic (e.g., UI text element)
-            Subtitles2 = subtitles2[currentLineIndex2];
-            currentLineIndex2++;
+            Debug.Log(subtitles3[currentLineIndex3]); // Replace with your subtitle display logic (e.g., UI text element)
+            Subtitles3 = subtitles3[currentLineIndex3];
+            currentLineIndex3++;
         }
         else
         {
@@ -316,13 +334,13 @@ public class UIScript : MonoBehaviour
         }
     }
 
-    public void InteractWithNpc2(RaycastHit hit)
+    public void CollectRecording(RaycastHit hit)
     {
         _BigRobotController.NpcInteract = true;
         HideText();
-        DisplayNextLine2();
-        textTyper(hit , Subtitles2);
-    }*/
+        DisplayNextLine3();
+        textTyperNoHit(Subtitles3);
+    }
     //Fix raycast Ui
     //Make cutscenes
     //Pause menu
