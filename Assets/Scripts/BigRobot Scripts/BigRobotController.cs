@@ -128,6 +128,10 @@ public class BigRobotController : MonoBehaviour
     public bool Battery;
     public GameObject LoginScreen;
     public GameObject FinalCamara;
+    public GameObject FinalScreen;
+    public GameObject LittleRobotUI;
+    public GameObject LittleRobotCam;
+
     public bool Allrecordings;
     public int recordings = 0;
     public bool Recorderinhand;
@@ -698,11 +702,12 @@ public class BigRobotController : MonoBehaviour
                 Debug.Log("Battery Inter");
                 _UIScript.InteractWithNpc2(hit);
             }
-            else if (hit.collider.CompareTag("FinalScreen"))
+            /*else if (hit.collider.CompareTag("FinalScreen"))
             {
-                LoginScreen.SetActive(true);
-                FinalCamara.SetActive(true);
-            }
+
+                StartCoroutine(FinalScene());
+
+            }*/
             else if ( !Allrecordings)
             {
                 hit.collider.gameObject.SetActive(false);
@@ -720,6 +725,25 @@ public class BigRobotController : MonoBehaviour
         }
     }
 
+    /*public IEnumerator FinalScene()
+        {
+        
+        yield return new WaitForSeconds(1f);
+
+        LoginScreen.SetActive(true);
+        FinalCamara.SetActive(true);
+        
+        BigRobotUI.SetActive(false);
+        LittleRobotCam.SetActive(false);
+        LittleRobotUI.SetActive(false);
+
+        yield return new WaitForSeconds(5f);
+
+        FinalScreen.SetActive(true);
+
+        
+
+    }*/
     //public Material White;
     //public MeshRenderer console;
     public GameObject consolOff;
