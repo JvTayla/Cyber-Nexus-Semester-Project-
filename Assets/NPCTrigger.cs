@@ -12,7 +12,8 @@ public class NPCTrigger : MonoBehaviour
     { 
         npcanimator = FindObjectOfType<NPCAnimator>(); // This finds the first NPCAnimator in the scene
         _UIScript = FindObjectOfType<UIScript>();
-
+        _UIScript.LoadingDeck = true;
+        _UIScript.MissionTasks();
     }
     private void OnTriggerEnter(Collider other)
     {

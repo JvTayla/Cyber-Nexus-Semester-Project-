@@ -7,5 +7,4 @@ Retrieve Scientists’ Voice Recordings(3/6)
 Retrieve Scientists’ Voice Recordings(4/6)
 Retrieve Scientists’ Voice Recordings(5/6)
 Retrieve Scientists’ Voice Recordings(6/6)
-Return Retrieve Scientists’ Voice Recordings
 Upload Memory to Mainframe

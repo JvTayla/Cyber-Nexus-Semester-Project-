@@ -496,6 +496,7 @@ public class BigRobotController : MonoBehaviour
             }
             else if (hit.collider.CompareTag("VoiceRecorder"))
             {
+                int i = 0;
                 heldObject = hit.collider.gameObject;
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;
 
@@ -506,6 +507,9 @@ public class BigRobotController : MonoBehaviour
                 GameObject VoiceRecrod =  hit.collider.transform.GetChild(0).gameObject;
                 VoiceRecrod.SetActive(true);
                 Recorderinhand = true;
+                _UIScript.Recordings[i] = true;
+                _UIScript.MissionTasks();
+                i++;
                _UIScript.CollectRecording(hit);
             }
             else
@@ -548,6 +552,8 @@ public class BigRobotController : MonoBehaviour
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
                 Battery = true;
+                _UIScript.NuclearBattery = true; 
+                _UIScript.MissionTasks();
             }
            
         }

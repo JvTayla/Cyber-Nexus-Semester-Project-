@@ -30,13 +30,10 @@ public class UIScript : MonoBehaviour
     public bool LoadingDeck;
     public bool Tag;
     public bool NuclearBattery;
-    public bool Recording1;
-    public bool Recording2;
-    public bool Recording3;
-    public bool Recording4;
-    public bool Recording5;
-    public bool Recording6;
+    public bool[] Recordings = new bool[6];
     public bool Upload;
+
+    public TextMeshProUGUI MissionText;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +44,7 @@ public class UIScript : MonoBehaviour
         LoadSubtitles();
         LoadSubtitles2();
         LoadSubtitles3();
+        LoadSubtitles4();
     }
 
     // Update is called once per frame
@@ -63,7 +61,8 @@ public class UIScript : MonoBehaviour
                 SmallRobotUIRayCast(); 
             }
         }
-        
+
+        MissionText.text = Subtitles4;
         
         if (Input.GetKeyDown(KeyCode.Return)) // Checks if the Enter key is pressed
         {
@@ -91,7 +90,7 @@ public class UIScript : MonoBehaviour
             else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
                      hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Switch2") || hit.collider.CompareTag("VoiceRecorder"))
             {
-               textTyper(hit ,"Press F / Square to interact ");
+               textTyper(hit ,"Press E / Square to Pickup ");
             }
             else if (hit.collider.CompareTag("BabyRobot"))
             {
@@ -390,13 +389,23 @@ public class UIScript : MonoBehaviour
         }
     }
 
-    public void MissionTasks(RaycastHit hit)
+    public void MissionTasks()
     {
-        _BigRobotController.NpcInteract = true;
-        HideText();
+       
         DisplayNextLine4();
         //text for missions
     }
+    
+   /* LoadingDeck;
+    public bool Tag;
+    public bool NuclearBattery;
+    public bool Recording1;
+    public bool Recording2;
+    public bool Recording3;
+    public bool Recording4;
+    public bool Recording5;
+    public bool Recording6;
+    public bool Upload;*/
     //Fix raycast Ui
     //Make cutscenes
     //Pause menu
