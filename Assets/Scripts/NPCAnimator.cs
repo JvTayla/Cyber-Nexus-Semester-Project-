@@ -112,7 +112,7 @@ public class NPCAnimator : MonoBehaviour
             bodyanimator.SetBool("IsIdle", true);
 
             StartCoroutine(StopYapping());
-            _BigRobotController.playerInput.Player.Enable();
+           // _BigRobotController.playerInput.Player.Enable();
         }
      
     }

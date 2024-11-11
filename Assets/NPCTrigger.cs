@@ -32,7 +32,7 @@ public class NPCTrigger : MonoBehaviour
             }
 
 
-            _BigRobotController.playerInput.Player.Disable();
+           // _BigRobotController.playerInput.Player.Disable();
         }
 
     }
