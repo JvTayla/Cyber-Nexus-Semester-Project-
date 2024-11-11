@@ -70,14 +70,14 @@ public class FirstPersonControls : MonoBehaviour
     public GameObject[] objectsToChangeColor; // Array of objects to change color
 
 
-    [Header("PLAYER SECURITY CLEARANCE")]
+    /*[Header("PLAYER SECURITY CLEARANCE")]
     [Space(5)]
 
     public bool HasSecurityTag  = false;
     public bool HasNuclearBattery = false;
     public Transform SecurityTagHoldPosition;
     private GameObject Securityclearance; //Currently holding security tag
-    public GameObject SecurityClearanceTag; // UI thing - Need to add
+    public GameObject SecurityClearanceTag; // UI thing - Need to add*/
     
 
     [Header("UI")]
@@ -195,8 +195,8 @@ public class FirstPersonControls : MonoBehaviour
 
             playerInput.Player.Pause.performed += ctx => PauseGame();
 
-            playerInput.Player.Blueprints.performed += ctx => MapOpen();
-            playerInput.Player.Blueprints.canceled += ctx => MapClose();
+            /*playerInput.Player.Blueprints.performed += ctx => MapOpen();
+            playerInput.Player.Blueprints.canceled += ctx => MapClose();*/
 
         }
            // playerInput.Player.SwitchRobot.performed += ctx => SwitchToAurora();
@@ -436,7 +436,7 @@ public class FirstPersonControls : MonoBehaviour
                 VoiceRecrod.SetActive(true);
 
             }
-            else
+            /*else
             if (hit.collider.CompareTag("SecurityTag"))
             {
                 // Pick up the object
@@ -456,7 +456,7 @@ public class FirstPersonControls : MonoBehaviour
                 Debug.Log("HasSecurityTag value: " + HasSecurityTag);
 
 
-            }
+            }*/
         }
     }
     private void CheckForPickUp()
@@ -580,7 +580,7 @@ public class FirstPersonControls : MonoBehaviour
     }
 
 
-    public void MapOpen()
+    /*public void MapOpen()
     {
         playerInput.Player.Disable();
         //playerInput.PauseMenu.Enable();
@@ -596,7 +596,7 @@ public class FirstPersonControls : MonoBehaviour
         Map.SetActive(true);
         MapCamera.SetActive(false);
         SmallRobotUI.SetActive(true);
-        BigRobotUI.SetActive(true);
+        BigRobotUI.SetActive(false);
     }
 
     public void SecurityClearance()
@@ -607,7 +607,7 @@ public class FirstPersonControls : MonoBehaviour
     public void NuclearBattery()
     {
 
-    }
+    }*/
 }
 
 

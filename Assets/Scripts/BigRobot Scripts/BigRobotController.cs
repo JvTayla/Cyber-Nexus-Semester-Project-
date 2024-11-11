@@ -731,15 +731,17 @@ public class BigRobotController : MonoBehaviour
     public void MapOpen()
     {
         playerInput.Player.Disable();
-        _RobotController.counter = 3;
+        //_RobotController.counter = 3;
         //playerInput.PauseMenu.Enable();
         Map.SetActive(true);
         MapCamera.SetActive(true);
         
+
         _CorePowerScript.SmallRobotUI.SetActive(false);
         _CorePowerScript.BigRobotUI.SetActive(false);
-        
-        
+        SmallRobotUI.SetActive(false);
+        BigRobotUI.SetActive(false);
+
 
     }
     public void MapClose()
@@ -752,6 +754,8 @@ public class BigRobotController : MonoBehaviour
         MapCamera.SetActive(false);
         //_CorePowerScript.SmallRobotUI.SetActive(true);
         _CorePowerScript.BigRobotUI.SetActive(true);
+        SmallRobotUI.SetActive(false);
+        BigRobotUI.SetActive(true);
         //I need to make it so that all the players are disabled and cannot move when theyre looking at the map , need to make sure that Wisp And Aurora UI is turned off when map is open so players can access the button and close map 
 
     }
