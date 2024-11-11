@@ -77,7 +77,7 @@ public class UIScript : MonoBehaviour
                 textTyper(hit , "Locked");
             }
             else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
-                     hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Switch2"))
+                     hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Switch2") || hit.collider.CompareTag("VoiceRecorder"))
             {
                textTyper(hit ,"Press F / Square to interact ");
             }
@@ -100,6 +100,11 @@ public class UIScript : MonoBehaviour
             else if(hit.collider.CompareTag("Narrative"))
             {
                textTyper(hit , hit.collider.gameObject.name); 
+                //textTyper(hit , );
+            }
+            else if(hit.collider.CompareTag("FinalScreen"))
+            {
+                textTyper(hit ,"Press F / Square to interact" ); 
                 //textTyper(hit , );
             }
             else
@@ -130,7 +135,7 @@ public class UIScript : MonoBehaviour
                 textTyper(hit , "Locked");
             }
             else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
-                     hit.collider.CompareTag("CanBePicked"))
+                     hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("VoiceRecorder"))
             {
                 textTyper(hit ,"Press F / Square to interact ");
             }
@@ -278,6 +283,46 @@ public class UIScript : MonoBehaviour
         DisplayNextLine2();
         textTyper(hit , Subtitles2);
     }
+    
+   /* public string filePath3 = "Assets/Subtitles/Subtitles2.txt"; // Path to your text file
+    private List<string> subtitles2 = new List<string>();
+    private int currentLineIndex2 = 0;
+
+    void LoadSubtitles2()
+    {
+        if (File.Exists(filePath2))
+        {
+            subtitles2.AddRange(File.ReadAllLines(filePath2));
+            Debug.Log("Subtitles loaded successfully.");
+        }
+        else
+        {
+            Debug.LogError("Subtitle file not found at " + filePath2);
+        }
+    }
+
+    void DisplayNextLine2()
+    {
+        if (currentLineIndex2 < subtitles2.Count)
+        {
+            Debug.Log(subtitles2[currentLineIndex2]); // Replace with your subtitle display logic (e.g., UI text element)
+            Subtitles2 = subtitles2[currentLineIndex2];
+            currentLineIndex2++;
+        }
+        else
+        {
+            Debug.Log("End of subtitles2.");
+            _BigRobotController.NpcInteract = false;
+        }
+    }
+
+    public void InteractWithNpc2(RaycastHit hit)
+    {
+        _BigRobotController.NpcInteract = true;
+        HideText();
+        DisplayNextLine2();
+        textTyper(hit , Subtitles2);
+    }*/
     //Fix raycast Ui
     //Make cutscenes
     //Pause menu
