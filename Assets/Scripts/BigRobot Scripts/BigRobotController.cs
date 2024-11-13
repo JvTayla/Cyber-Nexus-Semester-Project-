@@ -535,7 +535,7 @@ public class BigRobotController : MonoBehaviour
                 CheckSecurityTag();
                 /*Securityclearance.SetActive(false);
                 HasSecurityTag = true;*/
-                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+               Debug.Log("HasSecurityTag value: " + HasSecurityTag);
                 Intruder.SetActive(false);
                 SecurityClearance.SetActive(true);
 
@@ -610,18 +610,18 @@ public class BigRobotController : MonoBehaviour
     public void ToggleItem()
     {
        if(SecurityTagHoldPosition.childCount > 0)
-        {
-            foreach (Transform child in SecurityTagHoldPosition)
-            {
-                // Toggle the active state
-                child.gameObject.SetActive(!child.gameObject.activeSelf);
-            }
+       {
+           foreach (Transform child in SecurityTagHoldPosition)
+           {
+               // Toggle the active state
+               child.gameObject.SetActive(!child.gameObject.activeSelf);
+           }
 
-        }
-        else
-        {
-            Debug.LogWarning("No items in holdPosition to toggle.");
-        }
+       }
+       else
+       {
+           Debug.LogWarning("No items in holdPosition to toggle.");
+       }
     }
     // Reference to the SecurityTag prefab
     
@@ -646,7 +646,7 @@ public class BigRobotController : MonoBehaviour
             }
 
             // Perform actions if SecurityTag instance is found
-            if (securityTagFound)
+            if (securityTagFound == true)
             {
                 Securityclearance.SetActive(false);
                 HasSecurityTag = true;
@@ -692,7 +692,7 @@ public class BigRobotController : MonoBehaviour
 
 
                 }
-                if (ToggleSwitch == false)
+                else if (ToggleSwitch == false)
                 {
                     LightOn.SetActive(false);
                     LightOff.SetActive(true);
@@ -715,7 +715,7 @@ public class BigRobotController : MonoBehaviour
 
 
                 }
-                if (ToggleSwitch == false)
+                else if (ToggleSwitch == false)
                 {
                     LightOn2.SetActive(false);
                     LightOff2.SetActive(true);
@@ -759,9 +759,9 @@ public class BigRobotController : MonoBehaviour
             }
             else if ( !Allrecordings)
             {
-                hit.collider.gameObject.SetActive(false);
+                //hit.collider.gameObject.SetActive(false);
                 recordings++;
-                _UIScript.CollectRecording(hit);
+               
                 if (recordings == 6)
                 {
                     Allrecordings = true;

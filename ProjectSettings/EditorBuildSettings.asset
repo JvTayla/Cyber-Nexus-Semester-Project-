@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Andy Look at me ! )/MK + Kulani.unity
     guid: 3b03cb5718ebe6d4bb08a2eb6ffdffda
+  - enabled: 0
+    path: Assets/Scenes/The Final one/MK + Kulani.unity
+    guid: 1ebfaec2826606f429da2953f0253b31
   m_configObjects: {}
