@@ -93,12 +93,11 @@ public class UIScript : MonoBehaviour
                      hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("VoiceRecorder"))
                 
             {
-                
                textTyper(hit ,"Press E / Square to Pickup ");
             }
             else if(hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Switch2"))
             {
-                textTyper(hit ,"Press F / Square to Pickup ");
+                textTyper(hit ,"Press F / Square to Use ");
             }
             else if (hit.collider.CompareTag("BabyRobot"))
             {
@@ -123,12 +122,14 @@ public class UIScript : MonoBehaviour
             else if (hit.collider.CompareTag("Narrative"))
             {
                 textTyper(hit, hit.collider.gameObject.name);
-                //textTyper(hit , );
             }
-            else if(hit.collider.CompareTag("FinalScreen"))
+            else if (hit.collider.CompareTag("Nuclear Battery"))
             {
-                textTyper(hit ,"Press F / Square to interact" ); 
-                //textTyper(hit , );
+                textTyper(hit, hit.collider.gameObject.name);
+            }
+            else if (hit.collider.CompareTag("SecurityTag"))
+            {
+                textTyper(hit, hit.collider.gameObject.name);
             }
             else
             {
