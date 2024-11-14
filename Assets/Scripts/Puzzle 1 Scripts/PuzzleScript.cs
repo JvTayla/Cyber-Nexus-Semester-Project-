@@ -12,6 +12,9 @@ public class PuzzleScript : MonoBehaviour
     private GameObject[] arrAllCorrectTiles; // array that will store all the correct pipe tiles gameobjects
     public GameObject NumberPad;
     public GameObject[] openDoor;
+    public GameObject DoorTrigger;
+
+    public bool PuzzleSolved;
 
     private FirstPersonControls _FirstPersonControls;
 
@@ -27,6 +30,7 @@ public class PuzzleScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PuzzleSolved = false;
         _FirstPersonControls = FindObjectOfType<FirstPersonControls>();
         _ColorChangerScript = FindObjectOfType<ColorChangerScript>();
         //_RedBlinkingLights = FindObjectOfType<RedBlinkingLights>();
@@ -147,10 +151,12 @@ public class PuzzleScript : MonoBehaviour
         openDoor[1].SetActive(false);
         openDoor[2].SetActive(false);
         openDoor[3].SetActive(true);
-        openDoor[3].transform.position = openDoor[0].transform.position;
-        openDoor[2].transform.position = new Vector3(10000, 0, 0);
+        /*openDoor[3].transform.position = openDoor[0].transform.position;
+        openDoor[2].transform.position = new Vector3(10000, 0, 0);*/
         openDoor[4].SetActive(true);
         openDoor[5].SetActive(false);
+
+        DoorTrigger.SetActive(false);
         
     }
     
@@ -196,12 +202,12 @@ public class PuzzleScript : MonoBehaviour
         {
             //function makes the player stop interacting with the object
             StopInteracting();
-            
+            PuzzleSolved = true;
             //function opens the doors after solving the puzzle
             //_AnimationScript.PlayBothAnimations();
             DoorOpener();
             _ColorChangerScript.MeshRenderer.materials[0].color = Color.green;
-
+            
             //_RedBlinkingLights.StopBlinking();
             Alarm.StopAlarm();
         }

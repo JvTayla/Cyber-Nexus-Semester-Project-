@@ -264,7 +264,7 @@ public class BigRobotController : MonoBehaviour
         LookAround();
         ApplyGravity();
         CheckForPickUp(); 
-        CheckSecurityTag();
+        //CheckSecurityTag();
     }
 
     
@@ -531,13 +531,12 @@ public class BigRobotController : MonoBehaviour
 
                 inventoryManage.SpawnItem(availableItems[2]);
 
-                //SecurityClearanceTag.SetActive(true);(UIThing - Need to add)
-                CheckSecurityTag();
-                /*Securityclearance.SetActive(false);*/
+                
                 HasSecurityTag = true;
-               Debug.Log("HasSecurityTag value: " + HasSecurityTag);
+                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
                 Intruder.SetActive(false);
                 SecurityClearance.SetActive(true);
+                //CheckSecurityTag();
 
 
             }
@@ -626,7 +625,7 @@ public class BigRobotController : MonoBehaviour
     // Reference to the SecurityTag prefab
     
 
-    public void CheckSecurityTag()
+    /*public void CheckSecurityTag()
     {
         if (SecurityTagHoldPosition.childCount > 0 && !hasSecurityTagChecked)
         {
@@ -658,7 +657,7 @@ public class BigRobotController : MonoBehaviour
                 Debug.Log("No SecurityTag instance found among the children.");
             }
         }
-        else if (SecurityTagHoldPosition.childCount == 0)
+       else if (SecurityTagHoldPosition.childCount == 0)
         { 
 
 
@@ -668,7 +667,7 @@ public class BigRobotController : MonoBehaviour
             hasSecurityTagChecked = false; // Reset for future checks
             HasSecurityTag = false;
         }
-    }
+    }*/
    
 
 
