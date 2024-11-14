@@ -13,7 +13,7 @@ public class PuzzleScript : MonoBehaviour
     public GameObject NumberPad;
     public GameObject[] openDoor;
     public GameObject DoorTrigger;
-
+    public GameObject[] cluegone;
     public bool PuzzleSolved;
 
     private FirstPersonControls _FirstPersonControls;
@@ -158,6 +158,11 @@ public class PuzzleScript : MonoBehaviour
 
         DoorTrigger.SetActive(false);
         
+        foreach (GameObject obj in cluegone)
+        {
+            gameObject.SetActive(false);
+
+        }
     }
     
         //function that that robot uses to interact with interactible objects ( Code soon to be changed because of other interactable objects)

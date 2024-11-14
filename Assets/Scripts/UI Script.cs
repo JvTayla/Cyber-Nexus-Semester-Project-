@@ -83,13 +83,13 @@ public class UIScript : MonoBehaviour
         Debug.DrawRay(_BigRobotController.playerCamera.position,
             _BigRobotController.playerCamera.forward * _BigRobotController.pickUpRange, Color.red, _FirstPersonControls.pickUpRange);
 
-        if (Physics.Raycast(ray, out hit, _BigRobotController.pickUpRange / 5) || Physics.Raycast(Jumpray, out hit, _BigRobotController.pickUpRange))
+        if (Physics.Raycast(ray, out hit, _BigRobotController.pickUpRange / 2) || Physics.Raycast(Jumpray, out hit, _BigRobotController.pickUpRange))
         {
-            if (hit.collider.CompareTag("Door"))
+            /*if (hit.collider.CompareTag("Door"))
             {
                 textTyper(hit , "Locked");
-            }
-            else if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
+            }*/
+            if (hit.collider.CompareTag("PickUp") || hit.collider.CompareTag("Chemicals") || hit.collider.CompareTag("Clue") || hit.collider.CompareTag("TestTube") ||
                      hit.collider.CompareTag("CanBePicked") || hit.collider.CompareTag("VoiceRecorder"))
                 
             {
@@ -120,9 +120,9 @@ public class UIScript : MonoBehaviour
             {
                 textTyper(hit, Subtitles3);
             }
-            else if(hit.collider.CompareTag("Narrative"))
+            else if (hit.collider.CompareTag("Narrative"))
             {
-               textTyper(hit , hit.collider.gameObject.name); 
+                textTyper(hit, hit.collider.gameObject.name);
                 //textTyper(hit , );
             }
             else if(hit.collider.CompareTag("FinalScreen"))
@@ -139,11 +139,16 @@ public class UIScript : MonoBehaviour
         {
             HideText();
         }
-        
+
+   
+
     }
 
-    // Handles Small Robot's raycast
-    private void SmallRobotUIRayCast()
+
+
+     
+// Handles Small Robot's raycast
+private void SmallRobotUIRayCast()
     {
         Ray ray = new Ray(_FirstPersonControls.playerCamera.position, _FirstPersonControls.playerCamera.forward);
         RaycastHit hit;
