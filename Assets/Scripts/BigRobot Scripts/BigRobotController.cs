@@ -533,8 +533,8 @@ public class BigRobotController : MonoBehaviour
 
                 //SecurityClearanceTag.SetActive(true);(UIThing - Need to add)
                 CheckSecurityTag();
-                /*Securityclearance.SetActive(false);
-                HasSecurityTag = true;*/
+                /*Securityclearance.SetActive(false);*/
+                HasSecurityTag = true;
                Debug.Log("HasSecurityTag value: " + HasSecurityTag);
                 Intruder.SetActive(false);
                 SecurityClearance.SetActive(true);
