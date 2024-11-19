@@ -25,7 +25,7 @@ public class ConditionalVideoPlaylist : MonoBehaviour
 
     public void PlayVideos()
     {
-        if (videoClips.Count == 10 && videoPlayer != null /*&& EndScreen != null*/)
+        if (videoClips.Count == 1 && videoPlayer != null /*&& EndScreen != null*/)
         {
             // Start by playing the first video clip
             PlayClip(currentClipIndex);
