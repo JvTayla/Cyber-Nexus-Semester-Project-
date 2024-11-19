@@ -7,7 +7,7 @@ public class Lasers : MonoBehaviour
     private LineRenderer lineRenderer;
     public GameObject SwitchDisplay, SwitchDisplay1, SwitchOn, SwitchOff;
     public Respawn respawn;
-    public float laserDistance = 500f; // New configurable distance for both raycast and line renderer
+    public float laserDistance = 500f; // Maximum laser distance
 
     void Start()
     {
@@ -26,14 +26,29 @@ public class Lasers : MonoBehaviour
             {
                 lineRenderer.SetPosition(1, hit.point); // Laser ends at the hit point
 
-                // Check if the laser hits a player
+                // Check if the laser hits a player with the "Robot" tag
                 if (hit.collider.CompareTag("Robot"))
                 {
                     SwitchDisplay.SetActive(true);
                     SwitchDisplay1.SetActive(false);
                     SwitchOff.SetActive(true);
                     SwitchOn.SetActive(false);
-                    respawn.RespawnPlayer();
+
+                    // Check the name of the robot hit and respawn accordingly
+                    string robotName = hit.collider.gameObject.name;
+
+                    if (robotName == "Big Robot")
+                    {
+                        respawn.RespawnPlayer("Big Robot");
+                    }
+                    else if (robotName == "Baby Robot ")
+                    {
+                        respawn.RespawnPlayer("Baby Robot ");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Unknown robot hit: " + robotName);
+                    }
                 }
             }
         }
