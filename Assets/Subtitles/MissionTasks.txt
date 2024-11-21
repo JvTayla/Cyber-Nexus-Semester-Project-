@@ -1,5 +1,6 @@
 Enter the Loading Dock
 Search the Storage Room for The Security Tag And Nuclear Battery
+Go Speak to Sparks
 Retrieve Scientists’ Voice Recordings(0/6)
 Retrieve Scientists’ Voice Recordings(1/6)
 Retrieve Scientists’ Voice Recordings(2/6)
@@ -7,4 +8,5 @@ Retrieve Scientists’ Voice Recordings(3/6)
 Retrieve Scientists’ Voice Recordings(4/6)
 Retrieve Scientists’ Voice Recordings(5/6)
 Retrieve Scientists’ Voice Recordings(6/6)
+Go Speak to Sparks
 Upload Memory to Mainframe
