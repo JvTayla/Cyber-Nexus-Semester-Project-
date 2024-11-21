@@ -38,6 +38,8 @@ public class NPCTrigger : MonoBehaviour
     {
         if (other.CompareTag("Robot")) //Mightneedtochangeif we have Diff Tags for Robots
         {
+            StartCoroutine(PlayParticleSystems());
+            
             StartCoroutine(_NPCTalking.FirstYap());
             npcanimator.StartInteraction();
       
@@ -47,7 +49,7 @@ public class NPCTrigger : MonoBehaviour
     }
     private IEnumerator PlayParticleSystems()
     {
-        yield return new WaitForSeconds(40F);
+       
         // Play all particle systems
         foreach (var ps in particleSystems)
         {

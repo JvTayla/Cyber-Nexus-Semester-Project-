@@ -60,6 +60,8 @@ public class NPCTalking : MonoBehaviour
 
     public IEnumerator FirstYap()
     {
+        yield return new WaitForSeconds(10f);
+
         BehindText.SetActive(true);
         YapText1.SetActive(true);
  
@@ -84,12 +86,12 @@ public class NPCTalking : MonoBehaviour
         YapText3.SetActive(false);
         YapText4.SetActive(true);
 
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(3f);
 
         YapText4.SetActive(false);
         YapText5.SetActive(true);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
 
         YapText5.SetActive(false);
         YapText6.SetActive(true);

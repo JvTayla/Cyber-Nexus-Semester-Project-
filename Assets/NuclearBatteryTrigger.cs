@@ -41,7 +41,7 @@ public class NuclearBatteryTrigger : MonoBehaviour
         holoanimator.SetBool("IsTalking", true);// Let Himtalk for however long the text is
         bodyanimator.SetBool("IsTalking", true);
 
-        yield return new WaitForSeconds(16f); //Need to Time Properly for text
+        yield return new WaitForSeconds(23f); //Need to Time Properly for text
 
         NPCYapCam.SetActive(false);
         
@@ -50,7 +50,7 @@ public class NuclearBatteryTrigger : MonoBehaviour
         holoanimator.SetBool("IsIdle", true);// StartTheIdleAnimations
         bodyanimator.SetBool("IsIdle", true);
 
-
+        StartCoroutine(StopYap());
     }
 
     public IEnumerator StopYap()

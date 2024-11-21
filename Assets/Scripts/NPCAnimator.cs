@@ -32,14 +32,23 @@ public class NPCAnimator : MonoBehaviour
     {
         if (IsBasePowered == true)
         {
-            NPCCam.SetActive(true);
-            Camanimator.SetBool("PuzzlSolved", true);
-            holoanimator.SetBool("BasePoweredOn", true);
-            bodyanimator.SetBool("BasePoweredOn", true);
-            StartCoroutine(Talking());
+            
+            StartCoroutine(StartInt());
         }
     }
 
+    public IEnumerator StartInt()
+    {
+        yield return new WaitForSeconds(10f);
+        NPCCam.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+
+        Camanimator.SetBool("PuzzlSolved", true);
+        holoanimator.SetBool("BasePoweredOn", true);
+        bodyanimator.SetBool("BasePoweredOn", true);
+        StartCoroutine(Talking());
+    }
     private void Update() //FollowAurora
     {
         // Calculate the distance between the NPC and the player

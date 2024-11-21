@@ -555,6 +555,7 @@ public class BigRobotController : MonoBehaviour
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
                 Battery = true;
+                HasNuclearBattery = true;
                 _UIScript.NuclearBattery = true; 
                 _UIScript.MissionTasks();
             }

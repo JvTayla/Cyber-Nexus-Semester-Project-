@@ -49,6 +49,7 @@ public class RecordingsCollectedTrigger : MonoBehaviour
         holoanimator.SetBool("IsIdle", true);// StartTheIdleAnimations
         bodyanimator.SetBool("IsIdle", true);
 
+        StartCoroutine(StopYap());
 
     }
 
