@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Carboard.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Carboard.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Locker 1.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Locker 1.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shelf.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shelf.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sink.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sink.fbx.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FInal/StartCyberNexus.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FInal/StartCyberNexus.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FInal/StartCyberNexus.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FInal/StartCyberNexus.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Subtitles/MissionTasks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/MissionTasks.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitle3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitle3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitles.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitles2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitles2.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +151,8 @@
       <workItem from="1730876582339" duration="7346000" />
       <workItem from="1731140080841" duration="8373000" />
       <workItem from="1731215322207" duration="1000" />
-      <workItem from="1732081455979" duration="1314000" />
+      <workItem from="1732081455979" duration="1525000" />
+      <workItem from="1732183457524" duration="253000" />
     </task>
     <servers />
   </component>
