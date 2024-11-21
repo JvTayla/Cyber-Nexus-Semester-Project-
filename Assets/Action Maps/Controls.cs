@@ -179,6 +179,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NPC Talking"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7e2e3a8-ebd0-4e52-88cc-08f9744d2a71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -907,6 +916,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""UseItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fde47b54-d16e-4b05-a57d-ce6ac057d579"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""NPC Talking"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1227,6 +1247,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Blueprints = m_Player.FindAction("Blueprints", throwIfNotFound: true);
         m_Player_NextLine = m_Player.FindAction("NextLine", throwIfNotFound: true);
         m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
+        m_Player_NPCTalking = m_Player.FindAction("NPC Talking", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Movement = m_PauseMenu.FindAction("Movement", throwIfNotFound: true);
@@ -1313,6 +1334,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Blueprints;
     private readonly InputAction m_Player_NextLine;
     private readonly InputAction m_Player_UseItem;
+    private readonly InputAction m_Player_NPCTalking;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -1334,6 +1356,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Blueprints => m_Wrapper.m_Player_Blueprints;
         public InputAction @NextLine => m_Wrapper.m_Player_NextLine;
         public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
+        public InputAction @NPCTalking => m_Wrapper.m_Player_NPCTalking;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1394,6 +1417,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UseItem.started += instance.OnUseItem;
             @UseItem.performed += instance.OnUseItem;
             @UseItem.canceled += instance.OnUseItem;
+            @NPCTalking.started += instance.OnNPCTalking;
+            @NPCTalking.performed += instance.OnNPCTalking;
+            @NPCTalking.canceled += instance.OnNPCTalking;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1449,6 +1475,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UseItem.started -= instance.OnUseItem;
             @UseItem.performed -= instance.OnUseItem;
             @UseItem.canceled -= instance.OnUseItem;
+            @NPCTalking.started -= instance.OnNPCTalking;
+            @NPCTalking.performed -= instance.OnNPCTalking;
+            @NPCTalking.canceled -= instance.OnNPCTalking;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1611,6 +1640,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnBlueprints(InputAction.CallbackContext context);
         void OnNextLine(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
+        void OnNPCTalking(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {

@@ -58,7 +58,7 @@ public class NPCAnimator : MonoBehaviour
 
     public IEnumerator Talking()
     {
-        yield return new WaitForSeconds(16f);
+        yield return new WaitForSeconds(17f);
         IsBasePowered = false;
         IsTalking = true;
 
@@ -69,6 +69,8 @@ public class NPCAnimator : MonoBehaviour
             bodyanimator.SetBool("BasePoweredOn", false);
             holoanimator.SetBool("IsTalking", true);// Let Himtalk for however long the text is
             bodyanimator.SetBool("IsTalking", true);
+
+            yield return new WaitForSeconds(27f);
             StartCoroutine(Idle());
 
 
