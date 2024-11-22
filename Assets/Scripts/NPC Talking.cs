@@ -24,10 +24,11 @@ public class NPCTalking : MonoBehaviour
     public GameObject YapText12;
 
     public GameObject BehindText;
-    
+    private UIScript _UIScript;
 
     private void Awake()
     {
+        
         YapText1.SetActive(false);
         YapText2.SetActive(false);
         YapText3.SetActive(false);
@@ -47,7 +48,8 @@ public class NPCTalking : MonoBehaviour
 
         // Find the BigRobotController script (assuming it's on a GameObject in the scene)
         bigRobotController = FindObjectOfType<BigRobotController>();
-
+        _UIScript = FindObjectOfType<UIScript>();
+        
         // Check if the script was found
         if (bigRobotController == null)
         {
@@ -56,6 +58,7 @@ public class NPCTalking : MonoBehaviour
         }
 
     }
+
 
 
     public IEnumerator FirstYap()
@@ -107,6 +110,7 @@ public class NPCTalking : MonoBehaviour
         DeactivateAllYapTexts();
 
         RobotTriggerNuclearBattery.SetActive(true);
+       
     }
 
 
@@ -137,6 +141,7 @@ public class NPCTalking : MonoBehaviour
         }
     }
 
+
     public IEnumerator ThirdYap()
     {
         if (bigRobotController.HasSecurityTag)
@@ -154,11 +159,13 @@ public class NPCTalking : MonoBehaviour
             //Set the rest of the canvases off for the next robot 
             DeactivateAllYapTexts();
             RobotTriggerRecordingsFound.SetActive(false);
+            
         }
     }
 
     private void DeactivateAllYapTexts()
     {
+      
         YapText1.SetActive(false);
         YapText2.SetActive(false);
         YapText3.SetActive(false);

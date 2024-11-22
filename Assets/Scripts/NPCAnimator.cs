@@ -20,11 +20,14 @@ public class NPCAnimator : MonoBehaviour
     public GameObject[] OpenDoor;
 
     private BigRobotController _BigRobotController;
+
+    private UIScript _UIScript;
     // Start is called before the first frame update
     
     public void Start()
     {
         _BigRobotController = FindAnyObjectByType<BigRobotController>();
+        _UIScript = FindAnyObjectByType<UIScript>();
         IsBasePowered = true; //This is after MK Puzzle is completed essentially 
     }
 
@@ -64,7 +67,7 @@ public class NPCAnimator : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
     }
-
+    
     public IEnumerator Talking()
     {
         yield return new WaitForSeconds(17f);
@@ -95,7 +98,7 @@ public class NPCAnimator : MonoBehaviour
             bodyanimator.SetBool("IsIdle", true);
         }
 
-
+     
     }
 
     public  IEnumerator Idle() //Use this when he stops talking  (Just add in IsIdle=true; and Istalking=false into code for text or say StartCouroutine(Idle()); )

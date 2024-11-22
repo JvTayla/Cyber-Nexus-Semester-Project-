@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/BlenderFixes.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/BlenderFixes.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/MK + Kulani.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/MK + Kulani.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPC Talking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPC Talking.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPCAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPCAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Subtitles/MissionTasks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/MissionTasks.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitle3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitle3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitles.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitles2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitles2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +57,7 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Makwe2.0&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -153,6 +160,8 @@
       <workItem from="1731215322207" duration="1000" />
       <workItem from="1732081455979" duration="1525000" />
       <workItem from="1732183457524" duration="253000" />
+      <workItem from="1732188483532" duration="415000" />
+      <workItem from="1732250803252" duration="3500000" />
     </task>
     <servers />
   </component>
