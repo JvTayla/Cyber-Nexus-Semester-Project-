@@ -5,11 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/NuclearBatteryTrigger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/NuclearBatteryTrigger.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/RecordingsCollectedTrigger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/RecordingsCollectedTrigger.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/BlenderFixes.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/BlenderFixes.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Decontamination room.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Decontamination room.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NPC Talking.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NPC Talking.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Action Maps/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Action Maps/Controls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Action Maps/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Action Maps/Controls.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/NPCscene.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/NPCscene.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/WatchNPCtalk.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/WatchNPCtalk.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/MK + Kulani.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/MK + Kulani.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPCAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPCAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPCTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPCTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle3(Lasers)/Lasers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle3(Lasers)/Lasers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle3(Lasers)/Respawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle3(Lasers)/Respawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Subtitles/MissionTasks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/MissionTasks.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitle3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitle3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitles.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/Subtitles2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/Subtitles2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,26 +68,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Makwe2.0&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging Makwe2.0",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\seeem\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\seeem\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\seeem\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\seeem\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\seeem\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\seeem\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../../../Desktop/CyberNexusFinalExamGroup8/Cyber-Nexus Semester Project(Group 8).exe" />
@@ -153,6 +175,8 @@
       <workItem from="1731215322207" duration="1000" />
       <workItem from="1732081455979" duration="1525000" />
       <workItem from="1732183457524" duration="253000" />
+      <workItem from="1732188483532" duration="415000" />
+      <workItem from="1732250803252" duration="3500000" />
     </task>
     <servers />
   </component>
