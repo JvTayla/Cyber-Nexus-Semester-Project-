@@ -13,7 +13,7 @@ public class RecordingsCollectedTrigger : MonoBehaviour
     private BigRobotController _BigRobotController;
     private NPCTalking _NPCTalking;
     public GameObject NPCYapCam;
-
+    public GameObject NPCRecordingsTrigger;
 
     private void Start()
     {
@@ -30,17 +30,21 @@ public class RecordingsCollectedTrigger : MonoBehaviour
             {
                 NPCYapCam.SetActive(true);
                 StartCoroutine(_NPCTalking.ThirdYap());
-                Yap();
+                StartCoroutine(Yap2());
+               
             }
         }
     }
 
-    public IEnumerator Yap()
+    public IEnumerator Yap2()
     {
+        yield return new WaitForSeconds(0f);
+
         holoanimator.SetBool("IsTalking", true);// Let Himtalk for however long the text is
         bodyanimator.SetBool("IsTalking", true);
 
         yield return new WaitForSeconds(14f); //Need to Time Properly for text
+        Debug.Log("DoneTalkingSwitchingOver");
 
         NPCYapCam.SetActive(false);
 
@@ -49,11 +53,12 @@ public class RecordingsCollectedTrigger : MonoBehaviour
         holoanimator.SetBool("IsIdle", true);// StartTheIdleAnimations
         bodyanimator.SetBool("IsIdle", true);
 
-        StartCoroutine(StopYap());
+        StartCoroutine(StopYap2());
+        NPCRecordingsTrigger.SetActive(false);
 
     }
 
-    public IEnumerator StopYap()
+    public IEnumerator StopYap2()
     {
 
         holoanimator.SetBool("IsTalking", false);

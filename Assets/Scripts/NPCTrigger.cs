@@ -39,7 +39,6 @@ public class NPCTrigger : MonoBehaviour
         if (other.CompareTag("Robot")) //Mightneedtochangeif we have Diff Tags for Robots
         {
             StartCoroutine(PlayParticleSystems());
-            
             StartCoroutine(_NPCTalking.FirstYap());
             npcanimator.StartInteraction();
       

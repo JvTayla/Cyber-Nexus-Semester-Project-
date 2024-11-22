@@ -118,19 +118,23 @@ public class NPCTalking : MonoBehaviour
     {
         if (bigRobotController.HasNuclearBattery)
         {
+            yield return new WaitForSeconds(0f);
+
             BehindText.SetActive(true);
             YapText8.SetActive(true);
+            Debug.Log("1stScreenDone");
 
             yield return new WaitForSeconds(7f);
 
+
             YapText8.SetActive(false);
             YapText9.SetActive(true);
-
+            Debug.Log("2ndScreenDone");
             yield return new WaitForSeconds(10f);
 
             YapText9.SetActive(false);
             YapText10.SetActive(true);
-
+            Debug.Log("3rdScreenDone");
             yield return new WaitForSeconds(6f);
 
             //Set the rest of the canvases off for the next robot 
@@ -144,8 +148,10 @@ public class NPCTalking : MonoBehaviour
 
     public IEnumerator ThirdYap()
     {
-        if (bigRobotController.HasSecurityTag)
+        if (bigRobotController.Allrecordings)
         {
+            yield return new WaitForSeconds(0f);
+
             BehindText.SetActive(true);
             YapText11.SetActive(true);
 
