@@ -7,6 +7,5 @@ Retrieve All Scientists’ Voice Recordings(2/6)
 Retrieve All Scientists’ Voice Recordings(3/6)
 Retrieve All Scientists’ Voice Recordings(4/6)
 Retrieve All Scientists’ Voice Recordings(5/6)
-Retrieve All Scientists’ Voice Recordings(6/6)
 Return Recordings to Sparx
 Upload Sparx to Mainframe with Research Data
