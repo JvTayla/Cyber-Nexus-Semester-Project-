@@ -515,11 +515,10 @@ public class BigRobotController : MonoBehaviour
                 _UIScript.MissionTasks();
                 i++;
                _UIScript.CollectRecording(hit);
-               if (i > 5)
+               if (i > 4)
                {
                    Allrecordings = true;
                    _UIScript.MissionTasks();
-                   
                }
                    
             }

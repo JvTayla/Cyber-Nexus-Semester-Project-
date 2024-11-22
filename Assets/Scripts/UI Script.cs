@@ -111,6 +111,8 @@ public class UIScript : MonoBehaviour
                     MissionTasks();
                     tasksdone = 1;
                     NuclearBattery = false;
+                    _BigRobotController.HasNuclearBattery = false;
+                    _BigRobotController.Battery = false;
                     _BigRobotController.Allrecordings = false;
                 }
 

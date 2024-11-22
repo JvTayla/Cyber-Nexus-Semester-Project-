@@ -26,8 +26,9 @@ public class MissionTasks : MonoBehaviour
             if (_UIScript.tasksdone < 2)
             {
                 _UIScript.MissionTasks();
+                _UIScript.tasksdone = 2;
             }
-            _UIScript.tasksdone = 2;
+            
         }
         
         if (other.CompareTag("Robot") && _BigRobotController.Allrecordings)
@@ -35,8 +36,9 @@ public class MissionTasks : MonoBehaviour
             if (_UIScript.tasksdone < 3)
             {
                 _UIScript.MissionTasks();
+                _UIScript.tasksdone = 3;
             }
-            _UIScript.tasksdone = 3;
+           
         }
     }
 }

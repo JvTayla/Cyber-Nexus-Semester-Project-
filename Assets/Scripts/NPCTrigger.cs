@@ -9,12 +9,12 @@ public class NPCTrigger : MonoBehaviour
 
   
     public float particleDuration = 10f;
-
+    public BoxCollider boxCollider;
 
     NPCAnimator npcanimator;
     private UIScript _UIScript;
     private BigRobotController _BigRobotController;
-    private NPCTalking _NPCTalking;
+    public NPCTalking _NPCTalking;
     private int i = 0;
     
     private void Start()
@@ -22,7 +22,9 @@ public class NPCTrigger : MonoBehaviour
         npcanimator = FindObjectOfType<NPCAnimator>(); // This finds the first NPCAnimator in the scene
         _NPCTalking = FindObjectOfType<NPCTalking>();
         _BigRobotController = FindAnyObjectByType<BigRobotController>();
+        boxCollider = GetComponent<BoxCollider>();
 
+ 
         if (particleSystems != null)
         {
             foreach (var ps in particleSystems)
@@ -41,8 +43,19 @@ public class NPCTrigger : MonoBehaviour
             StartCoroutine(PlayParticleSystems());
             StartCoroutine(_NPCTalking.FirstYap());
             npcanimator.StartInteraction();
-      
+
             // _BigRobotController.playerInput.Player.Disable();
+
+            if (boxCollider != null)
+            {
+                // Disable the BoxCollider
+                boxCollider.enabled = false;
+                Debug.Log("BoxCollider has been disabled.");
+            }
+            else
+            {
+                Debug.LogError("No BoxCollider found on this GameObject.");
+            }
         }
 
     }
@@ -70,4 +83,7 @@ public class NPCTrigger : MonoBehaviour
             }
         }
     }
+
+    
 }
+
