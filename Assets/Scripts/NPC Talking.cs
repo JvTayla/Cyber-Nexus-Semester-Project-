@@ -148,6 +148,7 @@ public class NPCTalking : MonoBehaviour
             RobotTriggerNuclearBattery.SetActive(false);
             RobotTriggerRecordingsFound.SetActive(true);
         }
+        
     }
 
 
