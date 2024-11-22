@@ -264,6 +264,7 @@ public class BigRobotController : MonoBehaviour
         LookAround();
         ApplyGravity();
         CheckForPickUp(); 
+        SubtitlesDisplay();
         //CheckSecurityTag();
     }
 
@@ -514,6 +515,12 @@ public class BigRobotController : MonoBehaviour
                 _UIScript.MissionTasks();
                 i++;
                _UIScript.CollectRecording(hit);
+               if (i > 5)
+               {
+                   Allrecordings = true;
+                   _UIScript.MissionTasks();
+               }
+                   
             }
             else
             if (hit.collider.CompareTag("SecurityTag"))
@@ -537,6 +544,9 @@ public class BigRobotController : MonoBehaviour
                 Intruder.SetActive(false);
                 SecurityClearance.SetActive(true);
                 //CheckSecurityTag();
+                
+                if (Battery && HasSecurityTag)
+                    _UIScript.MissionTasks();
 
 
             }
@@ -555,8 +565,10 @@ public class BigRobotController : MonoBehaviour
                 // Hide the item after picking it up
                 heldObject.SetActive(false);
                 Battery = true;
+                HasNuclearBattery = true;
                 _UIScript.NuclearBattery = true; 
-                _UIScript.MissionTasks();
+                if (Battery && HasSecurityTag)
+                    _UIScript.MissionTasks();
             }
            
         }
@@ -728,7 +740,7 @@ public class BigRobotController : MonoBehaviour
             
         }
     }
-
+    
     public void SubtitlesDisplay()
     {
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
@@ -741,14 +753,14 @@ public class BigRobotController : MonoBehaviour
             if (hit.collider.CompareTag("NPC")  && !Battery)
             {
                 NpcInteract = true;
-                _UIScript.InteractWithNpc();
+               // _UIScript.InteractWithNpc();
             }
             else
             if (hit.collider.CompareTag("NPC") && Battery)
             {
                 NpcInteract = true;
-                Debug.Log("Battery Inter");
-                _UIScript.InteractWithNpc2(hit);
+                //Debug.Log("Battery Inter");
+               // _UIScript.InteractWithNpc2(hit);
             }
             else if (hit.collider.CompareTag("FinalScreen"))
             {
@@ -761,7 +773,7 @@ public class BigRobotController : MonoBehaviour
                 //hit.collider.gameObject.SetActive(false);
                 recordings++;
                
-                if (recordings == 6)
+                if (recordings > 5)
                 {
                     Allrecordings = true;
                 }

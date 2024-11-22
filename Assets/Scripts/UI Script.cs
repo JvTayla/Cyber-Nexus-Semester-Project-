@@ -105,20 +105,27 @@ public class UIScript : MonoBehaviour
             }
             else  if (hit.collider.CompareTag("NPC") && !_BigRobotController.NpcInteract)
             {
-                //textTyper(hit, "Press F / Square to interact");
+               MissionTasks();
+
+               _BigRobotController.NpcInteract = true;
             } 
-            else if (hit.collider.CompareTag("NPC") && _BigRobotController.NpcInteract && !_BigRobotController.Battery)
-            {
-               textTyper(hit ,Subtitles); 
-            }
-            else if (hit.collider.CompareTag("NPC") && _BigRobotController.NpcInteract && _BigRobotController.Battery)
+            else if (hit.collider.CompareTag("NPC2") && _BigRobotController.NpcInteract && _BigRobotController.Battery)
             {
                 textTyper(hit ,Subtitles2 );
+                MissionTasks();
+                _BigRobotController.NpcInteract = false;
+                _BigRobotController.Battery = true;
             }
             else if (_BigRobotController.Recorderinhand)
             {
                 textTyper(hit, Subtitles3);
             }
+            else if (_BigRobotController.Allrecordings && hit.collider.CompareTag("NPC2"))
+            {
+                MissionTasks();
+                _BigRobotController.Allrecordings = false;
+            }
+            
             else if (hit.collider.CompareTag("Narrative"))
             {
                 textTyper(hit, hit.collider.gameObject.name);
@@ -388,7 +395,7 @@ private void SmallRobotUIRayCast()
         }
     }
 
-    void DisplayNextLine4()
+   public void DisplayNextLine4()
     {
         if (currentLineIndex4 < subtitles4.Count)
         {

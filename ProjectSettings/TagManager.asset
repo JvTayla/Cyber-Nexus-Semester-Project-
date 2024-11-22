@@ -39,6 +39,7 @@ TagManager:
   - HoloBot
   - FinalScreen
   - Narrative
+  - NPC2
   layers:
   - Default
   - TransparentFX
