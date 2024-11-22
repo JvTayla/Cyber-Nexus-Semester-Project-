@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorOpener : MonoBehaviour
@@ -8,10 +9,8 @@ public class DoorOpener : MonoBehaviour
     public GameObject Display1;
     public GameObject door;
     public GameObject[] deactivateDoor;
-    public GameObject RedDisplay1;
-    public GameObject RedDisplay2;
-    public Lasers[] lasers; // Array of laser scripts
 
+    // Update is called once per frame
     void Update()
     {
         // Check if both game objects are green
@@ -19,8 +18,6 @@ public class DoorOpener : MonoBehaviour
         {
             // Destroy the door
             Destroy(door);
-            Destroy(RedDisplay1);
-            Destroy(RedDisplay2);
 
             foreach (GameObject obj in deactivateDoor)
             {
@@ -29,15 +26,14 @@ public class DoorOpener : MonoBehaviour
                     obj.SetActive(false);
                 }
             }
-
-            // Disable all lasers
-            foreach (Lasers laser in lasers)
-            {
-                if (laser != null)
-                {
-                    laser.DisableLaser();
-                }
-            }
         }
+
     }
+
+    // Helper method to check if a game object is green
+
+
+
+
+
 }

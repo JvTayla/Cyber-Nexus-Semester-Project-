@@ -8,7 +8,6 @@ public class Lasers : MonoBehaviour
     public GameObject SwitchDisplay, SwitchDisplay1, SwitchOn, SwitchOff;
     public Respawn respawn;
     public float laserDistance = 500f; // Maximum laser distance
-    private bool isLaserActive = true; // Laser state
 
     void Start()
     {
@@ -17,15 +16,7 @@ public class Lasers : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isLaserActive)
-        {
-            lineRenderer.enabled = false; // Turn off the laser visuals
-            return;
-        }
-
-        lineRenderer.enabled = true; // Ensure the laser visuals are on
         lineRenderer.SetPosition(0, transform.position); // Set starting point of the laser
-
         RaycastHit hit;
 
         // Cast the ray with the maximum range laserDistance
@@ -35,6 +26,7 @@ public class Lasers : MonoBehaviour
             {
                 lineRenderer.SetPosition(1, hit.point); // Laser ends at the hit point
 
+                // Check if the laser hits a player with the "Robot" tag
                 if (hit.collider.CompareTag("Robot"))
                 {
                     SwitchDisplay.SetActive(true);
@@ -42,6 +34,7 @@ public class Lasers : MonoBehaviour
                     SwitchOff.SetActive(true);
                     SwitchOn.SetActive(false);
 
+                    // Check the name of the robot hit and respawn accordingly
                     string robotName = hit.collider.gameObject.name;
 
                     if (robotName == "Big Robot")
@@ -61,13 +54,8 @@ public class Lasers : MonoBehaviour
         }
         else
         {
+            // If nothing is hit, extend the laser to the maximum distance
             lineRenderer.SetPosition(1, transform.position + transform.forward * laserDistance);
         }
-    }
-
-    // Method to disable the laser
-    public void DisableLaser()
-    {
-        isLaserActive = false;
     }
 }
