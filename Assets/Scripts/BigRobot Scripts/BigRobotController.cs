@@ -519,7 +519,6 @@ public class BigRobotController : MonoBehaviour
                {
                    Allrecordings = true;
                    _UIScript.MissionTasks();
-                   
                }
                    
             }

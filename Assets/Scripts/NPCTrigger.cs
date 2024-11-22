@@ -14,7 +14,7 @@ public class NPCTrigger : MonoBehaviour
     NPCAnimator npcanimator;
     private UIScript _UIScript;
     private BigRobotController _BigRobotController;
-    private NPCTalking _NPCTalking;
+    public NPCTalking _NPCTalking;
     private int i = 0;
     
     private void Start()
