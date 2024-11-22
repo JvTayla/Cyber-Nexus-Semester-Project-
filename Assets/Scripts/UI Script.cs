@@ -105,25 +105,31 @@ public class UIScript : MonoBehaviour
             }
             else  if (hit.collider.CompareTag("NPC") && !_BigRobotController.NpcInteract)
             {
-               MissionTasks();
+                 MissionTasks();
 
                _BigRobotController.NpcInteract = true;
             } 
-            else if (hit.collider.CompareTag("NPC2") && _BigRobotController.NpcInteract && _BigRobotController.Battery)
+            else if (hit.collider.CompareTag("NPC2") && _BigRobotController.NpcInteract && _BigRobotController.Battery && _BigRobotController.HasSecurityTag)
             {
-                textTyper(hit ,Subtitles2 );
-                MissionTasks();
-                _BigRobotController.NpcInteract = false;
-                _BigRobotController.Battery = true;
+               // textTyper(hit ,Subtitles2 );
+               if (_BigRobotController.NpcInteract)
+               {
+                   _BigRobotController.NpcInteract = false;
+                   MissionTasks();
+                      
+               }
+                
+                //_BigRobotController.Battery = true;
             }
             else if (_BigRobotController.Recorderinhand)
             {
                 textTyper(hit, Subtitles3);
             }
-            else if (_BigRobotController.Allrecordings && hit.collider.CompareTag("NPC2"))
+            else if (_BigRobotController.Allrecordings && hit.collider.CompareTag("NPC2") && !_BigRobotController.NpcInteract)
             {
-                MissionTasks();
-                _BigRobotController.Allrecordings = false;
+               MissionTasks(); 
+               _BigRobotController.NpcInteract = false;
+               
             }
             
             else if (hit.collider.CompareTag("Narrative"))

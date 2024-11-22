@@ -5,33 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="179a1cea-936c-4da3-ae0b-fb6a91bed15e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/NuclearBatteryTrigger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/NuclearBatteryTrigger.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/RecordingsCollectedTrigger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/RecordingsCollectedTrigger.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/BlenderFixes.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/BlenderFixes.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Decontamination room.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Decontamination room.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NPC Talking.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NPC Talking.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyber-Nexus-Semester-Project-/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Action Maps/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Action Maps/Controls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Action Maps/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Action Maps/Controls.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/NPCscene.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/NPCscene.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/WatchNPCtalk.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/WatchNPCtalk.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/MK + Kulani.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Andy Look at me ! )/MK + Kulani.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FInal/MK + Kulani.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BigRobot Scripts/BigRobotController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPCAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPCAnimator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPCTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPCTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle3(Lasers)/Lasers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle3(Lasers)/Lasers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle3(Lasers)/Respawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle3(Lasers)/Respawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NPC Talking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NPC Talking.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI Script.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Subtitles/MissionTasks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Subtitles/MissionTasks.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +50,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging Makwe2.0",
+    "git-widget-placeholder": "Makwe2.0",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
