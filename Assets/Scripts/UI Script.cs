@@ -32,7 +32,7 @@ public class UIScript : MonoBehaviour
     public bool NuclearBattery;
     public bool[] Recordings = new bool[6];
     public bool Upload;
-
+    public int tasksdone = 0;
     public TextMeshProUGUI MissionText;
     // Start is called before the first frame update
     void Start()
@@ -103,27 +103,35 @@ public class UIScript : MonoBehaviour
             {
                 textTyper(hit , "Press Tab / L1 anytime to change to Wisp");
             }
-            else  if (hit.collider.CompareTag("NPC") && !_BigRobotController.NpcInteract)
+            else  if (hit.collider.CompareTag("NPC") )
             {
-               MissionTasks();
 
-               _BigRobotController.NpcInteract = true;
+                if (tasksdone < 1)
+                {
+                    MissionTasks();
+                    tasksdone = 1;
+                    NuclearBattery = false;
+                    _BigRobotController.Allrecordings = false;
+                }
+
+             
+                // _BigRobotController.NpcInteract = true;
             } 
-            else if (hit.collider.CompareTag("NPC2") && _BigRobotController.NpcInteract && _BigRobotController.Battery)
+            else if (hit.collider.CompareTag("NPC") && NuclearBattery)
             {
-                textTyper(hit ,Subtitles2 );
-                MissionTasks();
-                _BigRobotController.NpcInteract = false;
-                _BigRobotController.Battery = true;
+             
+               
+               //_BigRobotController.Battery = true;
             }
             else if (_BigRobotController.Recorderinhand)
             {
                 textTyper(hit, Subtitles3);
             }
-            else if (_BigRobotController.Allrecordings && hit.collider.CompareTag("NPC2"))
+            else if (_BigRobotController.Allrecordings && hit.collider.CompareTag("NPC"))
             {
-                MissionTasks();
-                _BigRobotController.Allrecordings = false;
+              // MissionTasks(); 
+              
+
             }
             
             else if (hit.collider.CompareTag("Narrative"))
@@ -153,7 +161,26 @@ public class UIScript : MonoBehaviour
     }
 
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Robot") && NuclearBattery)
+        {
+            if (tasksdone < 2)
+            {
+                MissionTasks();
+            }
+            tasksdone = 2;
+        }
+        
+        if (other.CompareTag("Robot") && _BigRobotController.Allrecordings)
+        {
+            if (tasksdone < 3)
+            {
+                MissionTasks();
+            }
+            tasksdone = 3;
+        }
+    }
      
 // Handles Small Robot's raycast
 private void SmallRobotUIRayCast()

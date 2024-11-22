@@ -9,6 +9,7 @@ public class NPCTalking : MonoBehaviour
 
     public GameObject RobotTriggerNuclearBattery;
     public GameObject RobotTriggerRecordingsFound;
+    public GameObject NPCTrigger;
 
     public GameObject YapText1;
     public GameObject YapText2;
@@ -43,6 +44,8 @@ public class NPCTalking : MonoBehaviour
         YapText12.SetActive(false);
         BehindText.SetActive(false);
 
+        
+
         RobotTriggerNuclearBattery.SetActive(false);
         RobotTriggerRecordingsFound.SetActive(false);
 
@@ -63,6 +66,7 @@ public class NPCTalking : MonoBehaviour
 
     public IEnumerator FirstYap()
     {
+        NPCTrigger.SetActive(false);
         yield return new WaitForSeconds(10f);
 
         BehindText.SetActive(true);
@@ -108,7 +112,7 @@ public class NPCTalking : MonoBehaviour
 
         //Set the rest of the canvases off for the next robot 
         DeactivateAllYapTexts();
-
+        
         RobotTriggerNuclearBattery.SetActive(true);
        
     }
@@ -118,34 +122,42 @@ public class NPCTalking : MonoBehaviour
     {
         if (bigRobotController.HasNuclearBattery)
         {
+            yield return new WaitForSeconds(0f);
+
             BehindText.SetActive(true);
             YapText8.SetActive(true);
+            Debug.Log("1stScreenDone");
 
             yield return new WaitForSeconds(7f);
 
+
             YapText8.SetActive(false);
             YapText9.SetActive(true);
-
+            Debug.Log("2ndScreenDone");
             yield return new WaitForSeconds(10f);
 
             YapText9.SetActive(false);
             YapText10.SetActive(true);
-
+            Debug.Log("3rdScreenDone");
             yield return new WaitForSeconds(6f);
 
             //Set the rest of the canvases off for the next robot 
             DeactivateAllYapTexts();
 
+
             RobotTriggerNuclearBattery.SetActive(false);
             RobotTriggerRecordingsFound.SetActive(true);
         }
+        
     }
 
 
     public IEnumerator ThirdYap()
     {
-        if (bigRobotController.HasSecurityTag)
+        if (bigRobotController.Allrecordings)
         {
+            yield return new WaitForSeconds(0f);
+
             BehindText.SetActive(true);
             YapText11.SetActive(true);
 
