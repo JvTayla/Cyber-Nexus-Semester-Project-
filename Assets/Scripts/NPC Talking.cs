@@ -9,7 +9,6 @@ public class NPCTalking : MonoBehaviour
 
     public GameObject RobotTriggerNuclearBattery;
     public GameObject RobotTriggerRecordingsFound;
-    public GameObject NPCTrigger;
 
     public GameObject YapText1;
     public GameObject YapText2;
@@ -44,8 +43,6 @@ public class NPCTalking : MonoBehaviour
         YapText12.SetActive(false);
         BehindText.SetActive(false);
 
-        
-
         RobotTriggerNuclearBattery.SetActive(false);
         RobotTriggerRecordingsFound.SetActive(false);
 
@@ -66,7 +63,6 @@ public class NPCTalking : MonoBehaviour
 
     public IEnumerator FirstYap()
     {
-        NPCTrigger.SetActive(false);
         yield return new WaitForSeconds(10f);
 
         BehindText.SetActive(true);
@@ -112,7 +108,7 @@ public class NPCTalking : MonoBehaviour
 
         //Set the rest of the canvases off for the next robot 
         DeactivateAllYapTexts();
-        
+
         RobotTriggerNuclearBattery.SetActive(true);
        
     }
@@ -143,7 +139,6 @@ public class NPCTalking : MonoBehaviour
 
             //Set the rest of the canvases off for the next robot 
             DeactivateAllYapTexts();
-
 
             RobotTriggerNuclearBattery.SetActive(false);
             RobotTriggerRecordingsFound.SetActive(true);
